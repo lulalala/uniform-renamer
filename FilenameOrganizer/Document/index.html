@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF8" http-equiv="content-type">
+  <title>檔名整理器 Organise Renamer（暫）</title>
+
+  
+  
+  <link rel="stylesheet" href="style.css" type="text/css">
+
+</head><body>
+<h1>檔名整理器 Organize Renamer（暫）</h1>
+
+看著資料夾裡下載的檔案漸漸增加，但是其命名的方式又參差不齊，你是否有種衝動想要找天好好把它們<span style="font-weight: bold;">分門歸類</span>，但是又覺得寸金難買吋光陰。又或者你辛苦的整理了，最後卻有著浪費時
+間的空虛感？請試試看這款 Organize Renamer ，本軟體希望能幫助大家省下一半的整理時間。<br>
+
+<br>
+
+<img style="width: 627px; height: 567px;" alt="" src="scr1.png"><br>
+
+<h2>使用教學</h2>
+
+本軟體的使用方式大致上如下：<br>
+
+<ol>
+
+  <li>編寫命名規則，或者下載別人的命名規則來用。</li>
+  <li>選擇要批次大量重新命名的資料夾。</li>
+  <li>按按鈕預覽新的命名。</li>
+  <li>選擇要修改的檔案後，按「更名」批次一起命名。<br>
+  </li>
+</ol>
+
+<h3>編寫命名規則</h3>
+
+命名規則是純文字檔案（*.txt），除了第一行是命名格式外，其餘的行數都是規則。首先我們來看個範例：<br>
+
+<br>
+
+(一般コミック) (BIG5) [田中太郎] 世界末日 第01巻&nbsp; --&gt; [田中太郎] 世界末日 1 [C]<br>
+
+<br>
+
+要如何把原本左邊的檔名改成右邊的檔名呢？套用下面的規則表即可<br>
+
+<br>
+
+<textarea wrap="off" cols="60" rows="5" name="code1">&lt;reg_remain&gt;&lt;reg_vol&gt;&lt;chinese&gt;
+delete	(一般コミック)
+chinese [C] (BIG5)
+reg_vol 第0?(\d*)巻
+reg_remain (.*)</textarea> <br>
+
+<br>
+
+規則表的第一行是<span style="font-weight: bold;">檔名格式</span>。在這個例子中，我想要的檔名是「作者名
+作品名 集數 中文」<br>
+
+<br>
+
+有了命名格式後，就要分別指定各個<span style="font-weight: bold;">規則</span>。規則是由 tab
+字元分欄位的。<br>
+
+第二行是<span style="font-weight: bold;">「刪除」規則</span>，使用關鍵字「delete」作為開頭，凡是在
+delete 後面列的各個字，都會從原始檔名中被刪除。刪除的好處是，只要把不要用的刪除了，就能得到剩下需要的資料。<br>
+
+<br>
+
+第三行是<span style="font-weight: bold;">「替代」規則</span>，由使用者自行命名（在這裡這個規則的名字是
+chinese）。規則名稱會被對應到<span style="font-weight: bold;">檔名格式</span>中。<br>
+
+範例中的這項規則能夠偵測有沒有「(BIG5)」這個字樣，如果有的話，代表這檔案是中文的。於是「[C]」就會被放在<span style="font-weight: bold;">檔名格式</span>中「&lt;chinese&gt;」的位置。<br>
+
+<br>
+
+第四行是<span style="font-weight: bold;">「正規式」規則</span>，使用正規式（regular
+expression）來搜尋文字。這種規則的名字一律必須有「reg_」在前方。正規式十分強大，能夠搜尋各種文字組合。<br>
+
+範例中，我想要搜尋漫畫的集數，但是不想要原本檔名中一些累贅的字（<span style="font-weight: bold;">第、0、</span><span style="font-weight: bold;">巻</span>）。在這個例子中，我只想要 0 後面的數字，所以就用 (\d*)
+把該數字抓出來，放在<span style="font-weight: bold;">檔名格式</span>中「&lt;reg_vol&gt;」
+的位置。<br>
+
+<br>
+
+最後一行也是個<span style="font-style: italic;">正規式規則</span>，把所有剩下來的東西放進<span style="font-weight: bold;">檔名格式</span>中「&lt;reg_remain&gt;」的位置。在正規式中，
+「(.*)」即是代表選取全部的字元（即是剩下來的字元）。<br>
+
+<br>
+
+相信透過這三種規則的組合，以及正規式的威力，就能夠做出你想要的各種檔名，節省手動更名的時間。<br>
+
+<h2>結尾</h2>
+
+目前我想不出好的程式名稱，所以在此徵求程式命名。<br>
+
+此外，也希望大家能提供意見，改善這個說明檔（我覺得自己寫得很爛），甚至是規則的寫法等等。<br>
+
+<br>
+</body></html>
