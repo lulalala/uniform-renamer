@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.newFormatTextbox = new System.Windows.Forms.TextBox();
             this.ruleTextArea = new System.Windows.Forms.RichTextBox();
             this.RuleMenu = new System.Windows.Forms.ToolStrip();
             this.RuleNewButton = new System.Windows.Forms.ToolStripButton();
@@ -47,14 +49,12 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.newFormatTextbox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.RuleMenu.SuspendLayout();
             this.TargetMenu.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -71,6 +71,18 @@
             // 
             this.splitContainer.Panel2.Controls.Add(this.ListGrid);
             this.splitContainer.Panel2.Controls.Add(this.TargetMenu);
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.newFormatTextbox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ruleTextArea, 0, 1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // newFormatTextbox
+            // 
+            resources.ApplyResources(this.newFormatTextbox, "newFormatTextbox");
+            this.newFormatTextbox.Name = "newFormatTextbox";
             // 
             // ruleTextArea
             // 
@@ -201,18 +213,6 @@
             // 
             this.RuleSaveAsDialog.DefaultExt = "txt";
             // 
-            // newFormatTextbox
-            // 
-            resources.ApplyResources(this.newFormatTextbox, "newFormatTextbox");
-            this.newFormatTextbox.Name = "newFormatTextbox";
-            // 
-            // tableLayoutPanel1
-            // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.newFormatTextbox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ruleTextArea, 0, 1);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -226,12 +226,12 @@
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
             this.splitContainer.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.RuleMenu.ResumeLayout(false);
             this.RuleMenu.PerformLayout();
             this.TargetMenu.ResumeLayout(false);
             this.TargetMenu.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
