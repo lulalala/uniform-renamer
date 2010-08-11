@@ -11,6 +11,7 @@
 
     using SourceGrid;
     using SourceGrid.Cells.Editors;
+    using System.Reflection;
 
     public partial class MainForm : Form
     {
@@ -22,12 +23,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
         }
 
-        private void AboutButton_Click(object sender, EventArgs e)
-        {
-            AboutBox a = new AboutBox();
-            a.Show();
-        }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.LastTargetPath = TargetDialog.SelectedPath;
@@ -36,16 +31,21 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            int col = 0;
             //SourceGrid control
             ListGrid.Rows.Insert(0);
-            ListGrid[0, 0] = new SourceGrid.Cells.ColumnHeader("File Name");
-            ListGrid[0, 1] = new SourceGrid.Cells.ColumnHeader("New File Name");
+            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("");
+            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("File Name");
+            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("");
+            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("New File Name");
             ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             ListGrid.AutoSizeCells();
             cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
             cellEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
 
             ruleTextArea.SelectionTabs = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
+
+            VersionLabel.Text = String.Format("Ver. {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
             RuleOpenDialog.FileName = Properties.Settings.Default.LastRulePath;
             if (!RuleOpenDialog.FileName.Equals(""))
@@ -184,24 +184,36 @@
             if (path.Equals(""))
                 return;
 
+            SetRenameButtonsEnabled(true);
             int r = 1;
             foreach (string s in Directory.GetDirectories(path))
             {
                 FileName fs = new FileName(s);
+                int col = 0;
+
                 ListGrid.Rows.Insert(r);
-                ListGrid[r, 0] = new SourceGrid.Cells.Cell(fs);
-                ListGrid[r, 1] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
+                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs);
+                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
                 r++;
             }
             foreach (string s in Directory.GetFiles(path))
             {
                 FileName fs = new FileName(s);
+                int col = 0;
+
                 ListGrid.Rows.Insert(r);
-                ListGrid[r, 0] = new SourceGrid.Cells.Cell(fs);
-                ListGrid[r, 1] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
+                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs);
+                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
                 r++;
             }
             //grid1.AutoSizeCells();
+        }
+
+        private void SetRenameButtonsEnabled(bool b)
+        {
+            RenamePreviewButton.Enabled = b;
+            RenameResetButton.Enabled = b;
+            RenameButton.Enabled = b;
         }
 
         private void TargetPrevewRename_Click(object sender, EventArgs e)
@@ -219,6 +231,24 @@
             {
                 RenamePreview();
             }
+        }
+
+        //private Icon GetIcon(string path)
+        //{
+        //    if (string.IsNullOrEmpty(path)) { throw new ArgumentNullException(); }
+        //    Icon myIcon = null;
+        //    if (File.Exists(path)) {
+        //        //取得 Icon 物件                    
+        //        using(Icon oIcon = new Icon(path)){
+        //            //建立副本
+        //            myIcon = (Icon)oIcon.Clone();
+        //        }
+        //    }
+        //}
+
+        public void DisplayError(string text)
+        {
+            ErrorLabel.Text = text;
         }
     }
 }

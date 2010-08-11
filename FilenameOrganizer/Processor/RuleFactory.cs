@@ -10,42 +10,35 @@
         public static RuleList ParseRule(string text)
         {
             StringReader sr = new StringReader(CleanRuleText(text));
-            RuleList rules = null;
+            // format string
+            RuleList rules = new RuleList(sr.ReadLine()); ;
+            
             string[] tokens;
             string s;
-
             while ((s = sr.ReadLine()) != null)
             {
-                // format string
-                if (rules == null)
-                {
-                    rules = new RuleList(s);
-                }
                 // rule
-                else
+                tokens = s.Split('\t');
+                if (tokens[0].StartsWith("reg_"))
+                //Regular Expression Rule
                 {
-                    tokens = s.Split('\t');
-                    if (tokens[0].StartsWith("reg_"))
-                    //Regular Expression Rule
-                    {
-                        rules.Add(new RegexRule(tokens[0], tokens[1]));
-                    }
-                    else if (tokens[0].Equals("delete"))
-                    //Delete Rule
-                    {
-                        if (tokens.Length == 1)
-                            throw new System.ArgumentException("Delete rule empty");
-                        rules.Add(new DeleteRule(new ArraySegment<string>(tokens, 1, tokens.Length - 1).Array));
-                    }
-                    else
-                    //Replace Rule
-                    {
-                        if (tokens.Length < 3)
-                            throw new System.ArgumentException("Replace rules need to have at least 3 items delimited by tabs");
-                        string[] targets = new string[tokens.Length - 2];
-                        Array.Copy(tokens, 2, targets, 0, targets.Length);
-                        rules.Add(new ReplaceRule(tokens[0], tokens[1], targets));
-                    }
+                    rules.Add(new RegexRule(tokens[0], tokens[1]));
+                }
+                else if (tokens[0].Equals("delete"))
+                //Delete Rule
+                {
+                    if (tokens.Length == 1)
+                        throw new System.ArgumentException("Delete rule empty");
+                    rules.Add(new DeleteRule(new ArraySegment<string>(tokens, 1, tokens.Length - 1).Array));
+                }
+                else
+                //Replace Rule
+                {
+                    if (tokens.Length < 3)
+                        throw new System.ArgumentException("Replace rules need to have at least 3 items delimited by tabs");
+                    string[] targets = new string[tokens.Length - 2];
+                    Array.Copy(tokens, 2, targets, 0, targets.Length);
+                    rules.Add(new ReplaceRule(tokens[0], tokens[1], targets));
                 }
             }
 
