@@ -16,6 +16,7 @@
     public partial class MainForm : Form
     {
         private EditorBase cellEditor;
+        private RuleList rules;
 
         public MainForm()
         {
@@ -38,19 +39,18 @@
             ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("File Name");
             //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("");
             ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("New File Name");
-            ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
+            //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             ListGrid.AutoSizeCells();
             cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
             cellEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
 
             ruleTextArea.SelectionTabs = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
 
-            VersionLabel.Text = String.Format("Ver. {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
             RuleOpenDialog.FileName = Properties.Settings.Default.LastRulePath;
             if (!RuleOpenDialog.FileName.Equals(""))
             {
-                //ruleTextArea.LoadFile(RuleOpenDialog.FileName, RichTextBoxStreamType.UnicodePlainText);
                 LoadFile(RuleOpenDialog.FileName);
             }
             TargetDialog.SelectedPath = Properties.Settings.Default.LastTargetPath;
@@ -75,6 +75,9 @@
         private void LoadFile(string path)
         {
             string s = File.ReadAllText(path, Encoding.UTF8);
+            rules = RuleFactory.ParseRule(s);
+
+            //newFormatTextbox.Text = rules.format;
             ruleTextArea.Text = s;
         }
         private void SaveFile(string path)
@@ -82,7 +85,7 @@
             File.WriteAllText(path, ruleTextArea.Text, Encoding.UTF8);
         }
 
-        private void RenamePreview()
+        private void PreviewRename()
         {
             if (ruleTextArea.Text.Length == 0)
             {
@@ -101,7 +104,7 @@
                 else
                     ListGrid[i, 1].Value = "";
             }
-            //grid1.AutoSizeCells();
+            ListGrid.AutoSizeCells();
         }
 
 
@@ -127,7 +130,6 @@
         {
             if (RuleOpenDialog.ShowDialog() == DialogResult.OK)
             {
-                //ruleTextArea.LoadFile(RuleOpenDialog.FileName, RichTextBoxStreamType.UnicodePlainText);
                 LoadFile(RuleOpenDialog.FileName);
             }
             Properties.Settings.Default.LastRulePath = RuleOpenDialog.FileName;
@@ -138,7 +140,6 @@
         {
             if (RuleSaveAsDialog.ShowDialog() == DialogResult.OK)
             {
-                //ruleTextArea.SaveFile(RuleSaveAsDialog.FileName, RichTextBoxStreamType.UnicodePlainText);
                 SaveFile(RuleSaveAsDialog.FileName);
             }
         }
@@ -153,26 +154,14 @@
                 }
                 Properties.Settings.Default.LastRulePath = RuleSaveAsDialog.FileName;
             }
-            //ruleTextArea.SaveFile(Properties.Settings.Default.LastRulePath,RichTextBoxStreamType.UnicodePlainText);
             SaveFile(Properties.Settings.Default.LastRulePath);
         }
 
         private void ruleTextArea_TextChanged(object sender, EventArgs e)
         {
-            ////Highlight every found word from keyWords.
-
-            ////Get the last cursor position in the richTextBox1.
-            //int selPos = ruleTextArea.SelectionStart;
-
-            ////For each match from the regex, highlight the word.
-            //foreach (Match keyWordMatch in keyword.Matches(ruleTextArea.Text))
-            //{
-            //    ruleTextArea.Select(keyWordMatch.Index, keyWordMatch.Length);
-            //    ruleTextArea.SelectionColor = Color.Blue;
-            //    ruleTextArea.SelectionStart = selPos;
-            //    ruleTextArea.SelectionColor = Color.Black;
-            //    ruleTextArea.DeselectAll();
-            //}
+            // TODO: modify rules instead of creating a new one
+            rules = null;
+            rules = RuleFactory.ParseRule(ruleTextArea.Text);
         }
 
         private void TargetListBoxFill(string path)
@@ -206,7 +195,7 @@
                 ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
                 r++;
             }
-            //grid1.AutoSizeCells();
+            ListGrid.AutoSizeCells();
         }
 
         private void SetRenameButtonsEnabled(bool b)
@@ -218,7 +207,7 @@
 
         private void TargetPrevewRename_Click(object sender, EventArgs e)
         {
-            RenamePreview();
+            PreviewRename();
         }
 
         private void TargetSelectButton_Click(object sender, EventArgs e)
@@ -227,24 +216,11 @@
             {
                 TargetListBoxFill(TargetDialog.SelectedPath);
             }
-            if (ruleTextArea.TextLength > 10)
+            if (rules != null)
             {
-                RenamePreview();
+                PreviewRename();
             }
         }
-
-        //private Icon GetIcon(string path)
-        //{
-        //    if (string.IsNullOrEmpty(path)) { throw new ArgumentNullException(); }
-        //    Icon myIcon = null;
-        //    if (File.Exists(path)) {
-        //        //取得 Icon 物件                    
-        //        using(Icon oIcon = new Icon(path)){
-        //            //建立副本
-        //            myIcon = (Icon)oIcon.Clone();
-        //        }
-        //    }
-        //}
 
         public void DisplayError(string text)
         {

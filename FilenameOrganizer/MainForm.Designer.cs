@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.newFormatTextbox = new System.Windows.Forms.TextBox();
             this.ruleTextArea = new System.Windows.Forms.RichTextBox();
             this.RuleMenu = new System.Windows.Forms.ToolStrip();
             this.RuleNewButton = new System.Windows.Forms.ToolStripButton();
             this.RuleOpenButton = new System.Windows.Forms.ToolStripButton();
             this.RuleSaveButton = new System.Windows.Forms.ToolStripButton();
             this.RuleSaveAsButton = new System.Windows.Forms.ToolStripButton();
+            this.VersionLabel = new System.Windows.Forms.ToolStripLabel();
             this.ListGrid = new SourceGrid.Grid();
             this.TargetMenu = new System.Windows.Forms.ToolStrip();
             this.TargetSelectButton = new System.Windows.Forms.ToolStripButton();
@@ -51,7 +51,6 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.VersionLabel = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -97,19 +96,9 @@
             this.tableLayoutPanel1.AccessibleName = null;
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.BackgroundImage = null;
-            this.tableLayoutPanel1.Controls.Add(this.newFormatTextbox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ruleTextArea, 0, 1);
             this.tableLayoutPanel1.Font = null;
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // newFormatTextbox
-            // 
-            this.newFormatTextbox.AccessibleDescription = null;
-            this.newFormatTextbox.AccessibleName = null;
-            resources.ApplyResources(this.newFormatTextbox, "newFormatTextbox");
-            this.newFormatTextbox.BackgroundImage = null;
-            this.newFormatTextbox.Font = null;
-            this.newFormatTextbox.Name = "newFormatTextbox";
             // 
             // ruleTextArea
             // 
@@ -177,6 +166,15 @@
             this.RuleSaveAsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.RuleSaveAsButton.Name = "RuleSaveAsButton";
             this.RuleSaveAsButton.Click += new System.EventHandler(this.RuleSaveAsButton_Click);
+            // 
+            // VersionLabel
+            // 
+            this.VersionLabel.AccessibleDescription = null;
+            this.VersionLabel.AccessibleName = null;
+            this.VersionLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            resources.ApplyResources(this.VersionLabel, "VersionLabel");
+            this.VersionLabel.BackgroundImage = null;
+            this.VersionLabel.Name = "VersionLabel";
             // 
             // ListGrid
             // 
@@ -303,15 +301,6 @@
             this.RuleSaveAsDialog.DefaultExt = "txt";
             resources.ApplyResources(this.RuleSaveAsDialog, "RuleSaveAsDialog");
             // 
-            // VersionLabel
-            // 
-            this.VersionLabel.AccessibleDescription = null;
-            this.VersionLabel.AccessibleName = null;
-            this.VersionLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            resources.ApplyResources(this.VersionLabel, "VersionLabel");
-            this.VersionLabel.BackgroundImage = null;
-            this.VersionLabel.Name = "VersionLabel";
-            // 
             // MainForm
             // 
             this.AccessibleDescription = null;
@@ -331,7 +320,6 @@
             this.splitContainer.Panel2.PerformLayout();
             this.splitContainer.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.RuleMenu.ResumeLayout(false);
             this.RuleMenu.PerformLayout();
             this.TargetMenu.ResumeLayout(false);
@@ -362,7 +350,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton RenameResetButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox newFormatTextbox;
         private System.Windows.Forms.StatusStrip StatusBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel ErrorLabel;
