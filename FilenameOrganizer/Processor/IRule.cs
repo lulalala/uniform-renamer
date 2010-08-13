@@ -9,6 +9,7 @@
             get; set;
         }
 
-        void Apply(StringBuilder filename, StringBuilder format);
+        // ref used to return two strings in one call
+        void Apply(ref string oldName, ref string newFormat);
     }
 }

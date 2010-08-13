@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     class DeleteRule : IRule
     {
@@ -19,11 +20,18 @@
             get; set;
         }
 
-        public void Apply(StringBuilder filename, StringBuilder format)
+        public void Apply(ref string oldName, ref string newFormat)
         {
             foreach (string s in matches)
             {
-                filename.Replace(s, "");
+                if (s.StartsWith("*"))
+                {
+                    oldName = Regex.Replace(oldName, s.Substring(1, s.Length - 1), string.Empty);
+                }
+                else
+                {
+                    oldName = oldName.Replace(s, string.Empty);
+                }
             }
         }
     }

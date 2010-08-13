@@ -1,6 +1,7 @@
 ﻿namespace FilenameOrganizer.Processor
 {
     using System.Text;
+    using System.Text.RegularExpressions;
 
     class ReplaceRule : IRule
     {
@@ -11,7 +12,7 @@
         public ReplaceRule(string name, string replacement, string[] targets)
         {
             this.name = name;
-            this.nameTag = "<" + name + ">";
+            this.nameTag = name;
             this.replacement = replacement;
             this.targets = targets;
         }
@@ -21,26 +22,35 @@
             get; set;
         }
 
-        public void Apply(StringBuilder filename, StringBuilder format)
+        public void Apply(ref string oldName, ref string newFormat)
         {
-            string fn = filename.ToString();
             bool found = false;
             foreach (string t in targets)
             {
-                if (fn.Contains(t))
+                string searchPattern;
+                if (t.StartsWith("*"))
+                {
+                    searchPattern = t.Substring(1,t.Length-1);
+                }
+                else
+                {
+                    searchPattern = Regex.Escape(t);
+                }
+
+                if (Regex.IsMatch(oldName,searchPattern))
                 {
                     found = true;
                     //Removes the string, to avoid multiple rules mapping the same place.
-                    filename.Replace(t,"");
+                    oldName = Regex.Replace(oldName, searchPattern, replacement);
                 }
             }
             if (found)
             {
-                format.Replace(nameTag, replacement);
+                newFormat = newFormat.Replace(nameTag, replacement);
             }
             else
             {
-                format.Replace(nameTag, "");
+                newFormat = newFormat.Replace(nameTag, string.Empty);
             }
         }
     }

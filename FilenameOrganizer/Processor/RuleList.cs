@@ -17,15 +17,14 @@
             get;set;
         }
 
-        public string Convert(string FileName)
+        public string Convert(string oldName)
         {
-            StringBuilder newName = new StringBuilder(format);
-            StringBuilder oldName = new StringBuilder(FileName);
+            string newFormat = format.ToString();
             foreach (IRule r in this)
             {
-                r.Apply(oldName, newName);
+                r.Apply(ref oldName, ref newFormat);
             }
-            return MakeValidFileName(Regex.Replace(newName.ToString().Trim(), "<[^>]+>", string.Empty));
+            return MakeValidFileName(Regex.Replace(newFormat.Trim(), "<[^>]+>", string.Empty));
         }
 
         private static string MakeValidFileName(string name)

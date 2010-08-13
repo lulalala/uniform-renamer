@@ -19,26 +19,28 @@
             {
                 // rule
                 tokens = s.Split('\t');
-                if (tokens[0].StartsWith("reg_"))
-                //Regular Expression Rule
+                if (tokens[0].Equals("copy"))
+                //Copy Rule
                 {
-                    rules.Add(new RegexRule(tokens[0], tokens[1]));
+                    rules.Add(new CopyRule(tokens[1], tokens[2]));
                 }
                 else if (tokens[0].Equals("delete"))
                 //Delete Rule
                 {
                     if (tokens.Length == 1)
                         throw new System.ArgumentException("Delete rule empty");
-                    rules.Add(new DeleteRule(new ArraySegment<string>(tokens, 1, tokens.Length - 1).Array));
+                    string[] targets = new string[tokens.Length - 1];
+                    Array.Copy(tokens, 1, targets, 0, targets.Length);
+                    rules.Add(new DeleteRule(targets));
                 }
-                else
+                else if (tokens[0].Equals("replace"))
                 //Replace Rule
                 {
                     if (tokens.Length < 3)
                         throw new System.ArgumentException("Replace rules need to have at least 3 items delimited by tabs");
-                    string[] targets = new string[tokens.Length - 2];
-                    Array.Copy(tokens, 2, targets, 0, targets.Length);
-                    rules.Add(new ReplaceRule(tokens[0], tokens[1], targets));
+                    string[] targets = new string[tokens.Length - 3];
+                    Array.Copy(tokens, 3, targets, 0, targets.Length);
+                    rules.Add(new ReplaceRule(tokens[1], tokens[2], targets));
                 }
             }
 

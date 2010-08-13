@@ -128,6 +128,9 @@
   <data name="ruleTextArea.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 155</value>
+  </data>
   <data name="RuleNewButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -144,7 +147,7 @@
 </value>
   </data>
   <data name="RuleNewButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 22</value>
+    <value>74, 22</value>
   </data>
   <data name="RuleNewButton.Text" xml:space="preserve">
     <value>開新檔案(&amp;N)</value>
@@ -165,7 +168,7 @@
 </value>
   </data>
   <data name="RuleOpenButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 22</value>
+    <value>84, 22</value>
   </data>
   <data name="RuleOpenButton.Text" xml:space="preserve">
     <value>開啟舊檔(&amp;O)…</value>
@@ -186,7 +189,7 @@
 </value>
   </data>
   <data name="RuleSaveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 22</value>
+    <value>49, 22</value>
   </data>
   <data name="RuleSaveButton.Text" xml:space="preserve">
     <value>存檔(&amp;S)</value>
@@ -207,13 +210,16 @@
 </value>
   </data>
   <data name="RuleSaveAsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 22</value>
+    <value>83, 22</value>
   </data>
   <data name="RuleSaveAsButton.Text" xml:space="preserve">
-    <value>另存新檔(&amp;A)….</value>
+    <value>另存新檔(&amp;A)…</value>
+  </data>
+  <data name="RuleMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 25</value>
   </data>
   <data name="ListGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 234</value>
+    <value>792, 234</value>
   </data>
   <data name="TargetSelectButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -231,7 +237,7 @@
 </value>
   </data>
   <data name="TargetSelectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 22</value>
+    <value>85, 22</value>
   </data>
   <data name="TargetSelectButton.Text" xml:space="preserve">
     <value>選擇資料夾(&amp;T)</value>
@@ -252,7 +258,7 @@
 </value>
   </data>
   <data name="RenamePreviewButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
+    <value>73, 22</value>
   </data>
   <data name="RenamePreviewButton.Text" xml:space="preserve">
     <value>預覽更名(&amp;P)</value>
@@ -273,7 +279,7 @@
 </value>
   </data>
   <data name="RenameResetButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>83, 22</value>
   </data>
   <data name="RenameResetButton.Text" xml:space="preserve">
     <value>取消預覽更名</value>
@@ -294,15 +300,24 @@
 </value>
   </data>
   <data name="RenameButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
+    <value>122, 22</value>
   </data>
   <data name="RenameButton.Text" xml:space="preserve">
     <value>更改選取檔案名稱(&amp;R)</value>
   </data>
+  <data name="TargetMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 25</value>
+  </data>
   <data name="StatusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 22</value>
+    <value>792, 22</value>
   </data>
   <data name="StatusBar.Text" xml:space="preserve">
     <value>StatusBar</value>
+  </data>
+  <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 466</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>792, 466</value>
   </data>
 </root>
