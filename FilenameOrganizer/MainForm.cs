@@ -35,10 +35,10 @@
             int col = 0;
             //SourceGrid control
             ListGrid.Rows.Insert(0);
-            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("");
-            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("File Name");
-            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("");
-            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader("New File Name");
+            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(String.Empty);
+            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(String.Empty);
+            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
             //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             ListGrid.AutoSizeCells();
             cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
@@ -49,7 +49,7 @@
             VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
             RuleOpenDialog.FileName = Properties.Settings.Default.LastRulePath;
-            if (!RuleOpenDialog.FileName.Equals(""))
+            if (!RuleOpenDialog.FileName.Equals(String.Empty))
             {
                 LoadFile(RuleOpenDialog.FileName);
             }
@@ -60,7 +60,7 @@
         private void RenameButton_Click(object sender, EventArgs e)
         {
             ListGrid.Focus();
-            if (MessageBox.Show("Please doublecheck the renaming. Do you wish to continue renaming process?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
+            if (MessageBox.Show(Textual.RenameWarning, String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
             {
                 for (int i = 0; i < ListGrid.Rows.Count; i++)
                 {
@@ -74,7 +74,7 @@
 
         private void LoadFile(string path)
         {
-            string s = File.ReadAllText(path, Encoding.UTF8);
+            string s = File.ReadAllText(path, Encoding.UTF8).Replace("¥", "\\");
             rules = RuleFactory.ParseRule(s);
 
             //newFormatTextbox.Text = rules.format;
@@ -103,7 +103,7 @@
                 if (s.Length > 0)
                     ListGrid[i, 1].Value = s + fn.GetExtension();
                 else
-                    ListGrid[i, 1].Value = "";
+                    ListGrid[i, 1].Value = String.Empty;
             }
             ListGrid.AutoSizeCells();
         }
@@ -171,7 +171,7 @@
             {
                 ListGrid.Rows.RemoveRange(1, ListGrid.RowsCount - 1);
             }
-            if (path.Equals(""))
+            if (path.Equals(String.Empty))
                 return;
 
             SetRenameButtonsEnabled(true);

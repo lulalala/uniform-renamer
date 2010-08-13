@@ -28,7 +28,7 @@
                 //Delete Rule
                 {
                     if (tokens.Length == 1)
-                        throw new System.ArgumentException("Delete rule empty");
+                        throw new System.ArgumentException(Textual.ErrorDeleteRule);
                     string[] targets = new string[tokens.Length - 1];
                     Array.Copy(tokens, 1, targets, 0, targets.Length);
                     rules.Add(new DeleteRule(targets));
@@ -37,9 +37,9 @@
                 //Replace Rule
                 {
                     if (tokens.Length < 3)
-                        throw new System.ArgumentException("Replace rules need to have at least 3 items delimited by tabs");
+                        throw new System.ArgumentException(Textual.ErrorReplaceRule);
                     string[] targets = new string[tokens.Length - 3];
-                    Array.Copy(tokens, 3, targets, 0, targets.Length);
+                    Array.Copy(tokens, 2, targets, 0, targets.Length);
                     rules.Add(new ReplaceRule(tokens[1], tokens[2], targets));
                 }
             }
@@ -49,7 +49,7 @@
 
         private static string CleanRuleText(string text)
         {
-            StringBuilder sb = new StringBuilder("");
+            StringBuilder sb = new StringBuilder(String.Empty);
             StringReader sr = new StringReader(text);
             string s = null;
             while ((s = sr.ReadLine()) != null)

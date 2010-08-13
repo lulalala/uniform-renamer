@@ -24,9 +24,9 @@
         {
             foreach (string s in matches)
             {
-                if (s.StartsWith("*"))
+                if (s.StartsWith("* "))
                 {
-                    oldName = Regex.Replace(oldName, s.Substring(1, s.Length - 1), string.Empty);
+                    oldName = Regex.Replace(oldName, s.Substring(2, s.Length - 2), string.Empty);
                 }
                 else
                 {

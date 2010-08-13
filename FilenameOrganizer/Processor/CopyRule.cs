@@ -10,8 +10,8 @@
         public CopyRule(string name, string searchText)
         {
             this.name = name;
-            if(searchText.StartsWith("*"))
-                this.regex = new Regex(searchText.Substring(1, searchText.Length - 1));
+            if(searchText.StartsWith("* "))
+                this.regex = new Regex(searchText.Substring(2, searchText.Length - 2));
             else
                 this.regex = new Regex(Regex.Escape(searchText)); // TODO need to change to string.replace()
         }

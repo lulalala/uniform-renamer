@@ -2,6 +2,7 @@
 {
     using System.Text;
     using System.Text.RegularExpressions;
+    using System;
 
     class ReplaceRule : IRule
     {
@@ -28,9 +29,9 @@
             foreach (string t in targets)
             {
                 string searchPattern;
-                if (t.StartsWith("*"))
+                if (t.StartsWith("* "))
                 {
-                    searchPattern = t.Substring(1,t.Length-1);
+                    searchPattern = t.Substring(2,t.Length-2);
                 }
                 else
                 {
@@ -41,7 +42,7 @@
                 {
                     found = true;
                     //Removes the string, to avoid multiple rules mapping the same place.
-                    oldName = Regex.Replace(oldName, searchPattern, replacement);
+                    oldName = Regex.Replace(oldName, searchPattern, String.Empty);
                 }
             }
             if (found)

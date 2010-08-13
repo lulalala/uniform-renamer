@@ -73,6 +73,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Textual.zh-CHT.Designer.cs">
+      <DependentUpon>Textual.zh-CHT.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Processor\DeleteRule.cs" />
     <Compile Include="Processor\CopyRule.cs" />
     <Compile Include="MainForm.cs">
@@ -88,6 +93,10 @@
     <Compile Include="Processor\RuleList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Textual.zh-CHT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Textual.zh-CHT.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +107,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Textual.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Textual.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -113,6 +126,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Textual.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Textual.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -148,8 +166,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Document\index.html" />
-    <Content Include="Document\style.css" />
+    <Content Include="Document\index.html">
+    </Content>
+    <Content Include="Document\style.css">
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
