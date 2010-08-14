@@ -83,7 +83,7 @@
         private void SaveFile(string path)
         {
             File.WriteAllText(path, ruleTextArea.Text, Encoding.UTF8);
-            DisplayError("File Saved");
+            DisplayError(Textual.FileSaved);
         }
 
         private void PreviewRename()
