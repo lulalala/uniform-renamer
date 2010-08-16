@@ -41,7 +41,14 @@
             ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
             //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             ListGrid.AutoSizeCells();
+            ListGrid.PreviewKeyDown += delegate(object eventSender, PreviewKeyDownEventArgs karg)
+            {
+                if (karg.KeyCode == Keys.A && karg.Modifiers == Keys.Control)
+                {
+                    ListGrid.Selection.SelectRange(new Range(new Position(1, 0), new Position(ListGrid.RowsCount - 1, 1)), true);
+                }
 
+            };
             cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
             cellEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
 
