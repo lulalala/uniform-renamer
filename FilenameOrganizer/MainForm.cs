@@ -41,6 +41,7 @@
             ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
             //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             ListGrid.AutoSizeCells();
+
             cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
             cellEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
 
@@ -66,7 +67,10 @@
                 {
                     if (ListGrid.Selection.IsSelectedRow(i))
                     {
-                        ((FileName)ListGrid[i, 0].Value).Rename(ListGrid[i, 1].Value.ToString());
+                        if (!ListGrid[i, 0].ToString().Equals(ListGrid[i, 1].ToString()))
+                        {
+                            ((FileName)ListGrid[i, 0].Value).Rename(ListGrid[i, 1].Value.ToString());
+                        }
                     }
                 }
             }
