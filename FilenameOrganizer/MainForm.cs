@@ -158,7 +158,7 @@
 
         private void RuleSaveButton_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.LastRulePath == null)
+            if (Properties.Settings.Default.LastRulePath.Length == 0)
             {
                 if (RuleSaveAsDialog.ShowDialog() != DialogResult.OK)
                 {

@@ -168,6 +168,7 @@
   <ItemGroup>
     <Content Include="Document\index.html">
     </Content>
+    <Content Include="Document\scr1.png" />
     <Content Include="Document\style.css">
     </Content>
   </ItemGroup>
