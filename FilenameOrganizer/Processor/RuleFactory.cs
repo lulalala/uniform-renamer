@@ -38,7 +38,7 @@
                 {
                     if (tokens.Length < 3)
                         throw new System.ArgumentException(Textual.ErrorReplaceRule);
-                    string[] targets = new string[tokens.Length - 3];
+                    string[] targets = new string[tokens.Length - 2];
                     Array.Copy(tokens, 2, targets, 0, targets.Length);
                     rules.Add(new ReplaceRule(tokens[1], tokens[2], targets));
                 }
