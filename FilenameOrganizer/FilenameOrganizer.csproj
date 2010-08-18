@@ -78,19 +78,19 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Processor\DeleteRule.cs" />
-    <Compile Include="Processor\CopyRule.cs" />
+    <Compile Include="Core\DeleteRule.cs" />
+    <Compile Include="Core\CopyRule.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Processor\FileName.cs" />
-    <Compile Include="Processor\ReplaceRule.cs" />
-    <Compile Include="Processor\IRule.cs" />
-    <Compile Include="Processor\RuleFactory.cs" />
-    <Compile Include="Processor\RuleList.cs" />
+    <Compile Include="Core\FileName.cs" />
+    <Compile Include="Core\ReplaceRule.cs" />
+    <Compile Include="Core\IRule.cs" />
+    <Compile Include="Core\RuleFactory.cs" />
+    <Compile Include="Core\RuleList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Textual.zh-CHT.resx">
