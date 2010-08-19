@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C# Express 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilenameOrganizer", "FilenameOrganizer\FilenameOrganizer.csproj", "{63E47D6E-9892-4019-A237-4EBCEF5196C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformRenamer", "FilenameOrganizer\UniformRenamer.csproj", "{63E47D6E-9892-4019-A237-4EBCEF5196C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿namespace FilenameOrganizer.Processor
+﻿namespace UniformRenamer.Core
 {
     using System.Text;
     using System.Text.RegularExpressions;

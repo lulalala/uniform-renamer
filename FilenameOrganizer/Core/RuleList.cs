@@ -1,4 +1,4 @@
-﻿namespace FilenameOrganizer.Processor
+﻿namespace UniformRenamer.Core
 {
     using System.Collections.Generic;
     using System.Text;

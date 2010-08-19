@@ -1,4 +1,4 @@
-﻿namespace FilenameOrganizer
+﻿namespace UniformRenamer
 {
     using System;
     using System.Windows.Forms;

@@ -135,6 +135,9 @@
   <data name="ruleTextArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="ruleTextArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 9.75pt</value>
+  </data>
   <data name="ruleTextArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -618,18 +621,6 @@
   <data name="&gt;&gt;TargetSelectButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RenamePreviewButton.Name" xml:space="preserve">
-    <value>RenamePreviewButton</value>
-  </data>
-  <data name="&gt;&gt;RenamePreviewButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RenameResetButton.Name" xml:space="preserve">
-    <value>RenameResetButton</value>
-  </data>
-  <data name="&gt;&gt;RenameResetButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
@@ -671,6 +662,18 @@
   </data>
   <data name="&gt;&gt;RuleSaveAsDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RenameResetButton.Name" xml:space="preserve">
+    <value>RenameResetButton</value>
+  </data>
+  <data name="&gt;&gt;RenameResetButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RenamePreviewButton.Name" xml:space="preserve">
+    <value>RenamePreviewButton</value>
+  </data>
+  <data name="&gt;&gt;RenamePreviewButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

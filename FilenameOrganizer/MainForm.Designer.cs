@@ -1,4 +1,4 @@
-﻿namespace FilenameOrganizer
+﻿namespace UniformRenamer
 {
     partial class MainForm
     {
@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ruleTextArea = new System.Windows.Forms.RichTextBox();
             this.RuleMenu = new System.Windows.Forms.ToolStrip();
             this.RuleNewButton = new System.Windows.Forms.ToolStripButton();
             this.RuleOpenButton = new System.Windows.Forms.ToolStripButton();
@@ -40,8 +41,6 @@
             this.ListGrid = new SourceGrid.Grid();
             this.TargetMenu = new System.Windows.Forms.ToolStrip();
             this.TargetSelectButton = new System.Windows.Forms.ToolStripButton();
-            this.RenamePreviewButton = new System.Windows.Forms.ToolStripButton();
-            this.RenameResetButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.RenameButton = new System.Windows.Forms.ToolStripButton();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
@@ -50,7 +49,8 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.ruleTextArea = new System.Windows.Forms.RichTextBox();
+            this.RenameResetButton = new System.Windows.Forms.ToolStripButton();
+            this.RenamePreviewButton = new System.Windows.Forms.ToolStripButton();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -81,6 +81,14 @@
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.ruleTextArea, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // ruleTextArea
+            // 
+            this.ruleTextArea.AcceptsTab = true;
+            this.ruleTextArea.DetectUrls = false;
+            resources.ApplyResources(this.ruleTextArea, "ruleTextArea");
+            this.ruleTextArea.Name = "ruleTextArea";
+            this.ruleTextArea.TextChanged += new System.EventHandler(this.ruleTextArea_TextChanged);
             // 
             // RuleMenu
             // 
@@ -160,20 +168,6 @@
             this.TargetSelectButton.Name = "TargetSelectButton";
             this.TargetSelectButton.Click += new System.EventHandler(this.TargetSelectButton_Click);
             // 
-            // RenamePreviewButton
-            // 
-            this.RenamePreviewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.RenamePreviewButton, "RenamePreviewButton");
-            this.RenamePreviewButton.Name = "RenamePreviewButton";
-            this.RenamePreviewButton.Click += new System.EventHandler(this.TargetPrevewRename_Click);
-            // 
-            // RenameResetButton
-            // 
-            this.RenameResetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.RenameResetButton, "RenameResetButton");
-            this.RenameResetButton.Name = "RenameResetButton";
-            this.RenameResetButton.Click += new System.EventHandler(this.ResetRenameButton_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -219,13 +213,19 @@
             // 
             this.RuleSaveAsDialog.DefaultExt = "txt";
             // 
-            // ruleTextArea
+            // RenameResetButton
             // 
-            this.ruleTextArea.AcceptsTab = true;
-            this.ruleTextArea.DetectUrls = false;
-            resources.ApplyResources(this.ruleTextArea, "ruleTextArea");
-            this.ruleTextArea.Name = "ruleTextArea";
-            this.ruleTextArea.TextChanged += new System.EventHandler(this.ruleTextArea_TextChanged);
+            this.RenameResetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RenameResetButton, "RenameResetButton");
+            this.RenameResetButton.Name = "RenameResetButton";
+            this.RenameResetButton.Click += new System.EventHandler(this.ResetRenameButton_Click);
+            // 
+            // RenamePreviewButton
+            // 
+            this.RenamePreviewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RenamePreviewButton, "RenamePreviewButton");
+            this.RenamePreviewButton.Name = "RenamePreviewButton";
+            this.RenamePreviewButton.Click += new System.EventHandler(this.TargetPrevewRename_Click);
             // 
             // MainForm
             // 
@@ -263,18 +263,18 @@
         private System.Windows.Forms.SaveFileDialog RuleSaveAsDialog;
         private System.Windows.Forms.ToolStrip TargetMenu;
         private System.Windows.Forms.ToolStripButton TargetSelectButton;
-        private System.Windows.Forms.ToolStripButton RenamePreviewButton;
         private System.Windows.Forms.ToolStripButton RuleNewButton;
         private SourceGrid.Grid ListGrid;
         private System.Windows.Forms.ToolStripButton RenameButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton RenameResetButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.StatusStrip StatusBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel ErrorLabel;
         private System.Windows.Forms.ToolStripLabel VersionLabel;
         private System.Windows.Forms.RichTextBox ruleTextArea;
+        private System.Windows.Forms.ToolStripButton RenamePreviewButton;
+        private System.Windows.Forms.ToolStripButton RenameResetButton;
     }
 }
 

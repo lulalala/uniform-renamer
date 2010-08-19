@@ -1,4 +1,4 @@
-﻿namespace FilenameOrganizer
+﻿namespace UniformRenamer
 {
     using System;
     using System.Drawing;
@@ -7,7 +7,7 @@
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
 
-    using FilenameOrganizer.Processor;
+    using UniformRenamer.Core;
 
     using SourceGrid;
     using SourceGrid.Cells.Editors;
@@ -174,6 +174,7 @@
             // TODO: modify rules instead of creating a new one
             rules = null;
             rules = RuleFactory.ParseRule(ruleTextArea.Text);
+            PreviewRename();
         }
 
         private void TargetListBoxFill(string path)

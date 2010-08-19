@@ -8,8 +8,8 @@
     <ProjectGuid>{63E47D6E-9892-4019-A237-4EBCEF5196C7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FilenameOrganizer</RootNamespace>
-    <AssemblyName>FilenameOrganizer</AssemblyName>
+    <RootNamespace>UniformRenamer</RootNamespace>
+    <AssemblyName>Uniform Renamer</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -17,6 +17,9 @@
     <ManifestKeyFile>FilenameOrganizer_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
+    <TargetFrameworkSubset>Client</TargetFrameworkSubset>
+    <StartupObject>
+    </StartupObject>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -115,6 +118,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="FilenameOrganizer_TemporaryKey.pfx" />
@@ -170,6 +174,9 @@
     </Content>
     <Content Include="Document\scr1.png" />
     <Content Include="Document\style.css">
+    </Content>
+    <Content Include="rule.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
