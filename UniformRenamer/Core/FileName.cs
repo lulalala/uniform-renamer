@@ -33,6 +33,12 @@
             return Path.GetFileNameWithoutExtension(path);
         }
 
+        public bool IsDirectory()
+        {
+            FileAttributes attr = File.GetAttributes(path);
+            return (attr & FileAttributes.Directory) == FileAttributes.Directory;
+        }
+
         public void Rename(string newName)
         {
             string newPath = Path.Combine(Path.GetDirectoryName(path), newName);

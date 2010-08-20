@@ -109,12 +109,31 @@
             for (int i = 1; i < ListGrid.RowsCount; i++)
             {
                 fn = (FileName)ListGrid[i, 0].Value;
-                string s = rules.Convert(fn.GetFileNameWithoutExtension());
+                string s;
+                if (!fn.IsDirectory())
+                {
+                    s = rules.Convert(fn.GetFileNameWithoutExtension());
+                }
+                else
+                {
+                    s = rules.Convert(fn.ToString());
+                }
 
                 if (s.Length > 0)
-                    ListGrid[i, 1].Value = s + fn.GetExtension();
+                {
+                    if (!fn.IsDirectory())
+                    {
+                        ListGrid[i, 1].Value = s + fn.GetExtension();
+                    }
+                    else
+                    {
+                        ListGrid[i, 1].Value = s;
+                    }
+                }
                 else
+                {
                     ListGrid[i, 1].Value = String.Empty;
+                }
             }
             ListGrid.AutoSizeCells();
         }

@@ -173,6 +173,9 @@
     <Content Include="Document\index.html">
     </Content>
     <Content Include="Document\scr1.png" />
+    <Content Include="Document\SourceGrid.License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Document\style.css">
     </Content>
     <Content Include="rule.txt">

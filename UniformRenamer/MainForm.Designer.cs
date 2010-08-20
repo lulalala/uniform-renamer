@@ -41,6 +41,8 @@
             this.ListGrid = new SourceGrid.Grid();
             this.TargetMenu = new System.Windows.Forms.ToolStrip();
             this.TargetSelectButton = new System.Windows.Forms.ToolStripButton();
+            this.RenamePreviewButton = new System.Windows.Forms.ToolStripButton();
+            this.RenameResetButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.RenameButton = new System.Windows.Forms.ToolStripButton();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
@@ -49,8 +51,6 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.RenameResetButton = new System.Windows.Forms.ToolStripButton();
-            this.RenamePreviewButton = new System.Windows.Forms.ToolStripButton();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -168,6 +168,20 @@
             this.TargetSelectButton.Name = "TargetSelectButton";
             this.TargetSelectButton.Click += new System.EventHandler(this.TargetSelectButton_Click);
             // 
+            // RenamePreviewButton
+            // 
+            this.RenamePreviewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RenamePreviewButton, "RenamePreviewButton");
+            this.RenamePreviewButton.Name = "RenamePreviewButton";
+            this.RenamePreviewButton.Click += new System.EventHandler(this.TargetPrevewRename_Click);
+            // 
+            // RenameResetButton
+            // 
+            this.RenameResetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RenameResetButton, "RenameResetButton");
+            this.RenameResetButton.Name = "RenameResetButton";
+            this.RenameResetButton.Click += new System.EventHandler(this.ResetRenameButton_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -212,20 +226,6 @@
             // RuleSaveAsDialog
             // 
             this.RuleSaveAsDialog.DefaultExt = "txt";
-            // 
-            // RenameResetButton
-            // 
-            this.RenameResetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.RenameResetButton, "RenameResetButton");
-            this.RenameResetButton.Name = "RenameResetButton";
-            this.RenameResetButton.Click += new System.EventHandler(this.ResetRenameButton_Click);
-            // 
-            // RenamePreviewButton
-            // 
-            this.RenamePreviewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.RenamePreviewButton, "RenamePreviewButton");
-            this.RenamePreviewButton.Name = "RenamePreviewButton";
-            this.RenamePreviewButton.Click += new System.EventHandler(this.TargetPrevewRename_Click);
             // 
             // MainForm
             // 
