@@ -57,7 +57,7 @@
   <ItemGroup>
     <Reference Include="SourceGrid, Version=4.30.3817.19618, Culture=neutral, PublicKeyToken=df6f5e538749e85d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SourceGrid\SourceGrid.dll</HintPath>
+      <HintPath>.\SourceGrid.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -172,7 +172,7 @@
   <ItemGroup>
     <Content Include="Document\index.html">
     </Content>
-    <Content Include="Document\LICENSE.txt">
+    <Content Include="Document\GNU_General_Public_License.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Document\UniformRenamer.License.txt">
