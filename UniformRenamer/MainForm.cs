@@ -18,6 +18,10 @@
         private EditorBase cellEditor;
         private RuleList rules;
 
+        //Column constant
+        private const int OldFileNameCol = 0;
+        private const int NewFileNameCol = 1;
+
         public MainForm()
         {
             InitializeComponent();
@@ -32,20 +36,17 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            int col = 0;
             //SourceGrid control
             ListGrid.Rows.Insert(0);
-            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(String.Empty);
-            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
-            //ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(String.Empty);
-            ListGrid[0, col++] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
+            ListGrid[0, OldFileNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            ListGrid[0, NewFileNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
             //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             ListGrid.AutoSizeCells();
             ListGrid.PreviewKeyDown += delegate(object eventSender, PreviewKeyDownEventArgs karg)
             {
                 if (karg.KeyCode == Keys.A && karg.Modifiers == Keys.Control)
                 {
-                    ListGrid.Selection.SelectRange(new Range(new Position(1, 0), new Position(ListGrid.RowsCount - 1, 1)), true);
+                    ListGrid.Selection.SelectRange(new Range(new Position(1, 0), new Position(ListGrid.RowsCount - 1, NewFileNameCol)), true);
                 }
 
             };
@@ -74,9 +75,9 @@
                 {
                     if (ListGrid.Selection.IsSelectedRow(i))
                     {
-                        if (!ListGrid[i, 0].ToString().Equals(ListGrid[i, 1].ToString()))
+                        if (!ListGrid[i, OldFileNameCol].ToString().Equals(ListGrid[i, NewFileNameCol].ToString()))
                         {
-                            ((FileName)ListGrid[i, 0].Value).Rename(ListGrid[i, 1].Value.ToString());
+                            ((FileName)ListGrid[i, OldFileNameCol].Value).Rename(ListGrid[i, NewFileNameCol].Value.ToString());
                         }
                     }
                 }
@@ -85,7 +86,7 @@
 
         private void LoadFile(string path)
         {
-            string s = File.ReadAllText(path, Encoding.UTF8).Replace("¥", "\\");
+            string s = File.ReadAllText(path, Encoding.UTF8);//.Replace("¥", "\\");
             rules = RuleFactory.ParseRule(s);
 
             //newFormatTextbox.Text = rules.format;
@@ -108,31 +109,23 @@
             FileName fn = null;
             for (int i = 1; i < ListGrid.RowsCount; i++)
             {
-                fn = (FileName)ListGrid[i, 0].Value;
-                string s;
-                if (!fn.IsDirectory())
-                {
-                    s = rules.Convert(fn.GetFileNameWithoutExtension());
-                }
-                else
-                {
-                    s = rules.Convert(fn.ToString());
-                }
+                fn = (FileName)ListGrid[i, OldFileNameCol].Value;
+                string s = rules.Convert(fn.GetRenamableNamePart());
 
                 if (s.Length > 0)
                 {
                     if (!fn.IsDirectory())
                     {
-                        ListGrid[i, 1].Value = s + fn.GetExtension();
+                        ListGrid[i, NewFileNameCol].Value = s + fn.GetExtension();
                     }
                     else
                     {
-                        ListGrid[i, 1].Value = s;
+                        ListGrid[i, NewFileNameCol].Value = s;
                     }
                 }
                 else
                 {
-                    ListGrid[i, 1].Value = String.Empty;
+                    ListGrid[i, NewFileNameCol].Value = String.Empty;
                 }
             }
             ListGrid.AutoSizeCells();
@@ -143,7 +136,7 @@
         {
             for (int i = 0; i < ListGrid.Rows.Count; i++)
             {
-                ListGrid[i, 1].Value = ListGrid[i, 0].ToString();
+                ListGrid[i, NewFileNameCol].Value = ListGrid[i, OldFileNameCol].ToString();
             }
         }
 
@@ -210,21 +203,19 @@
             foreach (string s in Directory.GetDirectories(path))
             {
                 FileName fs = new FileName(s);
-                int col = 0;
 
                 ListGrid.Rows.Insert(r);
-                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs);
-                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
+                ListGrid[r, OldFileNameCol] = new SourceGrid.Cells.Cell(fs);
+                ListGrid[r, NewFileNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
                 r++;
             }
             foreach (string s in Directory.GetFiles(path))
             {
                 FileName fs = new FileName(s);
-                int col = 0;
 
                 ListGrid.Rows.Insert(r);
-                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs);
-                ListGrid[r, col++] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
+                ListGrid[r, OldFileNameCol] = new SourceGrid.Cells.Cell(fs);
+                ListGrid[r, NewFileNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
                 r++;
             }
             ListGrid.AutoSizeCells();
