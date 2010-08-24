@@ -8,11 +8,14 @@
 
     class DeleteRule : IRule
     {
-        private string[] matches;
+        private List<SearchPattern> searchPatterns = new List<SearchPattern>();
 
-        public DeleteRule(string[] matches)
+        public DeleteRule(string[] searchPatterns)
         {
-            this.matches = matches;
+            foreach (string s in searchPatterns)
+            {
+                this.searchPatterns.Add(new SearchPattern(s));
+            }
         }
 
         public string name
@@ -22,16 +25,9 @@
 
         public void Apply(ref string oldName, ref string newFormat)
         {
-            foreach (string s in matches)
+            foreach (SearchPattern s in searchPatterns)
             {
-                if (s.StartsWith("* "))
-                {
-                    oldName = Regex.Replace(oldName, s.Substring(2, s.Length - 2), string.Empty);
-                }
-                else
-                {
-                    oldName = oldName.Replace(s, string.Empty);
-                }
+                oldName = s.Replace(oldName, String.Empty);
             }
         }
     }

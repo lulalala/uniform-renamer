@@ -2,18 +2,19 @@
 {
     using System.Text;
     using System.Text.RegularExpressions;
+    using System.Collections.Generic;
 
     class CopyRule : IRule
     {
-        private Regex regex;
+        private List<SearchPattern> searchPatterns = new List<SearchPattern>();
 
-        public CopyRule(string name, string searchText)
+        public CopyRule(string name, string[] searchPatterns)
         {
             this.name = name;
-            if(searchText.StartsWith("* "))
-                this.regex = new Regex(searchText.Substring(2, searchText.Length - 2));
-            else
-                this.regex = new Regex(Regex.Escape(searchText)); // TODO need to change to string.replace()
+            foreach (string s in searchPatterns)
+            {
+                this.searchPatterns.Add(new SearchPattern(s));
+            }
         }
 
         public string name
@@ -23,12 +24,18 @@
 
         public void Apply(ref string oldName, ref string newFormat)
         {
-            Match match = regex.Match(oldName);
-            if (match.Success == true)
+            foreach (SearchPattern s in searchPatterns)
             {
-                newFormat = newFormat.Replace(name, match.Groups[1].ToString());
-                if (match.Groups[1].ToString().Length > 0)
-                    oldName = oldName.Replace(match.ToString(), string.Empty);
+                Match match = s.Match(oldName);
+                if (match.Success == true)
+                {
+                    newFormat = newFormat.Replace(name, match.Groups[1].ToString());
+                    if (match.Length > 0)
+                    {
+                        oldName = oldName.Replace(match.ToString(), string.Empty);
+                    }
+                    break;
+                }
             }
         }
     }

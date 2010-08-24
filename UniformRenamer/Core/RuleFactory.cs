@@ -19,28 +19,30 @@
             {
                 // rule
                 tokens = s.Split('\t');
-                if (tokens[0].Equals("copy"))
+                if (tokens[0].Equals("copy") || tokens[0].Equals("cpy"))
                 //Copy Rule
                 {
-                    rules.Add(new CopyRule(tokens[1], tokens[2]));
+                    string[] searchPatterns = new string[tokens.Length - 2];
+                    Array.Copy(tokens, 2, searchPatterns, 0, searchPatterns.Length);
+                    rules.Add(new CopyRule(tokens[1], searchPatterns));
                 }
-                else if (tokens[0].Equals("delete"))
+                else if (tokens[0].Equals("delete") || tokens[0].Equals("del"))
                 //Delete Rule
                 {
                     if (tokens.Length == 1)
                         throw new System.ArgumentException(Textual.ErrorDeleteRule);
-                    string[] targets = new string[tokens.Length - 1];
-                    Array.Copy(tokens, 1, targets, 0, targets.Length);
-                    rules.Add(new DeleteRule(targets));
+                    string[] searchPatterns = new string[tokens.Length - 1];
+                    Array.Copy(tokens, 1, searchPatterns, 0, searchPatterns.Length);
+                    rules.Add(new DeleteRule(searchPatterns));
                 }
-                else if (tokens[0].Equals("replace"))
+                else if (tokens[0].Equals("replace") || tokens[0].Equals("rpl"))
                 //Replace Rule
                 {
                     if (tokens.Length < 3)
                         throw new System.ArgumentException(Textual.ErrorReplaceRule);
-                    string[] targets = new string[tokens.Length - 2];
-                    Array.Copy(tokens, 2, targets, 0, targets.Length);
-                    rules.Add(new ReplaceRule(tokens[1], tokens[2], targets));
+                    string[] searchPatterns = new string[tokens.Length - 2];
+                    Array.Copy(tokens, 2, searchPatterns, 0, searchPatterns.Length);
+                    rules.Add(new ReplaceRule(tokens[1], tokens[2], searchPatterns));
                 }
             }
 

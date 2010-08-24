@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\SearchPattern.cs" />
     <Compile Include="Textual.zh-CHT.Designer.cs">
       <DependentUpon>Textual.zh-CHT.resx</DependentUpon>
       <AutoGen>True</AutoGen>

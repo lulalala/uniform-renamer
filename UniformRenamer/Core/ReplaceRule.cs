@@ -3,19 +3,23 @@
     using System.Text;
     using System.Text.RegularExpressions;
     using System;
+    using System.Collections.Generic;
 
     class ReplaceRule : IRule
     {
         private string nameTag;
         private string replacement;
-        private string[] targets;
+        private List<SearchPattern> searchPatterns = new List<SearchPattern>();
 
-        public ReplaceRule(string name, string replacement, string[] targets)
+        public ReplaceRule(string name, string replacement, string[] searchPatterns)
         {
             this.name = name;
             this.nameTag = name;
             this.replacement = replacement;
-            this.targets = targets;
+            foreach (string s in searchPatterns)
+            {
+                this.searchPatterns.Add(new SearchPattern(s));
+            }
         }
 
         public string name
@@ -26,32 +30,18 @@
         public void Apply(ref string oldName, ref string newFormat)
         {
             bool found = false;
-            foreach (string t in targets)
+            foreach (SearchPattern s in searchPatterns)
             {
-                string searchPattern;
-                if (t.StartsWith("* "))
-                {
-                    searchPattern = t.Substring(2,t.Length-2);
-                }
-                else
-                {
-                    searchPattern = Regex.Escape(t);
-                }
-
-                if (Regex.IsMatch(oldName,searchPattern))
+                if (s.IsMatch(oldName))
                 {
                     found = true;
                     //Removes the string, to avoid multiple rules mapping the same place.
-                    oldName = Regex.Replace(oldName, searchPattern, String.Empty);
+                    oldName = s.Replace(oldName, String.Empty);
                 }
             }
             if (found)
             {
                 newFormat = newFormat.Replace(nameTag, replacement);
-            }
-            else
-            {
-                newFormat = newFormat.Replace(nameTag, string.Empty);
             }
         }
     }
