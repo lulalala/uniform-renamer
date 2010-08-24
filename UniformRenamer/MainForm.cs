@@ -12,20 +12,30 @@
     using SourceGrid;
     using SourceGrid.Cells.Editors;
     using System.Reflection;
+    using System.Threading;
+    using System.ComponentModel;
+    using System.Windows.Threading;
 
     public partial class MainForm : Form
     {
         private EditorBase cellEditor;
         private RuleList rules;
-
         //Column constant
         private const int OldFileNameCol = 0;
         private const int NewFileNameCol = 1;
+
+        //private ManualResetEvent delayMSE;
+        //private Func<bool> TBDelay;
+        //private delegate void ActionToRunWhenUserStopstyping();
 
         public MainForm()
         {
             InitializeComponent();
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            
+            //delayMSE = new ManualResetEvent(false);
+            //TBDelay = () => !delayMSE.WaitOne(1500, false);
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -87,10 +97,10 @@
         private void LoadFile(string path)
         {
             string s = File.ReadAllText(path, Encoding.UTF8);//.Replace("¥", "\\");
-            rules = RuleFactory.ParseRule(s);
-
             //newFormatTextbox.Text = rules.format;
             ruleTextArea.Text = s;
+
+            rules = RuleFactory.ParseRule(s);
         }
         private void SaveFile(string path)
         {
@@ -183,11 +193,35 @@
 
         private void ruleTextArea_TextChanged(object sender, EventArgs e)
         {
-            // TODO: modify rules instead of creating a new one
+            //delayMSE.Set();
+
+            //// open the ResetEvent gate, to discard these delays    
+            //Thread.Sleep(20);
+            //// let all pending through the gate    
+            //delayMSE.Reset();
+            //// close the gate
+
+            //TBDelay.BeginInvoke(res =>
+            //{
+            //    // callback code        
+            //    // check how we exited, via timeout or signal.        
+            //    bool timedOut = TBDelay.EndInvoke(res);
+            //    if (timedOut)
+            //        Dispatcher.CurrentDispatcher.Invoke(
+            //            new ActionToRunWhenUserStopstyping(UpdatePreview),
+            //            DispatcherPriority.Input);
+            //}, null);
             rules = null;
-            rules = RuleFactory.ParseRule(ruleTextArea.Text);
             PreviewRename();
         }
+
+        //private void UpdatePreview()
+        //{
+        //    // TODO: modify rules instead of creating a new one
+
+        //        rules = null;
+        //        PreviewRename();
+        //}
 
         private void TargetListBoxFill(string path)
         {
