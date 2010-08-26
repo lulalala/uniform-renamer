@@ -227,7 +227,7 @@
         {
             if (ListGrid.RowsCount != 1)
             {
-                ListGrid.Rows.RemoveRange(1, ListGrid.RowsCount - 1);
+                ListGrid.Redim(1, 2);
             }
             if (path.Equals(String.Empty))
                 return;
