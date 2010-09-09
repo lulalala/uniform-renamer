@@ -79,6 +79,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\RuleGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\SearchPattern.cs" />
     <Compile Include="Textual.zh-CHT.Designer.cs">
       <DependentUpon>Textual.zh-CHT.resx</DependentUpon>

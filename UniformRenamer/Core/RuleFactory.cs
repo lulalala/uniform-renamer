@@ -4,9 +4,41 @@
     using System.IO;
     using System.Text;
     using System.Globalization;
+    using SourceGrid;
 
     static class RuleFactory
     {
+        public static RuleList ParseRule(string newFormat, RuleGrid grid)
+        {
+            
+            // format string
+            RuleList rules = new RuleList(newFormat); ;
+
+            string[] searchPatterns;
+            for(int r=1;r<grid.RowsCount;r++)
+            {
+                // rule
+                searchPatterns = ((string)grid[r,RuleGrid.PatternCol].Value).Split('\t');
+                if (grid[r,RuleGrid.TypeCol].Value.Equals("Copy"))
+                //Copy Rule
+                {
+                    rules.Add(new CopyRule((String)grid[r, RuleGrid.DestinationCol].Value, searchPatterns));
+                }
+                else if (grid[r, RuleGrid.TypeCol].Value.Equals("Delete"))
+                //Delete Rule
+                {
+                    rules.Add(new DeleteRule(searchPatterns));
+                }
+                else if (grid[r, RuleGrid.TypeCol].Value.Equals("Replace"))
+                //Replace Rule
+                {
+                    rules.Add(new ReplaceRule((String)grid[r, RuleGrid.DestinationCol].Value, (String)grid[r, RuleGrid.ReplacementCol].Value, searchPatterns));
+                }
+            }
+
+            return rules;
+        }
+        
         public static RuleList ParseRule(string text)
         {
             StringReader sr = new StringReader(CleanRuleText(text));

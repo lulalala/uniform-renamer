@@ -15,14 +15,15 @@
     using System.Threading;
     using System.ComponentModel;
     using System.Windows.Threading;
+    using SourceGrid.Cells.Controllers;
 
     public partial class MainForm : Form
     {
-        private EditorBase cellEditor;
+        private EditorBase oneClickEditor;
         private RuleList rules;
         //Column constant
-        private const int OldFileNameCol = 0;
-        private const int NewFileNameCol = 1;
+        private const int FileOldNameCol = 0;
+        private const int FileNewNameCol = 1;
 
         //private ManualResetEvent delayMSE;
         //private Func<bool> TBDelay;
@@ -46,24 +47,10 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //SourceGrid control
-            ListGrid.Rows.Insert(0);
-            ListGrid[0, OldFileNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
-            ListGrid[0, NewFileNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
-            //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
-            ListGrid.AutoSizeCells();
-            ListGrid.PreviewKeyDown += delegate(object eventSender, PreviewKeyDownEventArgs karg)
-            {
-                if (karg.KeyCode == Keys.A && karg.Modifiers == Keys.Control)
-                {
-                    ListGrid.Selection.SelectRange(new Range(new Position(1, 0), new Position(ListGrid.RowsCount - 1, NewFileNameCol)), true);
-                }
+            SetupRuleGrid();
+            SetupFileGrid();
 
-            };
-            cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
-            cellEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
-
-            ruleTextArea.SelectionTabs = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
+            //ruleTextArea.SelectionTabs = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
 
             VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
@@ -73,21 +60,70 @@
                 LoadFile(RuleOpenDialog.FileName);
             }
             TargetDialog.SelectedPath = Properties.Settings.Default.LastTargetPath;
-            TargetListBoxFill(Properties.Settings.Default.LastTargetPath);
+            FillFileGrid(Properties.Settings.Default.LastTargetPath);
+        }
+
+        private void SetupRuleGrid()
+        {
+            var eventsController = new CustomEvents();
+
+            eventsController.EditEnded += delegate(object sender, EventArgs e)
+            {
+                PreviewRename();
+            };
+
+            ruleGrid1.Controller.AddController(eventsController);
+
+            //RuleGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
+            //RuleGrid.AutoSizeCells();
+            //RuleGrid.PreviewKeyDown += delegate(object eventSender, PreviewKeyDownEventArgs karg)
+            //{
+            //    if (karg.KeyCode == Keys.A && karg.Modifiers == Keys.Control)
+            //    {
+            //        RuleGrid.Selection.SelectRange(new Range(new Position(1, 0), new Position(RuleGrid.RowsCount - 1, FileNewNameCol)), true);
+            //    }
+
+            //};
+            //cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
+            //cellEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
+        }
+
+        private void EditedHandler(object sender, EventArgs e)
+        {
+            PreviewRename();
+        }
+
+        private void SetupFileGrid()
+        {
+            FileGrid.Rows.Insert(0);
+            FileGrid[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            FileGrid[0, FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
+            //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
+            FileGrid.AutoSizeCells();
+            FileGrid.PreviewKeyDown += delegate(object eventSender, PreviewKeyDownEventArgs karg)
+            {
+                if (karg.KeyCode == Keys.A && karg.Modifiers == Keys.Control)
+                {
+                    FileGrid.Selection.SelectRange(new Range(new Position(1, 0), new Position(FileGrid.RowsCount - 1, FileNewNameCol)), true);
+                }
+
+            };
+            oneClickEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
+            oneClickEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
         }
 
         private void RenameButton_Click(object sender, EventArgs e)
         {
-            ListGrid.Focus();
+            FileGrid.Focus();
             if (MessageBox.Show(Textual.RenameWarning, String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
             {
-                for (int i = 0; i < ListGrid.Rows.Count; i++)
+                for (int i = 0; i < FileGrid.Rows.Count; i++)
                 {
-                    if (ListGrid.Selection.IsSelectedRow(i))
+                    if (FileGrid.Selection.IsSelectedRow(i))
                     {
-                        if (!ListGrid[i, OldFileNameCol].ToString().Equals(ListGrid[i, NewFileNameCol].ToString()))
+                        if (!FileGrid[i, FileOldNameCol].ToString().Equals(FileGrid[i, FileNewNameCol].ToString()))
                         {
-                            ((FileName)ListGrid[i, OldFileNameCol].Value).Rename(ListGrid[i, NewFileNameCol].Value.ToString());
+                            ((FileName)FileGrid[i, FileOldNameCol].Value).Rename(FileGrid[i, FileNewNameCol].Value.ToString());
                         }
                     }
                 }
@@ -98,66 +134,66 @@
         {
             string s = File.ReadAllText(path, Encoding.UTF8);//.Replace("¥", "\\");
             //newFormatTextbox.Text = rules.format;
-            ruleTextArea.Text = s;
+            //ruleTextArea.Text = s;
 
             rules = RuleFactory.ParseRule(s);
         }
         private void SaveFile(string path)
         {
-            File.WriteAllText(path, ruleTextArea.Text, Encoding.UTF8);
+            //File.WriteAllText(path, ruleTextArea.Text, Encoding.UTF8);
             DisplayError(Textual.FileSaved);
         }
-
+        // TODO should be private
         private void PreviewRename()
         {
-            if (ruleTextArea.Text.Length == 0)
-            {
-                return;
-            }
-            RuleList rules = RuleFactory.ParseRule(ruleTextArea.Text);
+            //if (ruleTextArea.Text.Length == 0)
+            //{
+            //    return;
+            //}
+            RuleList rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid1);
 
             FileName fn = null;
-            for (int i = 1; i < ListGrid.RowsCount; i++)
+            for (int i = 1; i < FileGrid.RowsCount; i++)
             {
-                fn = (FileName)ListGrid[i, OldFileNameCol].Value;
+                fn = (FileName)FileGrid[i, FileOldNameCol].Value;
                 string s = rules.Convert(fn.GetRenamableNamePart());
 
                 if (s.Length > 0)
                 {
                     if (!fn.IsDirectory())
                     {
-                        ListGrid[i, NewFileNameCol].Value = s + fn.GetExtension();
+                        FileGrid[i, FileNewNameCol].Value = s + fn.GetExtension();
                     }
                     else
                     {
-                        ListGrid[i, NewFileNameCol].Value = s;
+                        FileGrid[i, FileNewNameCol].Value = s;
                     }
                 }
                 else
                 {
-                    ListGrid[i, NewFileNameCol].Value = String.Empty;
+                    FileGrid[i, FileNewNameCol].Value = String.Empty;
                 }
             }
-            ListGrid.AutoSizeCells();
+            FileGrid.AutoSizeCells();
         }
 
 
         private void ResetRenameButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < ListGrid.Rows.Count; i++)
+            for (int i = 0; i < FileGrid.Rows.Count; i++)
             {
-                ListGrid[i, NewFileNameCol].Value = ListGrid[i, OldFileNameCol].ToString();
+                FileGrid[i, FileNewNameCol].Value = FileGrid[i, FileOldNameCol].ToString();
             }
         }
 
         private void RuleNewButton_Click(object sender, EventArgs e)
         {
-            if (ruleTextArea.Text.Length != 0)
-            {
+            //if (ruleTextArea.Text.Length != 0)
+            //{
                 
-                ruleTextArea.Clear();
-                Properties.Settings.Default.LastRulePath = null;
-            }
+            //    //ruleTextArea.Clear();
+            //    Properties.Settings.Default.LastRulePath = null;
+            //}
         }
 
         private void RuleOpenButton_Click(object sender, EventArgs e)
@@ -223,11 +259,11 @@
         //        PreviewRename();
         //}
 
-        private void TargetListBoxFill(string path)
+        private void FillFileGrid(string path)
         {
-            if (ListGrid.RowsCount != 1)
+            if (FileGrid.RowsCount != 1)
             {
-                ListGrid.Redim(1, 2);
+                FileGrid.Redim(1, 2);
             }
             if (path.Equals(String.Empty))
                 return;
@@ -238,21 +274,21 @@
             {
                 FileName fs = new FileName(s);
 
-                ListGrid.Rows.Insert(r);
-                ListGrid[r, OldFileNameCol] = new SourceGrid.Cells.Cell(fs);
-                ListGrid[r, NewFileNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
+                FileGrid.Rows.Insert(r);
+                FileGrid[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
+                FileGrid[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
                 r++;
             }
             foreach (string s in Directory.GetFiles(path))
             {
                 FileName fs = new FileName(s);
 
-                ListGrid.Rows.Insert(r);
-                ListGrid[r, OldFileNameCol] = new SourceGrid.Cells.Cell(fs);
-                ListGrid[r, NewFileNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), cellEditor);
+                FileGrid.Rows.Insert(r);
+                FileGrid[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
+                FileGrid[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
                 r++;
             }
-            ListGrid.AutoSizeCells();
+            FileGrid.AutoSizeCells();
         }
 
         private void SetRenameButtonsEnabled(bool b)
@@ -271,7 +307,7 @@
         {
             if (TargetDialog.ShowDialog() == DialogResult.OK)
             {
-                TargetListBoxFill(TargetDialog.SelectedPath);
+                FillFileGrid(TargetDialog.SelectedPath);
             }
             if (rules != null)
             {
@@ -283,5 +319,30 @@
         {
             ErrorLabel.Text = text;
         }
+
+        private void addCopyButton_Click(object sender, EventArgs e)
+        {
+            ruleGrid1.AddRule(RuleGrid.RuleCopy);
+            ruleGrid1.AutoSizeCells();
+        }
+
+        private void addDeleteButton_Click(object sender, EventArgs e)
+        {
+            ruleGrid1.AddRule(RuleGrid.RuleDelete);
+            ruleGrid1.AutoSizeCells();
+        }
+
+        private void addReplaceButton_Click(object sender, EventArgs e)
+        {
+            ruleGrid1.AddRule(RuleGrid.RuleReplace);
+            ruleGrid1.AutoSizeCells();
+        }
+
+        private void newFormatTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PreviewRename();
+        }
+
+
     }
 }
