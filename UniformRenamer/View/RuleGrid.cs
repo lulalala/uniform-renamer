@@ -213,7 +213,11 @@ namespace UniformRenamer.Core
 
         public void Parse(string text)
         {
-            this.Rows.RemoveRange(1, this.RowsCount - 1);
+            try
+            {
+                this.Rows.RemoveRange(1, this.RowsCount - 1);
+            }
+            catch { }
 
             StringReader sr = new StringReader(text);
             // format string
@@ -221,7 +225,7 @@ namespace UniformRenamer.Core
 
             string[] tokens;
             string s;
-            int i = 1;
+            int i = 0;
             while ((s = sr.ReadLine()) != null)
             {
                 // rule

@@ -138,15 +138,15 @@
 
         private void LoadFile(string path)
         {
-            string s = File.ReadAllText(path, Encoding.UTF8);//.Replace("¥", "\\");
-            //newFormatTextbox.Text = rules.format;
-            //ruleTextArea.Text = s;
+            string s = File.ReadAllText(path, Encoding.UTF8);
+            newFormatTextBox.Text = s.Substring(0, s.IndexOf('\n'));
+            ruleGrid1.Parse(s.Substring(s.IndexOf('\n')+1));
 
-            rules = RuleFactory.ParseRule(s);
+            rules = RuleFactory.ParseRule(newFormatTextBox.Text,ruleGrid1);
         }
         private void SaveFile(string path)
         {
-            //File.WriteAllText(path, ruleTextArea.Text, Encoding.UTF8);
+            File.WriteAllText(path, newFormatTextBox.Text + '\n' + ruleGrid1.ToString(), Encoding.UTF8);
             DisplayError(Textual.FileSaved);
         }
         // TODO should be private
