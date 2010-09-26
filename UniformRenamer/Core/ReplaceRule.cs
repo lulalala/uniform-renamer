@@ -7,14 +7,12 @@
 
     class ReplaceRule : IRule
     {
-        private string nameTag;
         private string replacement;
         private List<SearchPattern> searchPatterns = new List<SearchPattern>();
 
-        public ReplaceRule(string name, string replacement, string[] searchPatterns)
+        public ReplaceRule(string destinationTag, string replacement, string[] searchPatterns)
         {
-            this.name = name;
-            this.nameTag = name;
+            this.destinationTag = destinationTag;
             this.replacement = replacement;
             foreach (string s in searchPatterns)
             {
@@ -22,7 +20,7 @@
             }
         }
 
-        public string name
+        public string destinationTag
         {
             get; set;
         }
@@ -41,7 +39,7 @@
             }
             if (found)
             {
-                newFormat = newFormat.Replace(nameTag, replacement);
+                newFormat = newFormat.Insert(newFormat.IndexOf(destinationTag),replacement);
             }
         }
     }

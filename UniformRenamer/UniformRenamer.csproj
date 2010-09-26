@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Helper.cs" />
     <Compile Include="View\RuleGrid.cs">
       <SubType>Component</SubType>
     </Compile>

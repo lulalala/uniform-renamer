@@ -10,14 +10,14 @@
 
         public CopyRule(string name, string[] searchPatterns)
         {
-            this.name = name;
+            this.destinationTag = name;
             foreach (string s in searchPatterns)
             {
                 this.searchPatterns.Add(new SearchPattern(s));
             }
         }
 
-        public string name
+        public string destinationTag
         {
             get; set;
         }
@@ -29,7 +29,7 @@
                 Match match = s.Match(oldName);
                 if (match.Success == true)
                 {
-                    newFormat = newFormat.Replace(name, match.Groups[1].ToString());
+                    newFormat = newFormat.Insert(newFormat.IndexOf(destinationTag), match.Groups[1].ToString());
                     if (match.Length > 0)
                     {
                         oldName = oldName.Replace(match.ToString(), string.Empty);

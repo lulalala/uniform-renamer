@@ -65,14 +65,20 @@
 
         private void SetupRuleGrid()
         {
-            var eventsController = new CustomEvents();
+            ruleGrid1.AutoStretchColumnsToFitWidth = true;
 
+            var eventsController = new CustomEvents();
             eventsController.EditEnded += delegate(object sender, EventArgs e)
             {
                 PreviewRename();
+
+                ruleGrid1.AutoSizeCells();
             };
 
             ruleGrid1.Controller.AddController(eventsController);
+
+            //SourceGrid.Cells.Editors.TextBox tb = new SourceGrid.Cells.Editors.TextBox(typeof(string));
+            //tb.Control.
 
             //RuleGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             //RuleGrid.AutoSizeCells();
@@ -146,6 +152,7 @@
         // TODO should be private
         private void PreviewRename()
         {
+            DisplayError(String.Empty);
             //if (ruleTextArea.Text.Length == 0)
             //{
             //    return;

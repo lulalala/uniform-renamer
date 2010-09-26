@@ -151,7 +151,7 @@
     <value>ruleGrid1</value>
   </data>
   <data name="&gt;&gt;ruleGrid1.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.3904.38838, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.3905.33975, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ruleGrid1.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -747,9 +747,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>692, 473</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Uniform Renamer</value>
   </data>
@@ -782,6 +779,36 @@
   </data>
   <data name="&gt;&gt;VersionLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripLabel1.Name" xml:space="preserve">
+    <value>toolStripLabel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addCopyButton.Name" xml:space="preserve">
+    <value>addCopyButton</value>
+  </data>
+  <data name="&gt;&gt;addCopyButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addDeleteButton.Name" xml:space="preserve">
+    <value>addDeleteButton</value>
+  </data>
+  <data name="&gt;&gt;addDeleteButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addReplaceButton.Name" xml:space="preserve">
+    <value>addReplaceButton</value>
+  </data>
+  <data name="&gt;&gt;addReplaceButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TargetSelectButton.Name" xml:space="preserve">
     <value>TargetSelectButton</value>
@@ -842,36 +869,6 @@
   </data>
   <data name="&gt;&gt;RuleSaveAsDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripLabel1.Name" xml:space="preserve">
-    <value>toolStripLabel1</value>
-  </data>
-  <data name="&gt;&gt;toolStripLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addCopyButton.Name" xml:space="preserve">
-    <value>addCopyButton</value>
-  </data>
-  <data name="&gt;&gt;addCopyButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addDeleteButton.Name" xml:space="preserve">
-    <value>addDeleteButton</value>
-  </data>
-  <data name="&gt;&gt;addDeleteButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addReplaceButton.Name" xml:space="preserve">
-    <value>addReplaceButton</value>
-  </data>
-  <data name="&gt;&gt;addReplaceButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

@@ -15,7 +15,10 @@ namespace UniformRenamer.Core
         {
             if (pattern.StartsWith("* "))
             {
-                this.pattern = pattern.Substring(2, pattern.Length - 2);
+                if (!Regex.IsMatch(pattern, @"(\\\(.*\\\))"))
+                {
+                    this.pattern = "(" + pattern.Substring(2, pattern.Length - 2) + ")";
+                }
                 isRegex = true;
             }
             else

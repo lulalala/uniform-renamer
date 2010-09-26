@@ -18,7 +18,7 @@
             }
         }
 
-        public string name
+        public string destinationTag
         {
             get; set;
         }

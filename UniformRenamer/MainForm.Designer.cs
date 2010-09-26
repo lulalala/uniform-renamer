@@ -30,12 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.newFormatTextBox = new System.Windows.Forms.TextBox();
             this.RuleMenu = new System.Windows.Forms.ToolStrip();
             this.RuleNewButton = new System.Windows.Forms.ToolStripButton();
             this.RuleOpenButton = new System.Windows.Forms.ToolStripButton();
             this.RuleSaveButton = new System.Windows.Forms.ToolStripButton();
             this.RuleSaveAsButton = new System.Windows.Forms.ToolStripButton();
             this.VersionLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.addCopyButton = new System.Windows.Forms.ToolStripButton();
+            this.addDeleteButton = new System.Windows.Forms.ToolStripButton();
+            this.addReplaceButton = new System.Windows.Forms.ToolStripButton();
             this.FileGrid = new SourceGrid.Grid();
             this.TargetMenu = new System.Windows.Forms.ToolStrip();
             this.TargetSelectButton = new System.Windows.Forms.ToolStripButton();
@@ -49,24 +58,15 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.addCopyButton = new System.Windows.Forms.ToolStripButton();
-            this.addDeleteButton = new System.Windows.Forms.ToolStripButton();
-            this.addReplaceButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.newFormatTextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.ruleGrid1 = new UniformRenamer.Core.RuleGrid();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.RuleMenu.SuspendLayout();
             this.TargetMenu.SuspendLayout();
             this.StatusBar.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -84,6 +84,31 @@
             this.splitContainer.Panel2.Controls.Add(this.FileGrid);
             this.splitContainer.Panel2.Controls.Add(this.TargetMenu);
             this.splitContainer.Panel2.Controls.Add(this.StatusBar);
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.ruleGrid1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.newFormatTextBox);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // newFormatTextBox
+            // 
+            resources.ApplyResources(this.newFormatTextBox, "newFormatTextBox");
+            this.newFormatTextBox.Name = "newFormatTextBox";
+            this.newFormatTextBox.TextChanged += new System.EventHandler(this.newFormatTextBox_TextChanged);
             // 
             // RuleMenu
             // 
@@ -134,6 +159,37 @@
             this.VersionLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.VersionLabel.Name = "VersionLabel";
             resources.ApplyResources(this.VersionLabel, "VersionLabel");
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
+            // 
+            // addCopyButton
+            // 
+            this.addCopyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.addCopyButton, "addCopyButton");
+            this.addCopyButton.Name = "addCopyButton";
+            this.addCopyButton.Click += new System.EventHandler(this.addCopyButton_Click);
+            // 
+            // addDeleteButton
+            // 
+            this.addDeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.addDeleteButton, "addDeleteButton");
+            this.addDeleteButton.Name = "addDeleteButton";
+            this.addDeleteButton.Click += new System.EventHandler(this.addDeleteButton_Click);
+            // 
+            // addReplaceButton
+            // 
+            this.addReplaceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.addReplaceButton, "addReplaceButton");
+            this.addReplaceButton.Name = "addReplaceButton";
+            this.addReplaceButton.Click += new System.EventHandler(this.addReplaceButton_Click);
             // 
             // FileGrid
             // 
@@ -227,65 +283,8 @@
             // 
             this.RuleSaveAsDialog.DefaultExt = "txt";
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
-            // 
-            // addCopyButton
-            // 
-            this.addCopyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.addCopyButton, "addCopyButton");
-            this.addCopyButton.Name = "addCopyButton";
-            this.addCopyButton.Click += new System.EventHandler(this.addCopyButton_Click);
-            // 
-            // addDeleteButton
-            // 
-            this.addDeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.addDeleteButton, "addDeleteButton");
-            this.addDeleteButton.Name = "addDeleteButton";
-            this.addDeleteButton.Click += new System.EventHandler(this.addDeleteButton_Click);
-            // 
-            // addReplaceButton
-            // 
-            this.addReplaceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.addReplaceButton, "addReplaceButton");
-            this.addReplaceButton.Name = "addReplaceButton";
-            this.addReplaceButton.Click += new System.EventHandler(this.addReplaceButton_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // newFormatTextBox
-            // 
-            resources.ApplyResources(this.newFormatTextBox, "newFormatTextBox");
-            this.newFormatTextBox.Name = "newFormatTextBox";
-            this.newFormatTextBox.TextChanged += new System.EventHandler(this.newFormatTextBox_TextChanged);
-            // 
-            // tableLayoutPanel1
-            // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.ruleGrid1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.newFormatTextBox);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // ruleGrid1
             // 
-            this.ruleGrid1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ruleGrid1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ruleGrid1.ColumnsCount = 5;
             resources.ApplyResources(this.ruleGrid1, "ruleGrid1");
@@ -311,15 +310,15 @@
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
             this.splitContainer.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.RuleMenu.ResumeLayout(false);
             this.RuleMenu.PerformLayout();
             this.TargetMenu.ResumeLayout(false);
             this.TargetMenu.PerformLayout();
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

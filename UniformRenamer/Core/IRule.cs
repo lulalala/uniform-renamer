@@ -4,7 +4,7 @@
 
     interface IRule
     {
-        string name
+        string destinationTag
         {
             get; set;
         }

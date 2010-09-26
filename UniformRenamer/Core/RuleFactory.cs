@@ -18,30 +18,53 @@
             for(int r=1;r<grid.RowsCount;r++)
             {
                 // rule
-                searchPatterns = ((string)grid[r,RuleGrid.PatternCol].Value).Split('\t');
-                if (grid[r,RuleGrid.TypeCol].Value.Equals("Copy"))
+                if (fieldsNotEmpty(grid, r, new int[] {RuleGrid.ColPattern}))
+                    searchPatterns = ((string)grid[r, RuleGrid.ColPattern].Value).Split('\t');
+                else
+                    continue;
+
+                if (grid[r,RuleGrid.ColType].Value.Equals("Copy"))
                 //Copy Rule
                 {
-                    rules.Add(new CopyRule((String)grid[r, RuleGrid.DestinationCol].Value, searchPatterns));
+                    if (fieldsNotEmpty(grid, r, new int[]{RuleGrid.ColDestination}))
+                        rules.Add(new CopyRule((String)grid[r, RuleGrid.ColDestination].Value, searchPatterns));
                 }
-                else if (grid[r, RuleGrid.TypeCol].Value.Equals("Delete"))
+                else if (grid[r, RuleGrid.ColType].Value.Equals("Delete"))
                 //Delete Rule
                 {
                     rules.Add(new DeleteRule(searchPatterns));
                 }
-                else if (grid[r, RuleGrid.TypeCol].Value.Equals("Replace"))
+                else if (grid[r, RuleGrid.ColType].Value.Equals("Replace"))
                 //Replace Rule
                 {
-                    rules.Add(new ReplaceRule((String)grid[r, RuleGrid.DestinationCol].Value, (String)grid[r, RuleGrid.ReplacementCol].Value, searchPatterns));
+                    if (fieldsNotEmpty(grid, r, new int[]{ RuleGrid.ColDestination, RuleGrid.ColReplacement}))
+                        rules.Add(new ReplaceRule((String)grid[r, RuleGrid.ColDestination].Value, (String)grid[r, RuleGrid.ColReplacement].Value, searchPatterns));
                 }
             }
 
             return rules;
         }
+
+        private static bool fieldsNotEmpty(RuleGrid grid, int row, int[] columns)
+        {
+            foreach (int i in columns)
+            {
+                if (((String)grid[row, i].Value) == null)
+                {
+                    //throw new Exception("Some fields are incomplete.");
+                    return false;
+                }
+                if (((String)grid[row, i].Value).Equals(String.Empty))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         
         public static RuleList ParseRule(string text)
         {
-            StringReader sr = new StringReader(CleanRuleText(text));
+            StringReader sr = new StringReader(Helper.CleanRuleText(text));
             // format string
             RuleList rules = new RuleList(sr.ReadLine()); ;
             
@@ -81,34 +104,7 @@
             return rules;
         }
 
-        private static string CleanRuleText(string text)
-        {
-            StringBuilder sb = new StringBuilder(String.Empty);
-            StringReader sr = new StringReader(text);
-            string s = null;
-            while ((s = sr.ReadLine()) != null)
-            {
-                s = s.SubstringBefore("//").Trim();
-                if (s.Length == 0)
-                {
-                    continue;
-                }
-                sb.AppendLine(s);
-            }
-            return sb.ToString();
-        }
 
-        private static string SubstringBefore(this string source, string value)
-        {
-            //CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
-            int index = source.IndexOf(value);//compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
-            if (index < 0)
-            {
-                //No such substring
-                return source;
-            }
-            return source.Substring(0, index);
-        }
 
     }
 }
