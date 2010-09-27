@@ -65,17 +65,17 @@
 
         private void SetupRuleGrid()
         {
-            ruleGrid1.AutoStretchColumnsToFitWidth = true;
+            ruleGrid.AutoStretchColumnsToFitWidth = true;
 
             var eventsController = new CustomEvents();
             eventsController.EditEnded += delegate(object sender, EventArgs e)
             {
                 PreviewRename();
 
-                ruleGrid1.AutoSizeCells();
+                ruleGrid.AutoSizeCells();
             };
 
-            ruleGrid1.Controller.AddController(eventsController);
+            ruleGrid.Controller.AddController(eventsController);
 
             //SourceGrid.Cells.Editors.TextBox tb = new SourceGrid.Cells.Editors.TextBox(typeof(string));
             //tb.Control.
@@ -140,13 +140,13 @@
         {
             string s = File.ReadAllText(path, Encoding.UTF8);
             newFormatTextBox.Text = s.Substring(0, s.IndexOf('\n'));
-            ruleGrid1.Parse(s.Substring(s.IndexOf('\n')+1));
+            ruleGrid.Parse(s);
 
-            rules = RuleFactory.ParseRule(newFormatTextBox.Text,ruleGrid1);
+            rules = RuleFactory.ParseRule(newFormatTextBox.Text,ruleGrid);
         }
         private void SaveFile(string path)
         {
-            File.WriteAllText(path, newFormatTextBox.Text + '\n' + ruleGrid1.ToString(), Encoding.UTF8);
+            File.WriteAllText(path, newFormatTextBox.Text + '\n' + ruleGrid.ToString(), Encoding.UTF8);
             DisplayError(Textual.FileSaved);
         }
         // TODO should be private
@@ -157,7 +157,7 @@
             //{
             //    return;
             //}
-            RuleList rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid1);
+            RuleList rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid);
 
             FileName fn = null;
             for (int i = 1; i < FileGrid.RowsCount; i++)
@@ -329,20 +329,20 @@
 
         private void addCopyButton_Click(object sender, EventArgs e)
         {
-            ruleGrid1.AddRule(RuleGrid.RuleCopy);
-            ruleGrid1.AutoSizeCells();
+            ruleGrid.AddRule(Constants.RuleCopy);
+            ruleGrid.AutoSizeCells();
         }
 
         private void addDeleteButton_Click(object sender, EventArgs e)
         {
-            ruleGrid1.AddRule(RuleGrid.RuleDelete);
-            ruleGrid1.AutoSizeCells();
+            ruleGrid.AddRule(Constants.RuleDelete);
+            ruleGrid.AutoSizeCells();
         }
 
         private void addReplaceButton_Click(object sender, EventArgs e)
         {
-            ruleGrid1.AddRule(RuleGrid.RuleReplace);
-            ruleGrid1.AutoSizeCells();
+            ruleGrid.AddRule(Constants.RuleReplace);
+            ruleGrid.AutoSizeCells();
         }
 
         private void newFormatTextBox_TextChanged(object sender, EventArgs e)

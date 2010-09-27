@@ -53,5 +53,7 @@ namespace UniformRenamer.Core
             }
             return source.Substring(0, index);
         }
+
+
     }
 }

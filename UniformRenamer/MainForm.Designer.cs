@@ -58,7 +58,7 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.ruleGrid1 = new UniformRenamer.Core.RuleGrid();
+            this.ruleGrid = new UniformRenamer.Core.RuleGrid();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -88,7 +88,7 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.ruleGrid1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ruleGrid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
@@ -285,17 +285,17 @@
             // 
             // ruleGrid1
             // 
-            this.ruleGrid1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ruleGrid1.ColumnsCount = 5;
-            resources.ApplyResources(this.ruleGrid1, "ruleGrid1");
-            this.ruleGrid1.EnableSort = true;
-            this.ruleGrid1.FixedRows = 1;
-            this.ruleGrid1.Name = "ruleGrid1";
-            this.ruleGrid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.ruleGrid1.RowsCount = 1;
-            this.ruleGrid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.ruleGrid1.TabStop = true;
-            this.ruleGrid1.ToolTipText = "";
+            this.ruleGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ruleGrid.ColumnsCount = 5;
+            resources.ApplyResources(this.ruleGrid, "ruleGrid1");
+            this.ruleGrid.EnableSort = true;
+            this.ruleGrid.FixedRows = 1;
+            this.ruleGrid.Name = "ruleGrid1";
+            this.ruleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.ruleGrid.RowsCount = 1;
+            this.ruleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
+            this.ruleGrid.TabStop = true;
+            this.ruleGrid.ToolTipText = "";
             // 
             // MainForm
             // 
@@ -351,7 +351,7 @@
         private System.Windows.Forms.ToolStripButton addCopyButton;
         private System.Windows.Forms.ToolStripButton addDeleteButton;
         private System.Windows.Forms.ToolStripButton addReplaceButton;
-        private UniformRenamer.Core.RuleGrid ruleGrid1;
+        private UniformRenamer.Core.RuleGrid ruleGrid;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

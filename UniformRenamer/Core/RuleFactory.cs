@@ -23,18 +23,18 @@
                 else
                     continue;
 
-                if (grid[r,RuleGrid.ColType].Value.Equals("Copy"))
+                if (grid[r,RuleGrid.ColType].Value.Equals("copy"))
                 //Copy Rule
                 {
                     if (fieldsNotEmpty(grid, r, new int[]{RuleGrid.ColDestination}))
                         rules.Add(new CopyRule((String)grid[r, RuleGrid.ColDestination].Value, searchPatterns));
                 }
-                else if (grid[r, RuleGrid.ColType].Value.Equals("Delete"))
+                else if (grid[r, RuleGrid.ColType].Value.Equals("delete"))
                 //Delete Rule
                 {
                     rules.Add(new DeleteRule(searchPatterns));
                 }
-                else if (grid[r, RuleGrid.ColType].Value.Equals("Replace"))
+                else if (grid[r, RuleGrid.ColType].Value.Equals("replace"))
                 //Replace Rule
                 {
                     if (fieldsNotEmpty(grid, r, new int[]{ RuleGrid.ColDestination, RuleGrid.ColReplacement}))
