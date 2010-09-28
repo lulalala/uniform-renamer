@@ -68,14 +68,15 @@
             ruleGrid.AutoStretchColumnsToFitWidth = true;
 
             var eventsController = new CustomEvents();
-            eventsController.EditEnded += delegate(object sender, EventArgs e)
+            eventsController.ValueChanged += delegate(object sender, EventArgs e)
             {
                 PreviewRename();
-
                 ruleGrid.AutoSizeCells();
             };
 
             ruleGrid.Controller.AddController(eventsController);
+
+            ruleGrid.SelectionMode = GridSelectionMode.Row;
 
             //SourceGrid.Cells.Editors.TextBox tb = new SourceGrid.Cells.Editors.TextBox(typeof(string));
             //tb.Control.
@@ -149,15 +150,20 @@
             File.WriteAllText(path, newFormatTextBox.Text + '\n' + ruleGrid.ToString(), Encoding.UTF8);
             DisplayError(Textual.FileSaved);
         }
+
         // TODO should be private
         private void PreviewRename()
         {
-            DisplayError(String.Empty);
             //if (ruleTextArea.Text.Length == 0)
             //{
             //    return;
             //}
             RuleList rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid);
+            PreviewRename(rules);
+        }
+        private void PreviewRename(RuleList rules)
+        {
+            DisplayError(String.Empty);
 
             FileName fn = null;
             for (int i = 1; i < FileGrid.RowsCount; i++)
@@ -195,12 +201,12 @@
 
         private void RuleNewButton_Click(object sender, EventArgs e)
         {
-            //if (ruleTextArea.Text.Length != 0)
-            //{
-                
-            //    //ruleTextArea.Clear();
-            //    Properties.Settings.Default.LastRulePath = null;
-            //}
+            if (ruleGrid.RowsCount > 1)
+            {
+                //ruleTextArea.Clear();
+                ruleGrid.ClearValues();
+                Properties.Settings.Default.LastRulePath = null;
+            }
         }
 
         private void RuleOpenButton_Click(object sender, EventArgs e)
@@ -329,27 +335,29 @@
 
         private void addCopyButton_Click(object sender, EventArgs e)
         {
-            ruleGrid.AddRule(Constants.RuleCopy);
+            ruleGrid.AddRule((int)RuleType.RuleCopy);
             ruleGrid.AutoSizeCells();
         }
 
         private void addDeleteButton_Click(object sender, EventArgs e)
         {
-            ruleGrid.AddRule(Constants.RuleDelete);
+            ruleGrid.AddRule((int)RuleType.RuleDelete);
             ruleGrid.AutoSizeCells();
         }
 
         private void addReplaceButton_Click(object sender, EventArgs e)
         {
-            ruleGrid.AddRule(Constants.RuleReplace);
+            ruleGrid.AddRule((int)RuleType.RuleReplace);
             ruleGrid.AutoSizeCells();
         }
 
         private void newFormatTextBox_TextChanged(object sender, EventArgs e)
         {
-            PreviewRename();
+            if (rules != null)
+            {
+                rules.format = ((System.Windows.Forms.TextBox)sender).Text;
+                PreviewRename(rules);
+            }
         }
-
-
     }
 }

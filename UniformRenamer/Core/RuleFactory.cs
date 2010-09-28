@@ -18,7 +18,9 @@
             for(int r=1;r<grid.RowsCount;r++)
             {
                 // rule
-                if (fieldsNotEmpty(grid, r, new int[] {RuleGrid.ColPattern}))
+                if (!(bool)grid[r, RuleGrid.ColControl].Value)
+                    continue;
+                if (grid.CheckRow(r))
                     searchPatterns = ((string)grid[r, RuleGrid.ColPattern].Value).Split('\t');
                 else
                     continue;
@@ -26,7 +28,7 @@
                 if (grid[r,RuleGrid.ColType].Value.Equals("copy"))
                 //Copy Rule
                 {
-                    if (fieldsNotEmpty(grid, r, new int[]{RuleGrid.ColDestination}))
+                    //if (grid.CheckRow(r))
                         rules.Add(new CopyRule((String)grid[r, RuleGrid.ColDestination].Value, searchPatterns));
                 }
                 else if (grid[r, RuleGrid.ColType].Value.Equals("delete"))
@@ -37,7 +39,7 @@
                 else if (grid[r, RuleGrid.ColType].Value.Equals("replace"))
                 //Replace Rule
                 {
-                    if (fieldsNotEmpty(grid, r, new int[]{ RuleGrid.ColDestination, RuleGrid.ColReplacement}))
+                    //if (fieldsNotEmpty(grid, r, new int[]{ RuleGrid.ColDestination, RuleGrid.ColReplacement}))
                         rules.Add(new ReplaceRule((String)grid[r, RuleGrid.ColDestination].Value, (String)grid[r, RuleGrid.ColReplacement].Value, searchPatterns));
                 }
             }
@@ -45,22 +47,22 @@
             return rules;
         }
 
-        private static bool fieldsNotEmpty(RuleGrid grid, int row, int[] columns)
-        {
-            foreach (int i in columns)
-            {
-                if (((String)grid[row, i].Value) == null)
-                {
-                    //throw new Exception("Some fields are incomplete.");
-                    return false;
-                }
-                if (((String)grid[row, i].Value).Equals(String.Empty))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        //private static bool fieldsNotEmpty(RuleGrid grid, int row, int[] columns)
+        //{
+        //    foreach (int i in columns)
+        //    {
+        //        if (((String)grid[row, i].Value) == null)
+        //        {
+        //            //throw new Exception("Some fields are incomplete.");
+        //            return false;
+        //        }
+        //        if (((String)grid[row, i].Value).Equals(String.Empty))
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
         
         public static RuleList ParseRule(string text)
         {

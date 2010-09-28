@@ -20,6 +20,15 @@ namespace UniformRenamer.Core
         public const int ColReplacement = 3;
         public const int ColPattern = 4;
 
+        //public enum Col
+        //{
+        //    control = 0,
+        //    type = 1,
+        //    destination = 2,
+        //    replacement = 3,
+        //    pattern=4
+        //}
+
         private static SourceGrid.Cells.Editors.EditorBase emptyEditor;
         private static SourceGrid.Cells.Editors.EditorBase readOnlyEditor;
         private static SourceGrid.Cells.Editors.TextBox oneClickEditor;
@@ -31,6 +40,7 @@ namespace UniformRenamer.Core
 
         public RuleGrid()
         {
+            SpecialKeys = GridSpecialKeys.None | GridSpecialKeys.Enter | GridSpecialKeys.Escape | GridSpecialKeys.PageDownUp;
             SelectionMode = SourceGrid.GridSelectionMode.Row;
             BackColor = System.Drawing.SystemColors.Window;
             BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -67,9 +77,9 @@ namespace UniformRenamer.Core
             popMenu = new PopupMenu(this);
 
             //Header
-            this[0, ColControl] = new SourceGrid.Cells.ColumnHeader(String.Empty);
+            this[0, ColControl] = new SourceGrid.Cells.ColumnHeader("Enabled");
             this[0, ColType] = new SourceGrid.Cells.ColumnHeader("Rule Type");
-            this[0, ColDestination] = new SourceGrid.Cells.ColumnHeader("Destination name tag");
+            this[0, ColDestination] = new SourceGrid.Cells.ColumnHeader("Destination tag in New Format");
             this[0, ColReplacement] = new SourceGrid.Cells.ColumnHeader("Replacement text");
             this[0, ColPattern] = new SourceGrid.Cells.ColumnHeader("Target search pattern (seperated by tab) ('* ' denotes a regular expression)");
 
@@ -94,6 +104,31 @@ namespace UniformRenamer.Core
             AutoSizeCells();
         }
 
+        public bool CheckRow(int row)
+        {
+            foreach (int i in new int[] { ColType, ColDestination, ColReplacement, ColPattern })
+            {
+                if (CheckField(row, i) == false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckField(int row, int column)
+        {
+            if (this[row, column].Editor != emptyEditor)
+            {
+                if (((String)this[row, column].Value) == null || ((String)this[row, column].Value).Equals(String.Empty))
+                {
+                    //throw new Exception("Some fields are incomplete.");
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public void AddRule(int rule)
         {
             int r = 0;
@@ -111,21 +146,21 @@ namespace UniformRenamer.Core
         public void AddRule(int rule, int r)
         {
             Rows.Insert(r);
-            if (rule == Constants.RuleDelete)
+            if (rule == (int)RuleType.RuleDelete)
             {
                 //this[r, ColType] = new SourceGrid.Cells.Cell("Delete", ruleTypeEditor);
                 this[r, ColType] = createReadOnlyCell("delete");
                 this[r, ColDestination] = createEmptyCell();
                 this[r, ColReplacement] = createEmptyCell();
             }
-            if (rule == Constants.RuleCopy)
+            if (rule == (int)RuleType.RuleCopy)
             {
                 //this[r, ColType] = new SourceGrid.Cells.Cell("Copy", ruleTypeEditor);
                 this[r, ColType] = createReadOnlyCell("copy");
                 this[r, ColDestination] = createOneClickCell();
                 this[r, ColReplacement] = createEmptyCell();
             }
-            if (rule == Constants.RuleReplace)
+            if (rule == (int)RuleType.RuleReplace)
             {
                 //this[r, ColType] = new SourceGrid.Cells.Cell("Replace", ruleTypeEditor);
                 this[r, ColType] = createReadOnlyCell("replace");
@@ -174,10 +209,6 @@ namespace UniformRenamer.Core
             SourceGrid.Cells.Views.Cell view = cell.View as SourceGrid.Cells.Views.Cell;
             ((TextGDI)view.ElementText).StringFormat.SetTabStops(0.0f, new float[] { 30.0f, 30.0f, 30.0f, 30.0f });
 
-            SourceGrid.GridSpecialKeys specialKeys = SourceGrid.GridSpecialKeys.None;
-            //specialKeys = specialKeys | SourceGrid.GridSpecialKeys.Tab;
-            this.SpecialKeys = specialKeys;
-
             return cell;
         }
 
@@ -209,6 +240,10 @@ namespace UniformRenamer.Core
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < this.RowsCount; i++)
             {
+                if (!(bool)this[i, ColControl].Value)
+                {
+                    sb.Append("//");
+                }
                 for (int j = 1; j <= ColPattern; j++)
                 {
                     if(this[i,j].Value != null)
@@ -217,6 +252,7 @@ namespace UniformRenamer.Core
                         sb.Append('\t');
                     }
                 }
+                sb.Remove(sb.Length - 1, 1);
                 sb.Append('\n');
             }
             return sb.ToString();
@@ -224,11 +260,7 @@ namespace UniformRenamer.Core
 
         public void Parse(string text)
         {
-            try
-            {
-                this.Rows.RemoveRange(1, this.RowsCount - 1);
-            }
-            catch { }
+            ClearValues();
 
             StringReader sr = new StringReader(text);
             // discard format string
@@ -239,12 +271,18 @@ namespace UniformRenamer.Core
             int i = 0;
             while ((s = sr.ReadLine()) != null)
             {
-                // rule
+                bool isRuleDisabled = false;
+                if (s.StartsWith("//"))
+                {
+                    s = s.Remove(0, 2);
+                    isRuleDisabled = true;
+                }
+
                 tokens = s.Split('\t');
                 if (tokens[0].Equals("copy") || tokens[0].Equals("cpy"))
                 //Copy Rule
                 {
-                    AddRule(Constants.RuleCopy);
+                    AddRule((int)RuleType.RuleCopy);
                     i++;
                     this[i, ColDestination].Value = tokens[1];
                     this[i, ColPattern].Value = s.Substring(Helper.GetNthIndex(s, '\t', 2) + 1);
@@ -252,20 +290,39 @@ namespace UniformRenamer.Core
                 else if (tokens[0].Equals("delete") || tokens[0].Equals("del"))
                 //Delete Rule
                 {
-                    AddRule(Constants.RuleDelete);
+                    AddRule((int)RuleType.RuleDelete);
                     i++;
                     this[i, ColPattern].Value = s.Substring(Helper.GetNthIndex(s, '\t', 1) + 1);
                 }
                 else if (tokens[0].Equals("replace") || tokens[0].Equals("rpl"))
                 //Replace Rule
                 {
-                    AddRule(Constants.RuleReplace);
+                    AddRule((int)RuleType.RuleReplace);
                     i++;
                     this[i, ColDestination].Value = tokens[1];
                     this[i, ColReplacement].Value = tokens[2];
                     this[i, ColPattern].Value = s.Substring(Helper.GetNthIndex(s, '\t', 3) + 1);
                 }
+
+                if (isRuleDisabled)
+                {
+                    this[i, ColControl].Value = false;
+                }
             }
+        }
+
+        private string cleanPattern(string pattern)
+        {
+            return pattern.Trim().Replace("\n",String.Empty);
+        }
+
+        public void ClearValues()
+        {
+            try
+            {
+                this.Rows.RemoveRange(1, this.RowsCount - 1);
+            }
+            catch { }
         }
     }
 
@@ -290,6 +347,8 @@ namespace UniformRenamer.Core
 
             if (e.Button == MouseButtons.Right)
             {
+                sender.Grid.Selection.ResetSelection(false);
+                sender.Grid.Selection.SelectRow(sender.Position.Row, true);
                 popupContext = sender;
                 menu.Show(sender.Grid, new Point(e.X, e.Y));
             }
@@ -297,15 +356,15 @@ namespace UniformRenamer.Core
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            grid.AddRule(Constants.RuleDelete, popupContext.Position.Row);
+            grid.AddRule((int)RuleType.RuleDelete, popupContext.Position.Row);
         }
         private void Replace_Click(object sender, EventArgs e)
         {
-            grid.AddRule(Constants.RuleReplace, popupContext.Position.Row);
+            grid.AddRule((int)RuleType.RuleReplace, popupContext.Position.Row);
         }
         private void Copy_Click(object sender, EventArgs e)
         {
-            grid.AddRule(Constants.RuleCopy, popupContext.Position.Row);
+            grid.AddRule((int)RuleType.RuleCopy, popupContext.Position.Row);
         }
         private void RemoveRow_Click(object sender, EventArgs e)
         {

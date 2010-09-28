@@ -8,15 +8,17 @@ namespace UniformRenamer.Core
     public static class Constants
     {
         //TODO enum
-        public const int RuleDelete = 0;
-        public const int RuleCopy = 1;
-        public const int RuleReplace = 2;
+        //public const int RuleDelete = 0;
+        //public const int RuleCopy = 1;
+        //public const int RuleReplace = 2;
 
-        //enum RuleType
-        //{
-        //    RuleDelete,
-        //    RuleCopy,
-        //    RuleReplace
-        //}
+        //
     }
+}
+
+public enum RuleType: int
+{
+    RuleDelete = 0,
+    RuleCopy = 1,
+    RuleReplace =2
 }
