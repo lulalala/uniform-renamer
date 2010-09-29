@@ -77,11 +77,11 @@ namespace UniformRenamer.Core
             popMenu = new PopupMenu(this);
 
             //Header
-            this[0, ColControl] = new SourceGrid.Cells.ColumnHeader("Enabled");
-            this[0, ColType] = new SourceGrid.Cells.ColumnHeader("Rule Type");
-            this[0, ColDestination] = new SourceGrid.Cells.ColumnHeader("Destination tag in New Format");
-            this[0, ColReplacement] = new SourceGrid.Cells.ColumnHeader("Replacement text");
-            this[0, ColPattern] = new SourceGrid.Cells.ColumnHeader("Target search pattern (seperated by tab) ('* ' denotes a regular expression)");
+            this[0, ColControl] = new SourceGrid.Cells.ColumnHeader(Textual.Enabled);
+            this[0, ColType] = new SourceGrid.Cells.ColumnHeader(Textual.RuleType);
+            this[0, ColDestination] = new SourceGrid.Cells.ColumnHeader(Textual.DestinationTag);
+            this[0, ColReplacement] = new SourceGrid.Cells.ColumnHeader(Textual.ReplacementText);
+            this[0, ColPattern] = new SourceGrid.Cells.ColumnHeader(Textual.SearchPatterns);
 
             this.Columns[ColControl].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize;
             this.Columns[ColPattern].AutoSizeMode = SourceGrid.AutoSizeMode.Default;
@@ -279,7 +279,14 @@ namespace UniformRenamer.Core
                 }
 
                 tokens = s.Split('\t');
-                if (tokens[0].Equals("copy") || tokens[0].Equals("cpy"))
+                if (tokens[0].Equals("delete"))
+                //Delete Rule
+                {
+                    AddRule((int)RuleType.RuleDelete);
+                    i++;
+                    this[i, ColPattern].Value = s.Substring(Helper.GetNthIndex(s, '\t', 1) + 1);
+                }
+                else if (tokens[0].Equals("copy"))
                 //Copy Rule
                 {
                     AddRule((int)RuleType.RuleCopy);
@@ -287,14 +294,7 @@ namespace UniformRenamer.Core
                     this[i, ColDestination].Value = tokens[1];
                     this[i, ColPattern].Value = s.Substring(Helper.GetNthIndex(s, '\t', 2) + 1);
                 }
-                else if (tokens[0].Equals("delete") || tokens[0].Equals("del"))
-                //Delete Rule
-                {
-                    AddRule((int)RuleType.RuleDelete);
-                    i++;
-                    this[i, ColPattern].Value = s.Substring(Helper.GetNthIndex(s, '\t', 1) + 1);
-                }
-                else if (tokens[0].Equals("replace") || tokens[0].Equals("rpl"))
+                else if (tokens[0].Equals("replace"))
                 //Replace Rule
                 {
                     AddRule((int)RuleType.RuleReplace);
@@ -334,10 +334,10 @@ namespace UniformRenamer.Core
 
         public PopupMenu(RuleGrid grid)
         {
-            menu.MenuItems.Add("Insert Delete Rule", new EventHandler(Delete_Click));
-            menu.MenuItems.Add("Insert Replace Rule", new EventHandler(Replace_Click));
-            menu.MenuItems.Add("Insert Copy Rule", new EventHandler(Copy_Click));
-            menu.MenuItems.Add("Remove Rule", new EventHandler(RemoveRow_Click));
+            menu.MenuItems.Add(Textual.InsertDeleteRule, new EventHandler(Delete_Click));
+            menu.MenuItems.Add(Textual.InsertCopyRule, new EventHandler(Copy_Click));
+            menu.MenuItems.Add(Textual.InsertReplaceRule, new EventHandler(Replace_Click));
+            menu.MenuItems.Add(Textual.RemoveRule, new EventHandler(RemoveRow_Click));
             this.grid = grid;
         }
 

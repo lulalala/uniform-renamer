@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DestinationTag" xml:space="preserve">
+    <value>Destination tag in New Format above</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
   <data name="ErrorDeleteRule" xml:space="preserve">
     <value>Delete rule empty</value>
   </data>
@@ -129,10 +135,31 @@
   <data name="FileSaved" xml:space="preserve">
     <value>File Saved</value>
   </data>
+  <data name="InsertCopyRule" xml:space="preserve">
+    <value>Insert Copy Rule</value>
+  </data>
+  <data name="InsertDeleteRule" xml:space="preserve">
+    <value>Insert Delete Rule</value>
+  </data>
+  <data name="InsertReplaceRule" xml:space="preserve">
+    <value>Insert Replace Rule</value>
+  </data>
   <data name="NewFileName" xml:space="preserve">
     <value>New File Name</value>
   </data>
+  <data name="RemoveRule" xml:space="preserve">
+    <value>Remove Rule</value>
+  </data>
   <data name="RenameWarning" xml:space="preserve">
     <value>Please doublecheck the renaming preview. Do you wish to continue the renaming process?</value>
+  </data>
+  <data name="ReplacementText" xml:space="preserve">
+    <value>Replacement text</value>
+  </data>
+  <data name="RuleType" xml:space="preserve">
+    <value>Rule Type</value>
+  </data>
+  <data name="SearchPatterns" xml:space="preserve">
+    <value>Target search patterns (separated by tab, '* ' denotes a regular expression)</value>
   </data>
 </root>

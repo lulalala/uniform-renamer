@@ -16,7 +16,8 @@ namespace UniformRenamer.Core
             if (pattern.StartsWith("* "))
             {
                 this.pattern = pattern.Substring(2, pattern.Length - 2);
-                if (!Regex.IsMatch(pattern, @"(\\\(.*\\\))"))
+                //Check if the regex contains matching group, if not, add it automatically
+                if (!Regex.IsMatch(pattern, @"([^\\]\(.*[^\\]\))"))
                 {
                     this.pattern = '(' + this.pattern + ')';
                 }

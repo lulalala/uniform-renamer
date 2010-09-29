@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DestinationTag" xml:space="preserve">
+    <value>上方對應之目的地標籤</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>啟用</value>
+  </data>
   <data name="ErrorDeleteRule" xml:space="preserve">
-    <value>刪除規則 Delete 錯誤</value>
+    <value>刪除步驟 Delete 錯誤</value>
   </data>
   <data name="ErrorReplaceRule" xml:space="preserve">
-    <value>替換規則 Replace 至少需要三個由 tab 分隔的字串</value>
+    <value>替換步驟 Replace 至少需要三個由 tab 分隔的字串</value>
   </data>
   <data name="FileName" xml:space="preserve">
     <value>舊檔名</value>
@@ -129,10 +135,31 @@
   <data name="FileSaved" xml:space="preserve">
     <value>存檔完成</value>
   </data>
+  <data name="InsertCopyRule" xml:space="preserve">
+    <value>插入「複製步驟」</value>
+  </data>
+  <data name="InsertDeleteRule" xml:space="preserve">
+    <value>插入「刪除步驟」</value>
+  </data>
+  <data name="InsertReplaceRule" xml:space="preserve">
+    <value>插入「替換步驟」</value>
+  </data>
   <data name="NewFileName" xml:space="preserve">
     <value>新檔名</value>
   </data>
+  <data name="RemoveRule" xml:space="preserve">
+    <value>刪除步驟</value>
+  </data>
   <data name="RenameWarning" xml:space="preserve">
-    <value>只有選擇到的列會被更名。請再確認更名預覽，你要繼續更名作業嗎？</value>
+    <value>只有選擇到的檔案會被更名。請再確認更名預覽，你要繼續更名作業嗎？</value>
+  </data>
+  <data name="ReplacementText" xml:space="preserve">
+    <value>替換文字</value>
+  </data>
+  <data name="RuleType" xml:space="preserve">
+    <value>步驟類別</value>
+  </data>
+  <data name="SearchPatterns" xml:space="preserve">
+    <value>搜尋字眼（字眼們以 tab 鍵作區隔，'* ' 代表該字眼為正規式）</value>
   </data>
 </root>

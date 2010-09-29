@@ -52,7 +52,8 @@
 
             //ruleTextArea.SelectionTabs = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
 
-            VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            //VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            VersionLabel.Text = "0.2.0";
 
             RuleOpenDialog.FileName = Properties.Settings.Default.LastRulePath;
             if (!RuleOpenDialog.FileName.Equals(String.Empty))
