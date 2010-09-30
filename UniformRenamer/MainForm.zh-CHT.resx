@@ -387,6 +387,9 @@
   <data name="TargetMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>792, 25</value>
   </data>
+  <data name="StatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
   <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 201</value>
   </data>

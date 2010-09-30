@@ -55,7 +55,7 @@
             this.RenameButton = new System.Windows.Forms.ToolStripButton();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ErrorLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
@@ -366,7 +366,7 @@
             this.StatusBar.Font = null;
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.ErrorLabel});
+            this.StatusLabel});
             this.StatusBar.Name = "StatusBar";
             // 
             // toolStripStatusLabel1
@@ -377,13 +377,13 @@
             this.toolStripStatusLabel1.BackgroundImage = null;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
-            // ErrorLabel
+            // StatusLabel
             // 
-            this.ErrorLabel.AccessibleDescription = null;
-            this.ErrorLabel.AccessibleName = null;
-            resources.ApplyResources(this.ErrorLabel, "ErrorLabel");
-            this.ErrorLabel.BackgroundImage = null;
-            this.ErrorLabel.Name = "ErrorLabel";
+            this.StatusLabel.AccessibleDescription = null;
+            this.StatusLabel.AccessibleName = null;
+            resources.ApplyResources(this.StatusLabel, "StatusLabel");
+            this.StatusLabel.BackgroundImage = null;
+            this.StatusLabel.Name = "StatusLabel";
             // 
             // TargetDialog
             // 
@@ -448,7 +448,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.StatusStrip StatusBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel ErrorLabel;
+        private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.ToolStripLabel VersionLabel;
         private System.Windows.Forms.ToolStripButton RenamePreviewButton;
         private System.Windows.Forms.ToolStripButton RenameResetButton;

@@ -129,6 +129,9 @@
   <data name="ErrorReplaceRule" xml:space="preserve">
     <value>Replace rules need to have at least 3 items delimited by tabs</value>
   </data>
+  <data name="FileLoaded" xml:space="preserve">
+    <value>File Loaded</value>
+  </data>
   <data name="FileName" xml:space="preserve">
     <value>File Name</value>
   </data>

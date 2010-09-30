@@ -8,7 +8,7 @@
         private static MainForm form;
         public static void FormThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            form.DisplayError(e.Exception.Message);
+            form.SetStatus(e.Exception.Message);
         }
 
         /// <summary>

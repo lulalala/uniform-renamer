@@ -15,15 +15,14 @@
             RuleList rules = new RuleList(newFormat); ;
 
             string[] searchPatterns;
-            for(int r=1;r<grid.RowsCount;r++)
+            for(int r=grid.FixedRows; r<grid.RowsCount; r++)
             {
-                // rule
                 if (!(bool)grid[r, RuleGrid.ColControl].Value)
                     continue;
-                if (grid.CheckRow(r))
-                    searchPatterns = ((string)grid[r, RuleGrid.ColPattern].Value).Split('\t');
-                else
+                if (!grid.CheckRow(r))
                     continue;
+
+                searchPatterns = ((string)grid[r, RuleGrid.ColPattern].Value).Split('\t');
 
                 if (grid[r,RuleGrid.ColType].Value.Equals("copy"))
                 //Copy Rule

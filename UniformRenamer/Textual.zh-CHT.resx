@@ -129,6 +129,9 @@
   <data name="ErrorReplaceRule" xml:space="preserve">
     <value>替換步驟 Replace 至少需要三個由 tab 分隔的字串</value>
   </data>
+  <data name="FileLoaded" xml:space="preserve">
+    <value>步驟檔讀取完成</value>
+  </data>
   <data name="FileName" xml:space="preserve">
     <value>舊檔名</value>
   </data>

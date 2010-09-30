@@ -47,7 +47,7 @@ namespace UniformRenamer.Core
            
             ColumnsCount = 5;
             RowsCount = 1;
-            FixedRows = 2;
+            FixedRows = 1;
 
 
             // Initialise custom editors
@@ -87,14 +87,6 @@ namespace UniformRenamer.Core
             this.Columns[ColPattern].AutoSizeMode = SourceGrid.AutoSizeMode.Default;
             this.Columns[ColType].AutoSizeMode = SourceGrid.AutoSizeMode.EnableAutoSize;
             //this.Columns[ColPattern].AutoSizeMode = SourceGrid.AutoSizeMode.;
-
-            //((SourceGrid.Cells.ColumnHeader)this[0, ColControl]).SortStyle = HeaderSortStyle.None;
-            //((SourceGrid.Cells.ColumnHeader)this[0, ColType]).SortStyle = HeaderSortStyle.None;
-            //((SourceGrid.Cells.ColumnHeader)this[0, ColDestination]).SortStyle = HeaderSortStyle.None;
-            //((SourceGrid.Cells.ColumnHeader)this[0, ColReplacement]).SortStyle = HeaderSortStyle.None;
-            //((SourceGrid.Cells.ColumnHeader)this[0, ColPattern]).SortStyle = HeaderSortStyle.None;
-
-            //this.EnableSort = false;
 
             foreach(int i in new int[]{ColControl, ColType, ColDestination, ColReplacement, ColPattern})
             {
@@ -238,7 +230,7 @@ namespace UniformRenamer.Core
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 1; i < this.RowsCount; i++)
+            for (int i = FixedRows; i < this.RowsCount; i++)
             {
                 if (!(bool)this[i, ColControl].Value)
                 {
@@ -263,7 +255,7 @@ namespace UniformRenamer.Core
             ClearValues();
 
             StringReader sr = new StringReader(text);
-            // discard format string
+            // discard new format string
             sr.ReadLine();
 
             string[] tokens;
@@ -311,18 +303,17 @@ namespace UniformRenamer.Core
             }
         }
 
-        private string cleanPattern(string pattern)
+        private string CleanPattern(string pattern)
         {
             return pattern.Trim().Replace("\n",String.Empty);
         }
 
         public void ClearValues()
         {
-            try
+            if (this.RowsCount > FixedRows)
             {
-                this.Rows.RemoveRange(1, this.RowsCount - 1);
+                this.Rows.RemoveRange(FixedRows, this.RowsCount - FixedRows);
             }
-            catch { }
         }
     }
 

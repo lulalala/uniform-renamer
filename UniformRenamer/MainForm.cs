@@ -74,7 +74,6 @@
                 PreviewRename();
                 ruleGrid.AutoSizeCells();
             };
-
             ruleGrid.Controller.AddController(eventsController);
 
             ruleGrid.SelectionMode = GridSelectionMode.Row;
@@ -145,26 +144,27 @@
             ruleGrid.Parse(s);
 
             rules = RuleFactory.ParseRule(newFormatTextBox.Text,ruleGrid);
+            SetStatus(Textual.FileLoaded + ' ' + path);
         }
         private void SaveFile(string path)
         {
             File.WriteAllText(path, newFormatTextBox.Text + '\n' + ruleGrid.ToString(), Encoding.UTF8);
-            DisplayError(Textual.FileSaved);
+            SetStatus(Textual.FileSaved + ' ' + path);
         }
 
         // TODO should be private
         private void PreviewRename()
         {
-            //if (ruleTextArea.Text.Length == 0)
-            //{
-            //    return;
-            //}
+            if (ruleGrid.RowsCount == ruleGrid.FixedRows)
+            {
+                return;
+            }
             RuleList rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid);
             PreviewRename(rules);
         }
         private void PreviewRename(RuleList rules)
         {
-            DisplayError(String.Empty);
+            SetStatus(String.Empty);
 
             FileName fn = null;
             for (int i = 1; i < FileGrid.RowsCount; i++)
@@ -202,22 +202,27 @@
 
         private void RuleNewButton_Click(object sender, EventArgs e)
         {
-            if (ruleGrid.RowsCount > 1)
-            {
-                //ruleTextArea.Clear();
-                ruleGrid.ClearValues();
-                Properties.Settings.Default.LastRulePath = null;
-            }
+            ResetRules();
+        }
+
+        private void ResetRules()
+        {
+            //TODO confirmation
+            //ruleTextArea.Clear();
+            ruleGrid.ClearValues();
+            rules = null;
+            Properties.Settings.Default.LastRulePath = null;
         }
 
         private void RuleOpenButton_Click(object sender, EventArgs e)
         {
             if (RuleOpenDialog.ShowDialog() == DialogResult.OK)
             {
+                ResetRules();
                 LoadFile(RuleOpenDialog.FileName);
+                Properties.Settings.Default.LastRulePath = RuleOpenDialog.FileName;
+                Properties.Settings.Default.Save();   
             }
-            Properties.Settings.Default.LastRulePath = RuleOpenDialog.FileName;
-            Properties.Settings.Default.Save();
         }
 
         private void RuleSaveAsButton_Click(object sender, EventArgs e)
@@ -230,40 +235,44 @@
 
         private void RuleSaveButton_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.LastRulePath.Length == 0)
+            if (Properties.Settings.Default.LastRulePath.Length == 0)   //no file path to save yet
             {
                 if (RuleSaveAsDialog.ShowDialog() != DialogResult.OK)
                 {
                     return; //User cancels save operation
                 }
-                Properties.Settings.Default.LastRulePath = RuleSaveAsDialog.FileName;
+                else
+                {
+                    Properties.Settings.Default.LastRulePath = RuleSaveAsDialog.FileName;
+                    Properties.Settings.Default.Save();
+                }
             }
             SaveFile(Properties.Settings.Default.LastRulePath);
         }
 
-        private void ruleTextArea_TextChanged(object sender, EventArgs e)
-        {
-            //delayMSE.Set();
+        //private void ruleTextArea_TextChanged(object sender, EventArgs e)
+        //{
+        //    //delayMSE.Set();
 
-            //// open the ResetEvent gate, to discard these delays    
-            //Thread.Sleep(20);
-            //// let all pending through the gate    
-            //delayMSE.Reset();
-            //// close the gate
+        //    //// open the ResetEvent gate, to discard these delays    
+        //    //Thread.Sleep(20);
+        //    //// let all pending through the gate    
+        //    //delayMSE.Reset();
+        //    //// close the gate
 
-            //TBDelay.BeginInvoke(res =>
-            //{
-            //    // callback code        
-            //    // check how we exited, via timeout or signal.        
-            //    bool timedOut = TBDelay.EndInvoke(res);
-            //    if (timedOut)
-            //        Dispatcher.CurrentDispatcher.Invoke(
-            //            new ActionToRunWhenUserStopstyping(UpdatePreview),
-            //            DispatcherPriority.Input);
-            //}, null);
-            rules = null;
-            PreviewRename();
-        }
+        //    //TBDelay.BeginInvoke(res =>
+        //    //{
+        //    //    // callback code        
+        //    //    // check how we exited, via timeout or signal.        
+        //    //    bool timedOut = TBDelay.EndInvoke(res);
+        //    //    if (timedOut)
+        //    //        Dispatcher.CurrentDispatcher.Invoke(
+        //    //            new ActionToRunWhenUserStopstyping(UpdatePreview),
+        //    //            DispatcherPriority.Input);
+        //    //}, null);
+        //    rules = null;
+        //    PreviewRename();
+        //}
 
         //private void UpdatePreview()
         //{
@@ -329,9 +338,9 @@
             }
         }
 
-        public void DisplayError(string text)
+        public void SetStatus(string text)
         {
-            ErrorLabel.Text = text;
+            StatusLabel.Text = text;
         }
 
         private void addCopyButton_Click(object sender, EventArgs e)
