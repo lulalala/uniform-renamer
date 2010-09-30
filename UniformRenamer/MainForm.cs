@@ -50,8 +50,6 @@
             SetupRuleGrid();
             SetupFileGrid();
 
-            //ruleTextArea.SelectionTabs = new int[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
-
             //VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
             VersionLabel.Text = "0.2.0";
 
@@ -208,7 +206,6 @@
         private void ResetRules()
         {
             //TODO confirmation
-            //ruleTextArea.Clear();
             ruleGrid.ClearValues();
             rules = null;
             Properties.Settings.Default.LastRulePath = null;
@@ -249,30 +246,6 @@
             }
             SaveFile(Properties.Settings.Default.LastRulePath);
         }
-
-        //private void ruleTextArea_TextChanged(object sender, EventArgs e)
-        //{
-        //    //delayMSE.Set();
-
-        //    //// open the ResetEvent gate, to discard these delays    
-        //    //Thread.Sleep(20);
-        //    //// let all pending through the gate    
-        //    //delayMSE.Reset();
-        //    //// close the gate
-
-        //    //TBDelay.BeginInvoke(res =>
-        //    //{
-        //    //    // callback code        
-        //    //    // check how we exited, via timeout or signal.        
-        //    //    bool timedOut = TBDelay.EndInvoke(res);
-        //    //    if (timedOut)
-        //    //        Dispatcher.CurrentDispatcher.Invoke(
-        //    //            new ActionToRunWhenUserStopstyping(UpdatePreview),
-        //    //            DispatcherPriority.Input);
-        //    //}, null);
-        //    rules = null;
-        //    PreviewRename();
-        //}
 
         //private void UpdatePreview()
         //{
