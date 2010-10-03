@@ -19,11 +19,14 @@
 
     public partial class MainForm : Form
     {
+        private CustomEvents onChangeEventsController;
         private EditorBase oneClickEditor;
         private RuleList rules;
         //Column constant
         private const int FileOldNameCol = 0;
         private const int FileNewNameCol = 1;
+
+        private bool inPreview = false;
 
         //private ManualResetEvent delayMSE;
         //private Func<bool> TBDelay;
@@ -53,31 +56,38 @@
             //VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
             VersionLabel.Text = "0.2.0";
 
+        }
+
+
+        private void SetupRuleGrid()
+        {
+            onChangeEventsController = new CustomEvents();
+            onChangeEventsController.ValueChanged += delegate(object sender, EventArgs e)
+            {
+                if (inPreview)
+                {
+                    //need to catch here otherwise SG will catch the exception
+                    try
+                    {
+                        PreviewRename();
+                    }
+                    catch (Exception ee)
+                    {
+                        SetStatus(ee.Message);
+                    }
+                    ruleGrid.AutoSizeCells();
+                }
+            };
+            ruleGrid.AutoStretchColumnsToFitWidth = true;
+            ruleGrid.SelectionMode = GridSelectionMode.Row;
+
             RuleOpenDialog.FileName = Properties.Settings.Default.LastRulePath;
             if (!RuleOpenDialog.FileName.Equals(String.Empty))
             {
                 LoadFile(RuleOpenDialog.FileName);
             }
-            TargetDialog.SelectedPath = Properties.Settings.Default.LastTargetPath;
-            FillFileGrid(Properties.Settings.Default.LastTargetPath);
-        }
 
-        private void SetupRuleGrid()
-        {
-            ruleGrid.AutoStretchColumnsToFitWidth = true;
-
-            var eventsController = new CustomEvents();
-            eventsController.ValueChanged += delegate(object sender, EventArgs e)
-            {
-                PreviewRename();
-                ruleGrid.AutoSizeCells();
-            };
-            ruleGrid.Controller.AddController(eventsController);
-
-            ruleGrid.SelectionMode = GridSelectionMode.Row;
-
-            //SourceGrid.Cells.Editors.TextBox tb = new SourceGrid.Cells.Editors.TextBox(typeof(string));
-            //tb.Control.
+            ruleGrid.Controller.AddController(onChangeEventsController);
 
             //RuleGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
             //RuleGrid.AutoSizeCells();
@@ -91,11 +101,6 @@
             //};
             //cellEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
             //cellEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
-        }
-
-        private void EditedHandler(object sender, EventArgs e)
-        {
-            PreviewRename();
         }
 
         private void SetupFileGrid()
@@ -115,6 +120,9 @@
             };
             oneClickEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
             oneClickEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
+
+            TargetDialog.SelectedPath = Properties.Settings.Default.LastTargetPath;
+            FillFileGrid(Properties.Settings.Default.LastTargetPath);
         }
 
         private void RenameButton_Click(object sender, EventArgs e)
@@ -137,12 +145,24 @@
 
         private void LoadFile(string path)
         {
+            inPreview = false;
+            ruleGrid.Controller.RemoveController(onChangeEventsController);
+
+            //Load text to grid
             string s = File.ReadAllText(path, Encoding.UTF8);
             newFormatTextBox.Text = s.Substring(0, s.IndexOf('\n'));
             ruleGrid.Parse(s);
 
-            rules = RuleFactory.ParseRule(newFormatTextBox.Text,ruleGrid);
-            SetStatus(Textual.FileLoaded + ' ' + path);
+            inPreview = true;
+            ruleGrid.Controller.AddController(onChangeEventsController);
+
+            //Load grid to rule
+            PreviewRename();
+
+            if (StatusLabel.Text.Length == 0)
+            {
+                SetStatus(Textual.FileLoaded + ' ' + path);
+            }
         }
         private void SaveFile(string path)
         {
@@ -150,20 +170,30 @@
             SetStatus(Textual.FileSaved + ' ' + path);
         }
 
-        // TODO should be private
+        // include rules refresh
         private void PreviewRename()
         {
-            if (ruleGrid.RowsCount == ruleGrid.FixedRows)
+            if (inPreview)
             {
-                return;
+                if (ruleGrid.RowsCount == ruleGrid.FixedRows)
+                {
+                    return;
+                }
+
+                try
+                {
+                    rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid);
+                }
+                catch(Exception e)
+                {
+                    SetStatus(e.Message);
+                }
+
+                PreviewRename(rules);
             }
-            RuleList rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid);
-            PreviewRename(rules);
         }
         private void PreviewRename(RuleList rules)
         {
-            SetStatus(String.Empty);
-
             FileName fn = null;
             for (int i = 1; i < FileGrid.RowsCount; i++)
             {
@@ -187,6 +217,8 @@
                 }
             }
             FileGrid.AutoSizeCells();
+
+            SetStatus(String.Empty);
         }
 
 
