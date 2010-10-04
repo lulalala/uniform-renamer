@@ -54,7 +54,7 @@
             SetupFileGrid();
 
             //VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            VersionLabel.Text = "0.2.0";
+            VersionLabel.Text = "0.2.2";
 
         }
 
