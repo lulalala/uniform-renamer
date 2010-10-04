@@ -374,5 +374,10 @@
                 PreviewRename(rules);
             }
         }
+
+        private void ruleGrid_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

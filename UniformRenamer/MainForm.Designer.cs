@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ruleGrid = new UniformRenamer.Core.RuleGrid();
             this.panel1 = new System.Windows.Forms.Panel();
             this.newFormatLabel = new System.Windows.Forms.Label();
             this.newFormatTextBox = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ruleGrid = new UniformRenamer.Core.RuleGrid();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -109,27 +109,6 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Font = null;
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // ruleGrid
-            // 
-            this.ruleGrid.AccessibleDescription = null;
-            this.ruleGrid.AccessibleName = null;
-            resources.ApplyResources(this.ruleGrid, "ruleGrid");
-            this.ruleGrid.BackColor = System.Drawing.SystemColors.Window;
-            this.ruleGrid.BackgroundImage = null;
-            this.ruleGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ruleGrid.ColumnsCount = 5;
-            this.ruleGrid.EnableSort = true;
-            this.ruleGrid.FixedRows = 1;
-            this.ruleGrid.Font = null;
-            this.ruleGrid.Name = "ruleGrid";
-            this.ruleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.ruleGrid.RowsCount = 1;
-            this.ruleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.ruleGrid.SpecialKeys = ((SourceGrid.GridSpecialKeys)(((SourceGrid.GridSpecialKeys.PageDownUp | SourceGrid.GridSpecialKeys.Enter)
-                        | SourceGrid.GridSpecialKeys.Escape)));
-            this.ruleGrid.TabStop = true;
-            this.ruleGrid.ToolTipText = "";
             // 
             // panel1
             // 
@@ -292,7 +271,6 @@
             this.FileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.FileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
             this.FileGrid.TabStop = true;
-            this.FileGrid.ToolTipText = "";
             // 
             // TargetMenu
             // 
@@ -399,6 +377,27 @@
             // 
             this.RuleSaveAsDialog.DefaultExt = "txt";
             resources.ApplyResources(this.RuleSaveAsDialog, "RuleSaveAsDialog");
+            // 
+            // ruleGrid
+            // 
+            this.ruleGrid.AccessibleDescription = null;
+            this.ruleGrid.AccessibleName = null;
+            resources.ApplyResources(this.ruleGrid, "ruleGrid");
+            this.ruleGrid.BackColor = System.Drawing.SystemColors.Window;
+            this.ruleGrid.BackgroundImage = null;
+            this.ruleGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ruleGrid.ColumnsCount = 5;
+            this.ruleGrid.EnableSort = true;
+            this.ruleGrid.FixedRows = 1;
+            this.ruleGrid.Font = null;
+            this.ruleGrid.Name = "ruleGrid";
+            this.ruleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.ruleGrid.RowsCount = 1;
+            this.ruleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
+            this.ruleGrid.SpecialKeys = ((SourceGrid.GridSpecialKeys)(((SourceGrid.GridSpecialKeys.PageDownUp | SourceGrid.GridSpecialKeys.Enter)
+                        | SourceGrid.GridSpecialKeys.Escape)));
+            this.ruleGrid.TabStop = true;
+            this.ruleGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.ruleGrid_Paint);
             // 
             // MainForm
             // 
