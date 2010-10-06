@@ -46,5 +46,41 @@ namespace UniformRenamer.Properties {
                 this["LastRulePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RemoveBrackets {
+            get {
+                return ((bool)(this["RemoveBrackets"]));
+            }
+            set {
+                this["RemoveBrackets"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RemoveMultipleSpace {
+            get {
+                return ((bool)(this["RemoveMultipleSpace"]));
+            }
+            set {
+                this["RemoveMultipleSpace"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RemoveEndSpace {
+            get {
+                return ((bool)(this["RemoveEndSpace"]));
+            }
+            set {
+                this["RemoveEndSpace"] = value;
+            }
+        }
     }
 }

@@ -54,8 +54,6 @@
             SetupFileGrid();
 
             //VersionLabel.Text = String.Format("Version {0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            VersionLabel.Text = "0.2.2";
-
         }
 
 
@@ -198,17 +196,33 @@
             for (int i = 1; i < FileGrid.RowsCount; i++)
             {
                 fn = (FileName)FileGrid[i, FileOldNameCol].Value;
-                string s = rules.Convert(fn.GetRenamableNamePart());
+                string newName = rules.Convert(fn.GetRenamableNamePart());
 
-                if (s.Length > 0)
+                if (Properties.Settings.Default.RemoveBrackets)
+                {
+                    newName = newName.Replace("()", String.Empty).Replace("[]", String.Empty).Replace("{}", String.Empty);
+                }
+
+                if (Properties.Settings.Default.RemoveMultipleSpace)
+                {
+                    newName = Regex.Replace(newName,@"\s+", " ");
+                }
+
+                if (Properties.Settings.Default.RemoveEndSpace)
+                {
+                    newName = newName.Trim();
+                }
+
+
+                if (newName.Length > 0)
                 {
                     if (!fn.IsDirectory())
                     {
-                        FileGrid[i, FileNewNameCol].Value = s + fn.GetExtension();
+                        FileGrid[i, FileNewNameCol].Value = newName + fn.GetExtension();
                     }
                     else
                     {
-                        FileGrid[i, FileNewNameCol].Value = s;
+                        FileGrid[i, FileNewNameCol].Value = newName;
                     }
                 }
                 else
@@ -375,9 +389,11 @@
             }
         }
 
-        private void ruleGrid_Paint(object sender, PaintEventArgs e)
+        private void OptionsButton_Click(object sender, EventArgs e)
         {
-
+            OptionForm form = new OptionForm();
+            form.ShowDialog();
+            PreviewRename();
         }
     }
 }

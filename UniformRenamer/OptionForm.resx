@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,52 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DestinationTag" xml:space="preserve">
-    <value>宛先タグ</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>啟用</value>
-  </data>
-  <data name="ErrorDeleteRule" xml:space="preserve">
-    <value>　</value>
-  </data>
-  <data name="ErrorReplaceRule" xml:space="preserve">
-    <value>　</value>
-  </data>
-  <data name="FileLoaded" xml:space="preserve">
-    <value>ステップデータをロードした</value>
-  </data>
-  <data name="FileName" xml:space="preserve">
-    <value>元の名前</value>
-  </data>
-  <data name="FileSaved" xml:space="preserve">
-    <value>保存しました</value>
-  </data>
-  <data name="InsertCopyRule" xml:space="preserve">
-    <value>「コピーする措置」を加える</value>
-  </data>
-  <data name="InsertDeleteRule" xml:space="preserve">
-    <value>「削除する措置」を加える</value>
-  </data>
-  <data name="InsertReplaceRule" xml:space="preserve">
-    <value>「置換する措置」を加える</value>
-  </data>
-  <data name="NewFileName" xml:space="preserve">
-    <value>新しい名前</value>
-  </data>
-  <data name="RemoveRule" xml:space="preserve">
-    <value>措置を削除</value>
-  </data>
-  <data name="RenameWarning" xml:space="preserve">
-    <value>ただ選択したファイル名が変更されるだけ、プレビューに変更を確認してください。ファイル名を変更しますか？</value>
-  </data>
-  <data name="ReplacementText" xml:space="preserve">
-    <value>置換文字</value>
-  </data>
-  <data name="RuleType" xml:space="preserve">
-    <value>措置カテゴリー</value>
-  </data>
-  <data name="SearchPatterns" xml:space="preserve">
-    <value>検索文字（複数の文字はTabで区切り、"* "は、正規表現を意味します。）</value>
-  </data>
 </root>

@@ -8,5 +8,14 @@
     <Setting Name="LastRulePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">rule.txt</Value>
     </Setting>
+    <Setting Name="RemoveBrackets" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RemoveMultipleSpace" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RemoveEndSpace" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
