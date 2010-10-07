@@ -122,6 +122,9 @@
     <EmbeddedResource Include="OptionForm.resx">
       <DependentUpon>OptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OptionForm.zh-CHT.resx">
+      <DependentUpon>OptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Textual.ja.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Textual.ja.Designer.cs</LastGenOutput>

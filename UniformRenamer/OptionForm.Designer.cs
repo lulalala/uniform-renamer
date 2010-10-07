@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionForm));
             this.cbRemoveBrackets = new System.Windows.Forms.CheckBox();
             this.cbRemoveMultipleSpace = new System.Windows.Forms.CheckBox();
             this.cbRemoveEndSpace = new System.Windows.Forms.CheckBox();
@@ -37,66 +38,76 @@
             // 
             // cbRemoveBrackets
             // 
-            this.cbRemoveBrackets.AutoSize = true;
-            this.cbRemoveBrackets.Location = new System.Drawing.Point(13, 13);
+            this.cbRemoveBrackets.AccessibleDescription = null;
+            this.cbRemoveBrackets.AccessibleName = null;
+            resources.ApplyResources(this.cbRemoveBrackets, "cbRemoveBrackets");
+            this.cbRemoveBrackets.BackgroundImage = null;
+            this.cbRemoveBrackets.Font = null;
             this.cbRemoveBrackets.Name = "cbRemoveBrackets";
-            this.cbRemoveBrackets.Size = new System.Drawing.Size(171, 16);
-            this.cbRemoveBrackets.TabIndex = 0;
-            this.cbRemoveBrackets.Text = "Remove empty brackets () [] {}";
             this.cbRemoveBrackets.UseVisualStyleBackColor = true;
             // 
             // cbRemoveMultipleSpace
             // 
-            this.cbRemoveMultipleSpace.AutoSize = true;
-            this.cbRemoveMultipleSpace.Location = new System.Drawing.Point(13, 36);
+            this.cbRemoveMultipleSpace.AccessibleDescription = null;
+            this.cbRemoveMultipleSpace.AccessibleName = null;
+            resources.ApplyResources(this.cbRemoveMultipleSpace, "cbRemoveMultipleSpace");
+            this.cbRemoveMultipleSpace.BackgroundImage = null;
+            this.cbRemoveMultipleSpace.Font = null;
             this.cbRemoveMultipleSpace.Name = "cbRemoveMultipleSpace";
-            this.cbRemoveMultipleSpace.Size = new System.Drawing.Size(204, 16);
-            this.cbRemoveMultipleSpace.TabIndex = 1;
-            this.cbRemoveMultipleSpace.Text = "Convert multiple spaces into one space";
             this.cbRemoveMultipleSpace.UseVisualStyleBackColor = true;
             // 
             // cbRemoveEndSpace
             // 
-            this.cbRemoveEndSpace.AutoSize = true;
-            this.cbRemoveEndSpace.Location = new System.Drawing.Point(13, 59);
+            this.cbRemoveEndSpace.AccessibleDescription = null;
+            this.cbRemoveEndSpace.AccessibleName = null;
+            resources.ApplyResources(this.cbRemoveEndSpace, "cbRemoveEndSpace");
+            this.cbRemoveEndSpace.BackgroundImage = null;
+            this.cbRemoveEndSpace.Font = null;
             this.cbRemoveEndSpace.Name = "cbRemoveEndSpace";
-            this.cbRemoveEndSpace.Size = new System.Drawing.Size(169, 16);
-            this.cbRemoveEndSpace.TabIndex = 2;
-            this.cbRemoveEndSpace.Text = "Trim spaces at end of the string";
             this.cbRemoveEndSpace.UseVisualStyleBackColor = true;
             // 
             // okayButton
             // 
-            this.okayButton.Location = new System.Drawing.Point(123, 100);
+            this.okayButton.AccessibleDescription = null;
+            this.okayButton.AccessibleName = null;
+            resources.ApplyResources(this.okayButton, "okayButton");
+            this.okayButton.BackgroundImage = null;
+            this.okayButton.Font = null;
             this.okayButton.Name = "okayButton";
-            this.okayButton.Size = new System.Drawing.Size(75, 23);
-            this.okayButton.TabIndex = 3;
-            this.okayButton.Text = "OK";
             this.okayButton.UseVisualStyleBackColor = true;
             this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(205, 100);
+            this.cancelButton.AccessibleDescription = null;
+            this.cancelButton.AccessibleName = null;
+            resources.ApplyResources(this.cancelButton, "cancelButton");
+            this.cancelButton.BackgroundImage = null;
+            this.cancelButton.Font = null;
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 4;
-            this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // OptionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 135);
+            this.BackgroundImage = null;
+            this.CancelButton = this.cancelButton;
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okayButton);
             this.Controls.Add(this.cbRemoveEndSpace);
             this.Controls.Add(this.cbRemoveMultipleSpace);
             this.Controls.Add(this.cbRemoveBrackets);
+            this.Font = null;
+            this.Icon = null;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OptionForm";
-            this.Text = "Options";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.OptionForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
