@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>圖層 1</title>
+  <text font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_1" y="110" x="102.5" stroke-width="0" stroke="#000000" fill="#000000">old name</text>
+  <text xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_2" y="110" x="386" stroke-width="0" stroke="#000000" fill="#000000">(Manga)[Ushino]Alien VS Zombie (eng)</text>
+  <text transform="matrix(1, 0, 0, 1, 0, 0)" font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_3" y="186" x="102.5" stroke-width="0" stroke="#000000" fill="#000000">new format</text>
+  <text transform="matrix(1, 0, 0, 1, 0, 0)" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_4" y="186" x="386" stroke-width="0" stroke="#000000" fill="#000000">&lt;lang&gt;&lt;remain&gt;</text>
+  <text transform="matrix(1, 0, 0, 1, 0, 0)" font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_5" y="275" x="102.5" stroke-width="0" stroke="#000000" fill="#000000">new name</text>
+  <text transform="matrix(1, 0, 0, 1, 0, 0)" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_6" y="275" x="386" stroke-width="0" stroke="#000000" fill="#000000">[English][Ushino]Aliean VS Zombie</text>
+  <path d="m170,112c1,-1 1.823746,-1.486259 4,-2c2.919754,-0.689262 6.988785,-0.069824 13,-1c6.9879,-1.081314 13,-1 21,-1c10,0 17.815567,-0.992455 26,-2c7.940063,-0.977463 13.023849,-0.422638 20,-1c6.062042,-0.501709 9.878571,-1.493462 13,-2c1.974182,-0.320366 4,-1 6,-1l1,0" id="svg_7" stroke-width="3" stroke="#ff0000" fill="none"/>
+  <polyline id="svg_8" points="190,106 190,106" stroke-linecap="round" stroke-width="5" stroke="#000000" fill="none"/>
+  <text id="svg_16" font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="19" y="76" x="215.5" stroke-width="0" stroke="#000000" fill="#ff0000">delete step</text>
+  <path d="m550,123.04052c-0.915955,0 -1.85553,-0.41153 -3.663696,0c-2.85907,0.650673 -6.430115,2.398705 -12.823059,3.853668c-10.108093,2.300499 -20.925354,5.221992 -36.637146,7.707344c-18.225891,2.883041 -43.926971,3.236832 -64.115051,5.138214c-21.038879,1.981522 -37.6763,4.194336 -49.460175,7.707352c-10.214935,3.045273 -19.673737,4.832672 -25.645996,8.991898c-4.101776,2.856552 -7.327454,6.422775 -8.243378,7.707336c-0.915924,1.284561 -2.100128,1.660797 -2.747772,2.569107c-0.647644,0.908325 -0.915924,1.284561 -1.831879,1.284561l-0.915924,0l-0.915924,0" id="svg_17" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#0000ff" fill="none"/>
+  <text xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="19" id="svg_18" y="142" x="538" opacity="0.5" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#0000ff" fill="#ff0000"/>
+  <text id="svg_19" font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="19" y="145" x="539.5" stroke-width="0" stroke="#000000" fill="#0000ff">replace step</text>
+  <path d="m384,118c0.82608,0 4.397827,0.542297 5.782593,2.085106c2.232941,2.487701 2.979218,5.785141 7.434814,9.382973c3.111877,2.512848 6.942444,4.599289 10.739105,8.340439c1.841675,1.814713 4.416412,3.863129 5.782623,6.25531c1.080048,1.89119 2.43576,4.481613 3.304352,6.255325c0.9711,1.983047 1.398193,2.279022 2.478241,4.170212c0.683105,1.196075 0.241974,2.390457 0.826111,3.127655c0.584106,0.737213 0.82608,1.042557 0.82608,2.085114c0,1.042542 0.82608,2.085098 0.82608,4.170212l0,1.042542l0,1.042557l0,1.042557" id="svg_20" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="none"/>
+  <text xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="19" id="svg_21" y="159" x="417" opacity="0.5" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#00bf00" fill="#0000ff"/>
+  <text id="svg_22" font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="19" y="129" x="338.5" stroke-width="0" stroke="#00bf00" fill="#00bf5f">copy step</text>
+  <path d="m381,196c0,0.901962 0,1.803925 0,2.705887c0,0.901962 0,2.705872 0,4.509796c0,1.803925 0,3.607849 0,5.411774c0,1.803909 0,3.607834 0,6.313721c0,1.803925 0,4.509796 0,6.313721c0,1.803925 0,4.509811 0,5.411774c0,1.803909 0,3.607834 0,5.411758c0,0.901962 0,1.803925 0,3.607849c0,0.901962 0,1.803925 0,2.705872c0,0.901962 0,1.803925 0,2.705887l0,0.901962" id="svg_23" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="none"/>
+  <path d="m374,234c1,0 1.693451,0.458801 3,1c0.923889,0.38269 1.292908,0.292892 2,1c0.707092,0.707108 -0.38269,2.076126 0,3c0.541199,1.306564 1,2 1,3c0,1 0,2 1,2c1,0 1,-1 2,-2c1,-1 1.61731,-2.076126 2,-3c0.541199,-1.306564 2,-2 3,-3c1,-1 2,-2 3,-2l0,-1" id="svg_24" stroke-linecap="round" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#bfbfbf"/>
+ </g>
+ <g>
+  <title>圖層 2</title>
+ </g>
+</svg>

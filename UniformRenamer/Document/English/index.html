@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Uniform Renamer</title>
+
+  
+  
+  <link rel="stylesheet" href="CSS/typography.css" type="text/css" media="screen, projection">
+
+</head><body>
+<h1><img style="width: 623px; height: 480px;" alt="" src="https://sourceforge.net/dbimage.php?id=279455" align="right" hspace="5"></h1>
+
+<h1>Uniform Renamer</h1>
+
+<p>Do
+you watch your downloads gradually
+increase in number, but their file
+names are all in different formats. You may occasionally spend some
+time renaming
+them, but not only does it take a long time, it always feel like a
+waste of time. This renamer is designed to cut your organizing time.</p>
+
+<p>The aim of this software is to unify the folders and archive
+file names. It's not for batch renaming a group of images.</p>
+<p>It is written
+in C#, so .Net framework is required. It comes with English/Chinese/Japnese interfaces.<br>
+</p>
+
+<p style="font-weight: bold;">Download <a href="https://sourceforge.net/projects/uniformrenamer/files/">UniformRenamer</a></p>
+
+<h2>Basics</h2>
+
+<p>The rename process consists of a series of steps. There are 3 types
+of steps:</p>
+
+<ol>
+
+  <li>Delete</li>
+  <li>Copy</li>
+  <li>Replacement</li>
+</ol>
+
+<p>In the upper half of the window you can edit the step table.
+The lower half is the filename preview area, where you
+can&nbsp;select&nbsp;files to rename.</p>
+
+<p>Here is a simple example:</p>
+
+<p><img style="width: 594px; height: 260px;" alt="" src="tut1.png"><br>
+</p>
+
+<p>A <span style="font-weight: bold;">delete step</span>&nbsp;deletes
+text from the old file name, which helps to
+remove unwanted information. This will make other steps easier. Please
+enter the match patterns in the last column. Multiple terms need to be
+tab-separated.</p>
+
+<p>A <span style="font-weight: bold;">copy&nbsp;step</span> copies
+text
+from the old file name to the new file
+name. Please enter the match patterns in the last column for those
+words (terms should also be tab separated), and specify the
+destination tag in the third column (such as
+&lt;volumn_number&gt;). If
+there are a number of matches, only the first
+match will be copied into the new file name.</p>
+
+<p>A <span style="font-weight: bold;">replace step</span> searches in
+the
+old file name for some match, and if one is found, a replacement text
+will be inserted into the new file name. For
+example, if the old file name to find the words <span style="font-style: italic;">'English'</span>, the program can
+automatically place <span style="font-style: italic;">'[EN]'</span> in
+the new file name. Please
+enter the match patterns in the last column, the replacement text in
+the fourth column,
+and the destination tag in the third column.</p>
+
+<p>The checkboxes on the left allows users to temporarily disable some
+of the steps. Right-clicking on the rows shows options to remove a step.</p>
+
+<h2>Regular Expressions</h2>
+
+<p>The match terms&nbsp;column (last column) allows the user to enter
+multiple
+search terms, separated by tabs. You can enter ordination text or
+regular expressions. For example: (\(C\d(2)\)) is able to match
+text from (C00) to (C99), which is useful for organizing doujinshi.
+Regular expressions requires a '* ' prefix (star followed by a space).
+Regular expression is very powerful, and to
+understand it fully&nbsp;please refer to the relevant
+books or Internet resources.
+</p>
+
+<p>The copy step with the regular expression "* .*" is useful, because
+it can copy the remaining text from the old file
+name to the new file name. Some information in the
+file names are not easy to treat (such as title and author names), so
+by removing unnecessary text you can get the desired leftover text.</p>
+
+<p>This application is using regular expression engine from Microsoft
+.NET framework, therefore it only recognise that version of regular
+expression syntax.</p>
+
+<h2>End words</h2>
+
+Any kind of contribution is welcomed, from writing better
+tutorial/sharing rename step file/enhancing the code. Please use the <a href="https://sourceforge.net/projects/uniformrenamer/forums">forum</a>
+for any feedback/suggestions.<br>
+
+<br>
+
+</body></html>
