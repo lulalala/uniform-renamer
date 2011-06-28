@@ -46,7 +46,7 @@
             this.addDeleteButton = new System.Windows.Forms.ToolStripButton();
             this.addReplaceButton = new System.Windows.Forms.ToolStripButton();
             this.OptionsButton = new System.Windows.Forms.ToolStripButton();
-            this.FileGrid = new SourceGrid.Grid();
+            this.fileGrid = new UniformRenamer.Core.FileGrid();
             this.TargetMenu = new System.Windows.Forms.ToolStrip();
             this.TargetSelectButton = new System.Windows.Forms.ToolStripButton();
             this.RenamePreviewButton = new System.Windows.Forms.ToolStripButton();
@@ -81,7 +81,7 @@
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.Controls.Add(this.FileGrid);
+            this.splitContainer.Panel2.Controls.Add(this.fileGrid);
             this.splitContainer.Panel2.Controls.Add(this.TargetMenu);
             this.splitContainer.Panel2.Controls.Add(this.StatusBar);
             // 
@@ -213,18 +213,18 @@
             // 
             // FileGrid
             // 
-            this.FileGrid.AutoStretchColumnsToFitWidth = true;
-            this.FileGrid.BackColor = System.Drawing.SystemColors.Window;
-            this.FileGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FileGrid.ColumnsCount = 2;
-            resources.ApplyResources(this.FileGrid, "FileGrid");
-            this.FileGrid.EnableSort = false;
-            this.FileGrid.FixedRows = 1;
-            this.FileGrid.Name = "FileGrid";
-            this.FileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.FileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.FileGrid.TabStop = true;
-            this.FileGrid.ToolTipText = " ";
+            this.fileGrid.AutoStretchColumnsToFitWidth = true;
+            this.fileGrid.BackColor = System.Drawing.SystemColors.Window;
+            this.fileGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fileGrid.ColumnsCount = 2;
+            resources.ApplyResources(this.fileGrid, "FileGrid");
+            this.fileGrid.EnableSort = false;
+            this.fileGrid.FixedRows = 1;
+            this.fileGrid.Name = "FileGrid";
+            this.fileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.fileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.fileGrid.TabStop = true;
+            this.fileGrid.ToolTipText = " ";
             // 
             // TargetMenu
             // 
@@ -349,7 +349,7 @@
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.ToolStripButton RenamePreviewButton;
         private System.Windows.Forms.ToolStripButton RenameResetButton;
-        private SourceGrid.Grid FileGrid;
+        private UniformRenamer.Core.FileGrid fileGrid;
         private System.Windows.Forms.TextBox newFormatTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel insertRuleLabel;

@@ -92,6 +92,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Textual.ja.resx</DependentUpon>
     </Compile>
+    <Compile Include="View\FileGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\RuleGrid.cs">
       <SubType>Component</SubType>
     </Compile>
