@@ -39,8 +39,9 @@
             // 
             this.cbRemoveBrackets.AutoSize = true;
             this.cbRemoveBrackets.Location = new System.Drawing.Point(13, 13);
+            this.cbRemoveBrackets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbRemoveBrackets.Name = "cbRemoveBrackets";
-            this.cbRemoveBrackets.Size = new System.Drawing.Size(171, 16);
+            this.cbRemoveBrackets.Size = new System.Drawing.Size(248, 22);
             this.cbRemoveBrackets.TabIndex = 0;
             this.cbRemoveBrackets.Text = "Remove empty brackets () [] {}";
             this.cbRemoveBrackets.UseVisualStyleBackColor = true;
@@ -48,9 +49,10 @@
             // cbRemoveMultipleSpace
             // 
             this.cbRemoveMultipleSpace.AutoSize = true;
-            this.cbRemoveMultipleSpace.Location = new System.Drawing.Point(13, 36);
+            this.cbRemoveMultipleSpace.Location = new System.Drawing.Point(13, 43);
+            this.cbRemoveMultipleSpace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbRemoveMultipleSpace.Name = "cbRemoveMultipleSpace";
-            this.cbRemoveMultipleSpace.Size = new System.Drawing.Size(204, 16);
+            this.cbRemoveMultipleSpace.Size = new System.Drawing.Size(298, 22);
             this.cbRemoveMultipleSpace.TabIndex = 1;
             this.cbRemoveMultipleSpace.Text = "Convert multiple spaces into one space";
             this.cbRemoveMultipleSpace.UseVisualStyleBackColor = true;
@@ -58,18 +60,20 @@
             // cbRemoveEndSpace
             // 
             this.cbRemoveEndSpace.AutoSize = true;
-            this.cbRemoveEndSpace.Location = new System.Drawing.Point(13, 59);
+            this.cbRemoveEndSpace.Location = new System.Drawing.Point(13, 73);
+            this.cbRemoveEndSpace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbRemoveEndSpace.Name = "cbRemoveEndSpace";
-            this.cbRemoveEndSpace.Size = new System.Drawing.Size(169, 16);
+            this.cbRemoveEndSpace.Size = new System.Drawing.Size(248, 22);
             this.cbRemoveEndSpace.TabIndex = 2;
             this.cbRemoveEndSpace.Text = "Trim spaces at end of the string";
             this.cbRemoveEndSpace.UseVisualStyleBackColor = true;
             // 
             // okayButton
             // 
-            this.okayButton.Location = new System.Drawing.Point(123, 100);
+            this.okayButton.Location = new System.Drawing.Point(85, 118);
+            this.okayButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.okayButton.Name = "okayButton";
-            this.okayButton.Size = new System.Drawing.Size(75, 23);
+            this.okayButton.Size = new System.Drawing.Size(112, 34);
             this.okayButton.TabIndex = 3;
             this.okayButton.Text = "OK";
             this.okayButton.UseVisualStyleBackColor = true;
@@ -77,9 +81,10 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(205, 100);
+            this.cancelButton.Location = new System.Drawing.Point(205, 118);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(112, 34);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -87,14 +92,18 @@
             // 
             // OptionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 135);
+            this.ClientSize = new System.Drawing.Size(330, 165);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okayButton);
             this.Controls.Add(this.cbRemoveEndSpace);
             this.Controls.Add(this.cbRemoveMultipleSpace);
             this.Controls.Add(this.cbRemoveBrackets);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OptionForm";
             this.Text = "Options";
             this.Load += new System.EventHandler(this.OptionForm_Load);

@@ -112,8 +112,8 @@
     <Compile Include="Core\FileName.cs" />
     <Compile Include="Core\Rule\ReplaceRule.cs" />
     <Compile Include="Core\Rule\IRule.cs" />
-    <Compile Include="Core\Rule\RuleFactory.cs" />
-    <Compile Include="Core\Rule\RuleList.cs" />
+    <Compile Include="Core\RuleFactory.cs" />
+    <Compile Include="Core\RuleList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.ja.resx">
