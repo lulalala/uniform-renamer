@@ -194,18 +194,35 @@ namespace UniformRenamer.Core
 
     public class ValueChangedEvent : SourceGrid.Cells.Controllers.ControllerBase
     {
+        bool isCalled = false;
         public override void OnValueChanged(SourceGrid.CellContext sender, EventArgs e)
         {
-            base.OnValueChanged(sender, e);
+            if (!isCalled)
+            {
+                isCalled = true;
 
-            if (sender.Value.Equals(sender.Grid.GetCell(sender.Position.Row, 0).ToString()))
-            {
-                sender.Cell.View = UnchangedCellStyle.Default;
+                sender.Value = MakeValidFileName(sender.Value.ToString());
+
+                base.OnValueChanged(sender, e);
+
+                if (sender.Value.Equals(sender.Grid.GetCell(sender.Position.Row, 0).ToString()))
+                {
+                    sender.Cell.View = UnchangedCellStyle.Default;
+                }
+                else
+                {
+                    sender.Cell.View = ChangedCellStyle.Default;
+                }
+
+                isCalled = false;
             }
-            else
-            {
-                sender.Cell.View = ChangedCellStyle.Default;
-            }
+        }
+
+        private static string MakeValidFileName(string name)
+        {
+            string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+            string invalidReStr = string.Format(@"[{0}]+", invalidChars);
+            return Regex.Replace(name, invalidReStr, " ");
         }
     }
 
