@@ -18,6 +18,7 @@ namespace UniformRenamer.Core
         private static SourceGrid.Cells.Editors.EditorBase oneClickEditor;
 
         private static SourceGrid.Cells.Views.IView emptyGray;
+        private static SourceGrid.Cells.Views.IView unchangedCellStyle;
 
         private const int FileOldNameCol = 0;
         private const int FileNewNameCol = 1;
@@ -62,6 +63,8 @@ namespace UniformRenamer.Core
 
             emptyGray = new SourceGrid.Cells.Views.Cell();
             emptyGray.BackColor = System.Drawing.SystemColors.ControlDark;
+            unchangedCellStyle = new SourceGrid.Cells.Views.Cell();
+            unchangedCellStyle.ForeColor = System.Drawing.SystemColors.GrayText;
 
             //Header
             this[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
@@ -148,26 +151,24 @@ namespace UniformRenamer.Core
                 return;
 
             //SetRenameButtonsEnabled(true);
-            int r = 1;
-            foreach (string s in Directory.GetDirectories(path))
-            {
-                FileName fs = new FileName(s);
+            FillFileGridRows(Directory.GetDirectories(path));
+            FillFileGridRows(Directory.GetFiles(path));
 
-                Rows.Insert(r);
-                this[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
-                this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
-                r++;
-            }
-            foreach (string s in Directory.GetFiles(path))
-            {
-                FileName fs = new FileName(s);
-
-                Rows.Insert(r);
-                this[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
-                this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
-                r++;
-            }
             AutoSizeCells();
+        }
+
+        private void FillFileGridRows(string[] files)
+        {
+            int r = Rows.Count;
+            foreach (string s in files)
+            {
+                FileName fs = new FileName(s);
+
+                Rows.Insert(r);
+                this[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
+                this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
+                r++;
+            }
         }
 
         private Cell createOneClickCell()
