@@ -17,9 +17,6 @@ namespace UniformRenamer.Core
     {
         private static SourceGrid.Cells.Editors.EditorBase oneClickEditor;
 
-        private static SourceGrid.Cells.Views.IView emptyGray;
-        private static SourceGrid.Cells.Views.IView unchangedCellStyle;
-
         private const int FileOldNameCol = 0;
         private const int FileNewNameCol = 1;
 
@@ -60,11 +57,6 @@ namespace UniformRenamer.Core
                 }
 
             };
-
-            emptyGray = new SourceGrid.Cells.Views.Cell();
-            emptyGray.BackColor = System.Drawing.SystemColors.ControlDark;
-            unchangedCellStyle = new SourceGrid.Cells.Views.Cell();
-            unchangedCellStyle.ForeColor = System.Drawing.SystemColors.GrayText;
 
             //Header
             this[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
@@ -166,7 +158,9 @@ namespace UniformRenamer.Core
 
                 Rows.Insert(r);
                 this[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
-                this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
+                this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(String.Empty, oneClickEditor);
+                this[r, FileNewNameCol].AddController(new ValueChangedEvent());
+                this[r, FileNewNameCol].Value = fs.ToString();
                 r++;
             }
         }
@@ -195,5 +189,37 @@ namespace UniformRenamer.Core
         //        this.Rows.RemoveRange(FixedRows, this.RowsCount - FixedRows);
         //    }
         //}
+ 
+    }
+
+    public class ValueChangedEvent : SourceGrid.Cells.Controllers.ControllerBase
+    {
+        public override void OnValueChanged(SourceGrid.CellContext sender, EventArgs e)
+        {
+            base.OnValueChanged(sender, e);
+
+            if (sender.Value.Equals(sender.Grid.GetCell(sender.Position.Row, 0).ToString()))
+            {
+                sender.Cell.View = UnchangedCellStyle.Default;
+            }
+            else
+            {
+                sender.Cell.View = ChangedCellStyle.Default;
+            }
+        }
+    }
+
+    public class ChangedCellStyle : SourceGrid.Cells.Views.Cell
+    {
+        public new static readonly ChangedCellStyle Default = new ChangedCellStyle();
+    }
+
+    public class UnchangedCellStyle : SourceGrid.Cells.Views.Cell
+    {
+        public new static readonly UnchangedCellStyle Default = new UnchangedCellStyle();
+        public UnchangedCellStyle()
+        {
+            ForeColor = System.Drawing.SystemColors.GrayText;
+        }
     }
 }

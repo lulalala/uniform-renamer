@@ -77,7 +77,7 @@
             path = newPath;
             name = newName;
         }
-
+        //TODO strange checking all folder wheno nly one cell changed
         public override string ToString()
         {
             return name;
