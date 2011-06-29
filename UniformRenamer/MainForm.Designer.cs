@@ -211,17 +211,18 @@
             this.OptionsButton.Name = "OptionsButton";
             this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
-            // FileGrid
+            // fileGrid
             // 
             this.fileGrid.AutoStretchColumnsToFitWidth = true;
             this.fileGrid.BackColor = System.Drawing.SystemColors.Window;
             this.fileGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.fileGrid.ColumnsCount = 2;
-            resources.ApplyResources(this.fileGrid, "FileGrid");
+            resources.ApplyResources(this.fileGrid, "fileGrid");
             this.fileGrid.EnableSort = false;
             this.fileGrid.FixedRows = 1;
-            this.fileGrid.Name = "FileGrid";
+            this.fileGrid.Name = "fileGrid";
             this.fileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.fileGrid.RowsCount = 1;
             this.fileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
             this.fileGrid.TabStop = true;
             this.fileGrid.ToolTipText = " ";
