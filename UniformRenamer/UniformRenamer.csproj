@@ -92,6 +92,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Textual.ja.resx</DependentUpon>
     </Compile>
+    <Compile Include="View\FileGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\RuleGrid.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -101,8 +104,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Core\DeleteRule.cs" />
-    <Compile Include="Core\CopyRule.cs" />
+    <Compile Include="Core\Rule\DeleteRule.cs" />
+    <Compile Include="Core\Rule\CopyRule.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,8 +113,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\FileName.cs" />
-    <Compile Include="Core\ReplaceRule.cs" />
-    <Compile Include="Core\IRule.cs" />
+    <Compile Include="Core\Rule\ReplaceRule.cs" />
+    <Compile Include="Core\Rule\IRule.cs" />
     <Compile Include="Core\RuleFactory.cs" />
     <Compile Include="Core\RuleList.cs" />
     <Compile Include="Program.cs" />

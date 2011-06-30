@@ -31,9 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ruleGrid = new UniformRenamer.Core.RuleGrid();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.newFormatLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.newFormatTextBox = new System.Windows.Forms.TextBox();
+            this.newFormatLabel = new System.Windows.Forms.Label();
             this.RuleMenu = new System.Windows.Forms.ToolStrip();
             this.RuleNewButton = new System.Windows.Forms.ToolStripButton();
             this.RuleOpenButton = new System.Windows.Forms.ToolStripButton();
@@ -45,7 +47,7 @@
             this.addDeleteButton = new System.Windows.Forms.ToolStripButton();
             this.addReplaceButton = new System.Windows.Forms.ToolStripButton();
             this.OptionsButton = new System.Windows.Forms.ToolStripButton();
-            this.FileGrid = new SourceGrid.Grid();
+            this.fileGrid = new UniformRenamer.Core.FileGrid();
             this.TargetMenu = new System.Windows.Forms.ToolStrip();
             this.TargetSelectButton = new System.Windows.Forms.ToolStripButton();
             this.RenamePreviewButton = new System.Windows.Forms.ToolStripButton();
@@ -58,12 +60,12 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.ruleGrid = new UniformRenamer.Core.RuleGrid();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.RuleMenu.SuspendLayout();
             this.TargetMenu.SuspendLayout();
             this.StatusBar.SuspendLayout();
@@ -71,81 +73,69 @@
             // 
             // splitContainer
             // 
-            this.splitContainer.AccessibleDescription = null;
-            this.splitContainer.AccessibleName = null;
             resources.ApplyResources(this.splitContainer, "splitContainer");
-            this.splitContainer.BackgroundImage = null;
-            this.splitContainer.Font = null;
             this.splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
             // 
-            this.splitContainer.Panel1.AccessibleDescription = null;
-            this.splitContainer.Panel1.AccessibleName = null;
-            resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
-            this.splitContainer.Panel1.BackgroundImage = null;
             this.splitContainer.Panel1.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer.Panel1.Controls.Add(this.RuleMenu);
-            this.splitContainer.Panel1.Font = null;
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.AccessibleDescription = null;
-            this.splitContainer.Panel2.AccessibleName = null;
-            resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
-            this.splitContainer.Panel2.BackgroundImage = null;
-            this.splitContainer.Panel2.Controls.Add(this.FileGrid);
+            this.splitContainer.Panel2.Controls.Add(this.fileGrid);
             this.splitContainer.Panel2.Controls.Add(this.TargetMenu);
             this.splitContainer.Panel2.Controls.Add(this.StatusBar);
-            this.splitContainer.Panel2.Font = null;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.AccessibleDescription = null;
-            this.tableLayoutPanel1.AccessibleName = null;
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackgroundImage = null;
             this.tableLayoutPanel1.Controls.Add(this.ruleGrid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Font = null;
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // ruleGrid
+            // 
+            this.ruleGrid.BackColor = System.Drawing.SystemColors.Window;
+            this.ruleGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ruleGrid.ColumnsCount = 5;
+            resources.ApplyResources(this.ruleGrid, "ruleGrid");
+            this.ruleGrid.EnableSort = true;
+            this.ruleGrid.FixedRows = 1;
+            this.ruleGrid.Name = "ruleGrid";
+            this.ruleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.ruleGrid.RowsCount = 1;
+            this.ruleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
+            this.ruleGrid.SpecialKeys = ((SourceGrid.GridSpecialKeys)(((SourceGrid.GridSpecialKeys.PageDownUp | SourceGrid.GridSpecialKeys.Enter)
+                        | SourceGrid.GridSpecialKeys.Escape)));
+            this.ruleGrid.TabStop = true;
+            this.ruleGrid.ToolTipText = " ";
             // 
             // panel1
             // 
-            this.panel1.AccessibleDescription = null;
-            this.panel1.AccessibleName = null;
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
             resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.BackgroundImage = null;
-            this.panel1.Controls.Add(this.newFormatLabel);
-            this.panel1.Controls.Add(this.newFormatTextBox);
-            this.panel1.Font = null;
             this.panel1.Name = "panel1";
             // 
-            // newFormatLabel
+            // tableLayoutPanel2
             // 
-            this.newFormatLabel.AccessibleDescription = null;
-            this.newFormatLabel.AccessibleName = null;
-            resources.ApplyResources(this.newFormatLabel, "newFormatLabel");
-            this.newFormatLabel.Font = null;
-            this.newFormatLabel.Name = "newFormatLabel";
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.newFormatTextBox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.newFormatLabel, 0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // newFormatTextBox
             // 
-            this.newFormatTextBox.AccessibleDescription = null;
-            this.newFormatTextBox.AccessibleName = null;
             resources.ApplyResources(this.newFormatTextBox, "newFormatTextBox");
-            this.newFormatTextBox.BackgroundImage = null;
-            this.newFormatTextBox.Font = null;
             this.newFormatTextBox.Name = "newFormatTextBox";
-            this.newFormatTextBox.TextChanged += new System.EventHandler(this.newFormatTextBox_TextChanged);
+            // 
+            // newFormatLabel
+            // 
+            resources.ApplyResources(this.newFormatLabel, "newFormatLabel");
+            this.newFormatLabel.Name = "newFormatLabel";
             // 
             // RuleMenu
             // 
-            this.RuleMenu.AccessibleDescription = null;
-            this.RuleMenu.AccessibleName = null;
-            resources.ApplyResources(this.RuleMenu, "RuleMenu");
-            this.RuleMenu.BackgroundImage = null;
-            this.RuleMenu.Font = null;
             this.RuleMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RuleNewButton,
             this.RuleOpenButton,
@@ -157,219 +147,160 @@
             this.addDeleteButton,
             this.addReplaceButton,
             this.OptionsButton});
+            resources.ApplyResources(this.RuleMenu, "RuleMenu");
             this.RuleMenu.Name = "RuleMenu";
             // 
             // RuleNewButton
             // 
-            this.RuleNewButton.AccessibleDescription = null;
-            this.RuleNewButton.AccessibleName = null;
-            resources.ApplyResources(this.RuleNewButton, "RuleNewButton");
-            this.RuleNewButton.BackgroundImage = null;
             this.RuleNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RuleNewButton, "RuleNewButton");
             this.RuleNewButton.Name = "RuleNewButton";
             this.RuleNewButton.Click += new System.EventHandler(this.RuleNewButton_Click);
             // 
             // RuleOpenButton
             // 
-            this.RuleOpenButton.AccessibleDescription = null;
-            this.RuleOpenButton.AccessibleName = null;
-            resources.ApplyResources(this.RuleOpenButton, "RuleOpenButton");
-            this.RuleOpenButton.BackgroundImage = null;
             this.RuleOpenButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RuleOpenButton, "RuleOpenButton");
             this.RuleOpenButton.Name = "RuleOpenButton";
             this.RuleOpenButton.Click += new System.EventHandler(this.RuleOpenButton_Click);
             // 
             // RuleSaveButton
             // 
-            this.RuleSaveButton.AccessibleDescription = null;
-            this.RuleSaveButton.AccessibleName = null;
-            resources.ApplyResources(this.RuleSaveButton, "RuleSaveButton");
-            this.RuleSaveButton.BackgroundImage = null;
             this.RuleSaveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RuleSaveButton, "RuleSaveButton");
             this.RuleSaveButton.Name = "RuleSaveButton";
             this.RuleSaveButton.Click += new System.EventHandler(this.RuleSaveButton_Click);
             // 
             // RuleSaveAsButton
             // 
-            this.RuleSaveAsButton.AccessibleDescription = null;
-            this.RuleSaveAsButton.AccessibleName = null;
-            resources.ApplyResources(this.RuleSaveAsButton, "RuleSaveAsButton");
-            this.RuleSaveAsButton.BackgroundImage = null;
             this.RuleSaveAsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RuleSaveAsButton, "RuleSaveAsButton");
             this.RuleSaveAsButton.Name = "RuleSaveAsButton";
             this.RuleSaveAsButton.Click += new System.EventHandler(this.RuleSaveAsButton_Click);
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.AccessibleDescription = null;
-            this.toolStripSeparator3.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // insertRuleLabel
             // 
-            this.insertRuleLabel.AccessibleDescription = null;
-            this.insertRuleLabel.AccessibleName = null;
-            resources.ApplyResources(this.insertRuleLabel, "insertRuleLabel");
-            this.insertRuleLabel.BackgroundImage = null;
             this.insertRuleLabel.Name = "insertRuleLabel";
+            resources.ApplyResources(this.insertRuleLabel, "insertRuleLabel");
             // 
             // addCopyButton
             // 
-            this.addCopyButton.AccessibleDescription = null;
-            this.addCopyButton.AccessibleName = null;
-            resources.ApplyResources(this.addCopyButton, "addCopyButton");
-            this.addCopyButton.BackgroundImage = null;
             this.addCopyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.addCopyButton, "addCopyButton");
             this.addCopyButton.Name = "addCopyButton";
             this.addCopyButton.Click += new System.EventHandler(this.addCopyButton_Click);
             // 
             // addDeleteButton
             // 
-            this.addDeleteButton.AccessibleDescription = null;
-            this.addDeleteButton.AccessibleName = null;
-            resources.ApplyResources(this.addDeleteButton, "addDeleteButton");
-            this.addDeleteButton.BackgroundImage = null;
             this.addDeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.addDeleteButton, "addDeleteButton");
             this.addDeleteButton.Name = "addDeleteButton";
             this.addDeleteButton.Click += new System.EventHandler(this.addDeleteButton_Click);
             // 
             // addReplaceButton
             // 
-            this.addReplaceButton.AccessibleDescription = null;
-            this.addReplaceButton.AccessibleName = null;
-            resources.ApplyResources(this.addReplaceButton, "addReplaceButton");
-            this.addReplaceButton.BackgroundImage = null;
             this.addReplaceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.addReplaceButton, "addReplaceButton");
             this.addReplaceButton.Name = "addReplaceButton";
             this.addReplaceButton.Click += new System.EventHandler(this.addReplaceButton_Click);
             // 
             // OptionsButton
             // 
-            this.OptionsButton.AccessibleDescription = null;
-            this.OptionsButton.AccessibleName = null;
             this.OptionsButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            resources.ApplyResources(this.OptionsButton, "OptionsButton");
-            this.OptionsButton.BackgroundImage = null;
             this.OptionsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.OptionsButton, "OptionsButton");
             this.OptionsButton.Name = "OptionsButton";
             this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
-            // FileGrid
+            // fileGrid
             // 
-            this.FileGrid.AccessibleDescription = null;
-            this.FileGrid.AccessibleName = null;
-            resources.ApplyResources(this.FileGrid, "FileGrid");
-            this.FileGrid.AutoStretchColumnsToFitWidth = true;
-            this.FileGrid.BackColor = System.Drawing.SystemColors.Window;
-            this.FileGrid.BackgroundImage = null;
-            this.FileGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FileGrid.ColumnsCount = 2;
-            this.FileGrid.EnableSort = false;
-            this.FileGrid.FixedRows = 1;
-            this.FileGrid.Font = null;
-            this.FileGrid.Name = "FileGrid";
-            this.FileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.FileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.FileGrid.TabStop = true;
-            this.FileGrid.ToolTipText = "";
+            this.fileGrid.AutoStretchColumnsToFitWidth = true;
+            this.fileGrid.BackColor = System.Drawing.SystemColors.Window;
+            this.fileGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fileGrid.ColumnsCount = 2;
+            resources.ApplyResources(this.fileGrid, "fileGrid");
+            this.fileGrid.EnableSort = false;
+            this.fileGrid.FixedRows = 1;
+            this.fileGrid.Name = "fileGrid";
+            this.fileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.fileGrid.RowsCount = 1;
+            this.fileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.fileGrid.TabStop = true;
+            this.fileGrid.ToolTipText = " ";
             // 
             // TargetMenu
             // 
-            this.TargetMenu.AccessibleDescription = null;
-            this.TargetMenu.AccessibleName = null;
-            resources.ApplyResources(this.TargetMenu, "TargetMenu");
-            this.TargetMenu.BackgroundImage = null;
-            this.TargetMenu.Font = null;
             this.TargetMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TargetSelectButton,
             this.RenamePreviewButton,
             this.RenameResetButton,
             this.toolStripSeparator1,
             this.RenameButton});
+            resources.ApplyResources(this.TargetMenu, "TargetMenu");
             this.TargetMenu.Name = "TargetMenu";
             // 
             // TargetSelectButton
             // 
-            this.TargetSelectButton.AccessibleDescription = null;
-            this.TargetSelectButton.AccessibleName = null;
-            resources.ApplyResources(this.TargetSelectButton, "TargetSelectButton");
-            this.TargetSelectButton.BackgroundImage = null;
             this.TargetSelectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.TargetSelectButton, "TargetSelectButton");
             this.TargetSelectButton.Name = "TargetSelectButton";
             this.TargetSelectButton.Click += new System.EventHandler(this.TargetSelectButton_Click);
             // 
             // RenamePreviewButton
             // 
-            this.RenamePreviewButton.AccessibleDescription = null;
-            this.RenamePreviewButton.AccessibleName = null;
-            resources.ApplyResources(this.RenamePreviewButton, "RenamePreviewButton");
-            this.RenamePreviewButton.BackgroundImage = null;
             this.RenamePreviewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RenamePreviewButton, "RenamePreviewButton");
             this.RenamePreviewButton.Name = "RenamePreviewButton";
             this.RenamePreviewButton.Click += new System.EventHandler(this.TargetPrevewRename_Click);
             // 
             // RenameResetButton
             // 
-            this.RenameResetButton.AccessibleDescription = null;
-            this.RenameResetButton.AccessibleName = null;
-            resources.ApplyResources(this.RenameResetButton, "RenameResetButton");
-            this.RenameResetButton.BackgroundImage = null;
             this.RenameResetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RenameResetButton, "RenameResetButton");
             this.RenameResetButton.Name = "RenameResetButton";
             this.RenameResetButton.Click += new System.EventHandler(this.ResetRenameButton_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.AccessibleDescription = null;
-            this.toolStripSeparator1.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // RenameButton
             // 
-            this.RenameButton.AccessibleDescription = null;
-            this.RenameButton.AccessibleName = null;
-            resources.ApplyResources(this.RenameButton, "RenameButton");
-            this.RenameButton.BackgroundImage = null;
             this.RenameButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.RenameButton, "RenameButton");
             this.RenameButton.Name = "RenameButton";
             this.RenameButton.Click += new System.EventHandler(this.RenameButton_Click);
             // 
             // StatusBar
             // 
-            this.StatusBar.AccessibleDescription = null;
-            this.StatusBar.AccessibleName = null;
-            resources.ApplyResources(this.StatusBar, "StatusBar");
-            this.StatusBar.BackgroundImage = null;
-            this.StatusBar.Font = null;
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.StatusLabel});
+            resources.ApplyResources(this.StatusBar, "StatusBar");
             this.StatusBar.Name = "StatusBar";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.AccessibleDescription = null;
-            this.toolStripStatusLabel1.AccessibleName = null;
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
-            this.toolStripStatusLabel1.BackgroundImage = null;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
             // StatusLabel
             // 
-            this.StatusLabel.AccessibleDescription = null;
-            this.StatusLabel.AccessibleName = null;
-            resources.ApplyResources(this.StatusLabel, "StatusLabel");
-            this.StatusLabel.BackgroundImage = null;
             this.StatusLabel.Name = "StatusLabel";
+            resources.ApplyResources(this.StatusLabel, "StatusLabel");
             // 
             // TargetDialog
             // 
-            resources.ApplyResources(this.TargetDialog, "TargetDialog");
             this.TargetDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            resources.ApplyResources(this.TargetDialog, "TargetDialog");
             this.TargetDialog.ShowNewFolderButton = false;
             // 
             // RuleOpenDialog
@@ -379,39 +310,12 @@
             // RuleSaveAsDialog
             // 
             this.RuleSaveAsDialog.DefaultExt = "txt";
-            resources.ApplyResources(this.RuleSaveAsDialog, "RuleSaveAsDialog");
-            // 
-            // ruleGrid
-            // 
-            this.ruleGrid.AccessibleDescription = null;
-            this.ruleGrid.AccessibleName = null;
-            resources.ApplyResources(this.ruleGrid, "ruleGrid");
-            this.ruleGrid.BackColor = System.Drawing.SystemColors.Window;
-            this.ruleGrid.BackgroundImage = null;
-            this.ruleGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ruleGrid.ColumnsCount = 5;
-            this.ruleGrid.EnableSort = true;
-            this.ruleGrid.FixedRows = 1;
-            this.ruleGrid.Font = null;
-            this.ruleGrid.Name = "ruleGrid";
-            this.ruleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.ruleGrid.RowsCount = 1;
-            this.ruleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.ruleGrid.SpecialKeys = ((SourceGrid.GridSpecialKeys)(((SourceGrid.GridSpecialKeys.PageDownUp | SourceGrid.GridSpecialKeys.Enter)
-                        | SourceGrid.GridSpecialKeys.Escape)));
-            this.ruleGrid.TabStop = true;
-            this.ruleGrid.ToolTipText = "";
             // 
             // MainForm
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.Controls.Add(this.splitContainer);
-            this.Font = null;
-            this.Icon = null;
             this.Name = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -423,6 +327,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.RuleMenu.ResumeLayout(false);
             this.RuleMenu.PerformLayout();
             this.TargetMenu.ResumeLayout(false);
@@ -453,8 +359,7 @@
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.ToolStripButton RenamePreviewButton;
         private System.Windows.Forms.ToolStripButton RenameResetButton;
-        private SourceGrid.Grid FileGrid;
-        private System.Windows.Forms.TextBox newFormatTextBox;
+        private UniformRenamer.Core.FileGrid fileGrid;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel insertRuleLabel;
         private System.Windows.Forms.ToolStripButton addCopyButton;
@@ -463,8 +368,10 @@
         private UniformRenamer.Core.RuleGrid ruleGrid;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label newFormatLabel;
         private System.Windows.Forms.ToolStripButton OptionsButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TextBox newFormatTextBox;
+        private System.Windows.Forms.Label newFormatLabel;
     }
 }
 

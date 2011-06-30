@@ -20,11 +20,7 @@
     public partial class MainForm : Form
     {
         private CustomEvents onChangeEventsController;
-        private EditorBase oneClickEditor;
         private RuleList rules;
-        //Column constant
-        private const int FileOldNameCol = 0;
-        private const int FileNewNameCol = 1;
 
         private bool inPreview = false;
 
@@ -103,21 +99,11 @@
 
         private void SetupFileGrid()
         {
-            FileGrid.Rows.Insert(0);
-            FileGrid[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
-            FileGrid[0, FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
-            //ListGrid.Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.EnableStretch;
-            FileGrid.AutoSizeCells();
-            FileGrid.PreviewKeyDown += delegate(object eventSender, PreviewKeyDownEventArgs karg)
-            {
-                if (karg.KeyCode == Keys.A && karg.Modifiers == Keys.Control)
-                {
-                    FileGrid.Selection.SelectRange(new Range(new Position(1, 0), new Position(FileGrid.RowsCount - 1, FileNewNameCol)), true);
-                }
+            fileGrid.Rows.Insert(0);
+            fileGrid[0, 0] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            fileGrid[0, 1] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
 
-            };
-            oneClickEditor = SourceGrid.Cells.Editors.Factory.Create(typeof(string));
-            oneClickEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.AnyKey | SourceGrid.EditableMode.SingleClick;
+            fileGrid.AutoSizeCells();
 
             TargetDialog.SelectedPath = Properties.Settings.Default.LastTargetPath;
             FillFileGrid(Properties.Settings.Default.LastTargetPath);
@@ -125,20 +111,8 @@
 
         private void RenameButton_Click(object sender, EventArgs e)
         {
-            FileGrid.Focus();
-            if (MessageBox.Show(Textual.RenameWarning, String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
-            {
-                for (int i = 0; i < FileGrid.Rows.Count; i++)
-                {
-                    if (FileGrid.Selection.IsSelectedRow(i))
-                    {
-                        if (!FileGrid[i, FileOldNameCol].ToString().Equals(FileGrid[i, FileNewNameCol].ToString()))
-                        {
-                            ((FileName)FileGrid[i, FileOldNameCol].Value).Rename(FileGrid[i, FileNewNameCol].Value.ToString());
-                        }
-                    }
-                }
-            }
+            fileGrid.Focus();
+            fileGrid.Rename();
         }
 
         private void LoadFile(string path)
@@ -192,56 +166,14 @@
         }
         private void PreviewRename(RuleList rules)
         {
-            FileName fn = null;
-            for (int i = 1; i < FileGrid.RowsCount; i++)
-            {
-                fn = (FileName)FileGrid[i, FileOldNameCol].Value;
-                string newName = rules.Convert(fn.GetRenamableNamePart());
-
-                if (Properties.Settings.Default.RemoveBrackets)
-                {
-                    newName = newName.Replace("()", String.Empty).Replace("[]", String.Empty).Replace("{}", String.Empty);
-                }
-
-                if (Properties.Settings.Default.RemoveMultipleSpace)
-                {
-                    newName = Regex.Replace(newName,@"\s+", " ");
-                }
-
-                if (Properties.Settings.Default.RemoveEndSpace)
-                {
-                    newName = newName.Trim();
-                }
-
-
-                if (newName.Length > 0)
-                {
-                    if (!fn.IsDirectory())
-                    {
-                        FileGrid[i, FileNewNameCol].Value = newName + fn.GetExtension();
-                    }
-                    else
-                    {
-                        FileGrid[i, FileNewNameCol].Value = newName;
-                    }
-                }
-                else
-                {
-                    FileGrid[i, FileNewNameCol].Value = String.Empty;
-                }
-            }
-            FileGrid.AutoSizeCells();
-
+            fileGrid.PreviewRename(rules);
             SetStatus(String.Empty);
         }
 
 
         private void ResetRenameButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < FileGrid.Rows.Count; i++)
-            {
-                FileGrid[i, FileNewNameCol].Value = FileGrid[i, FileOldNameCol].ToString();
-            }
+            fileGrid.ResetRename();
         }
 
         private void RuleNewButton_Click(object sender, EventArgs e)
@@ -301,37 +233,7 @@
         //        PreviewRename();
         //}
 
-        private void FillFileGrid(string path)
-        {
-            if (FileGrid.RowsCount != 1)
-            {
-                FileGrid.Redim(1, 2);
-            }
-            if (path.Equals(String.Empty))
-                return;
 
-            SetRenameButtonsEnabled(true);
-            int r = 1;
-            foreach (string s in Directory.GetDirectories(path))
-            {
-                FileName fs = new FileName(s);
-
-                FileGrid.Rows.Insert(r);
-                FileGrid[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
-                FileGrid[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
-                r++;
-            }
-            foreach (string s in Directory.GetFiles(path))
-            {
-                FileName fs = new FileName(s);
-
-                FileGrid.Rows.Insert(r);
-                FileGrid[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
-                FileGrid[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
-                r++;
-            }
-            FileGrid.AutoSizeCells();
-        }
 
         private void SetRenameButtonsEnabled(bool b)
         {
@@ -355,6 +257,12 @@
             {
                 PreviewRename();
             }
+        }
+
+        private void FillFileGrid(string p)
+        {
+            fileGrid.FillFileGrid(p);
+            SetRenameButtonsEnabled(true);
         }
 
         public void SetStatus(string text)

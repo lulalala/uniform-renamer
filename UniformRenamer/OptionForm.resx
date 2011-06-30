@@ -129,22 +129,20 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cbRemoveEndSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 16</value>
+    <value>248, 22</value>
   </data>
-  <data name="&gt;&gt;cbRemoveEndSpace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbRemoveBrackets.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;cancelButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;cbRemoveBrackets.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="cbRemoveMultipleSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 16</value>
-  </data>
-  <data name="&gt;&gt;cbRemoveEndSpace.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;cbRemoveEndSpace.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;cbRemoveMultipleSpace.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -179,47 +177,62 @@
   <data name="&gt;&gt;cbRemoveBrackets.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;okayButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="cbRemoveBrackets.Text" xml:space="preserve">
     <value>Remove empty brackets () [] {}</value>
   </data>
   <data name="&gt;&gt;okayButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="cbRemoveMultipleSpace.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="cbRemoveBrackets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 22</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>292, 135</value>
+    <value>330, 165</value>
   </data>
   <data name="cbRemoveBrackets.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 13</value>
   </data>
-  <data name="cbRemoveBrackets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 16</value>
+  <data name="okayButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="&gt;&gt;okayButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="cbRemoveMultipleSpace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 36</value>
+    <value>13, 43</value>
+  </data>
+  <data name="cbRemoveMultipleSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 22</value>
   </data>
   <data name="cbRemoveEndSpace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 59</value>
+    <value>13, 73</value>
   </data>
   <data name="okayButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 100</value>
+    <value>85, 118</value>
   </data>
-  <data name="&gt;&gt;cancelButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="cancelButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="cbRemoveBrackets.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 100</value>
+    <value>205, 118</value>
   </data>
   <data name="&gt;&gt;cancelButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="cbRemoveMultipleSpace.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 34</value>
   </data>
   <data name="&gt;&gt;cancelButton.Name" xml:space="preserve">
     <value>cancelButton</value>
@@ -231,19 +244,22 @@
     <value>2</value>
   </data>
   <data name="okayButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>112, 34</value>
   </data>
   <data name="&gt;&gt;cbRemoveBrackets.Name" xml:space="preserve">
     <value>cbRemoveBrackets</value>
+  </data>
+  <data name="cbRemoveEndSpace.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="okayButton.Text" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+    <value>9, 18</value>
   </data>
-  <data name="&gt;&gt;cbRemoveEndSpace.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;cbRemoveEndSpace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="cbRemoveEndSpace.Text" xml:space="preserve">
     <value>Trim spaces at end of the string</value>
@@ -257,19 +273,16 @@
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>OptionForm</value>
   </data>
-  <data name="cbRemoveBrackets.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;cbRemoveEndSpace.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;okayButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="cbRemoveMultipleSpace.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Chinese (Traditional)</value>
   </metadata>
 </root>
