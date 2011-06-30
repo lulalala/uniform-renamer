@@ -154,12 +154,45 @@
     <value>ruleGrid</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4197.38503, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4198.39477, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;ruleGrid.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="newFormatTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="newFormatTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 3</value>
+  </data>
+  <data name="newFormatTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="newFormatTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>930, 29</value>
+  </data>
+  <data name="newFormatTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;newFormatTextBox.Name" xml:space="preserve">
+    <value>newFormatTextBox</value>
+  </data>
+  <data name="&gt;&gt;newFormatTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;newFormatTextBox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;newFormatTextBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="newFormatLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -169,16 +202,16 @@
     <value>NoControl</value>
   </data>
   <data name="newFormatLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 10</value>
+    <value>7, 7</value>
   </data>
   <data name="newFormatLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>4, 4, 4, 0</value>
   </data>
   <data name="newFormatLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 18</value>
   </data>
   <data name="newFormatLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="newFormatLabel.Text" xml:space="preserve">
     <value>New Format</value>
@@ -190,37 +223,43 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;newFormatLabel.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;newFormatLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <data name="newFormatTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="newFormatTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 4</value>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="newFormatTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="tableLayoutPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="newFormatTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>895, 29</value>
+  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="newFormatTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1038, 38</value>
   </data>
-  <data name="&gt;&gt;newFormatTextBox.Name" xml:space="preserve">
-    <value>newFormatTextBox</value>
+  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;newFormatTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;newFormatTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;newFormatTextBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="newFormatTextBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="newFormatLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -549,7 +588,7 @@
     <value>fileGrid</value>
   </data>
   <data name="&gt;&gt;fileGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4197.38503, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4198.39477, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileGrid.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
@@ -794,6 +833,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1038, 710</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

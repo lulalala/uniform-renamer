@@ -100,6 +100,8 @@
         private void SetupFileGrid()
         {
             fileGrid.Rows.Insert(0);
+            fileGrid[0, 0] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            fileGrid[0, 1] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
 
             fileGrid.AutoSizeCells();
 

@@ -58,9 +58,9 @@ namespace UniformRenamer.Core
 
             };
 
-            //Header
-            this[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
-            this[0, FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
+            //Not sure why it does not work here
+            //this[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            //this[0, FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
 
             //AutoSizeCells();
         }
