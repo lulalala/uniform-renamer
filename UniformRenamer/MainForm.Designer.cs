@@ -31,7 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ruleGrid = new UniformRenamer.Core.RuleGrid();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.newFormatTextBox = new System.Windows.Forms.TextBox();
+            this.newFormatLabel = new System.Windows.Forms.Label();
             this.RuleMenu = new System.Windows.Forms.ToolStrip();
             this.RuleNewButton = new System.Windows.Forms.ToolStripButton();
             this.RuleOpenButton = new System.Windows.Forms.ToolStripButton();
@@ -43,6 +47,7 @@
             this.addDeleteButton = new System.Windows.Forms.ToolStripButton();
             this.addReplaceButton = new System.Windows.Forms.ToolStripButton();
             this.OptionsButton = new System.Windows.Forms.ToolStripButton();
+            this.fileGrid = new UniformRenamer.Core.FileGrid();
             this.TargetMenu = new System.Windows.Forms.ToolStrip();
             this.TargetSelectButton = new System.Windows.Forms.ToolStripButton();
             this.RenamePreviewButton = new System.Windows.Forms.ToolStripButton();
@@ -55,20 +60,15 @@
             this.TargetDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.RuleOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RuleSaveAsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.newFormatLabel = new System.Windows.Forms.Label();
-            this.newFormatTextBox = new System.Windows.Forms.TextBox();
-            this.ruleGrid = new UniformRenamer.Core.RuleGrid();
-            this.fileGrid = new UniformRenamer.Core.FileGrid();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.RuleMenu.SuspendLayout();
             this.TargetMenu.SuspendLayout();
             this.StatusBar.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -94,11 +94,45 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // ruleGrid
+            // 
+            this.ruleGrid.BackColor = System.Drawing.SystemColors.Window;
+            this.ruleGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ruleGrid.ColumnsCount = 5;
+            resources.ApplyResources(this.ruleGrid, "ruleGrid");
+            this.ruleGrid.EnableSort = true;
+            this.ruleGrid.FixedRows = 1;
+            this.ruleGrid.Name = "ruleGrid";
+            this.ruleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.ruleGrid.RowsCount = 1;
+            this.ruleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
+            this.ruleGrid.SpecialKeys = ((SourceGrid.GridSpecialKeys)(((SourceGrid.GridSpecialKeys.PageDownUp | SourceGrid.GridSpecialKeys.Enter)
+                        | SourceGrid.GridSpecialKeys.Escape)));
+            this.ruleGrid.TabStop = true;
+            this.ruleGrid.ToolTipText = " ";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.newFormatTextBox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.newFormatLabel, 0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // newFormatTextBox
+            // 
+            resources.ApplyResources(this.newFormatTextBox, "newFormatTextBox");
+            this.newFormatTextBox.Name = "newFormatTextBox";
+            // 
+            // newFormatLabel
+            // 
+            resources.ApplyResources(this.newFormatLabel, "newFormatLabel");
+            this.newFormatLabel.Name = "newFormatLabel";
             // 
             // RuleMenu
             // 
@@ -184,6 +218,22 @@
             this.OptionsButton.Name = "OptionsButton";
             this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
+            // fileGrid
+            // 
+            this.fileGrid.AutoStretchColumnsToFitWidth = true;
+            this.fileGrid.BackColor = System.Drawing.SystemColors.Window;
+            this.fileGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fileGrid.ColumnsCount = 2;
+            resources.ApplyResources(this.fileGrid, "fileGrid");
+            this.fileGrid.EnableSort = false;
+            this.fileGrid.FixedRows = 1;
+            this.fileGrid.Name = "fileGrid";
+            this.fileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.fileGrid.RowsCount = 1;
+            this.fileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.fileGrid.TabStop = true;
+            this.fileGrid.ToolTipText = " ";
+            // 
             // TargetMenu
             // 
             this.TargetMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -261,56 +311,6 @@
             // 
             this.RuleSaveAsDialog.DefaultExt = "txt";
             // 
-            // tableLayoutPanel2
-            // 
-            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.newFormatTextBox, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.newFormatLabel, 0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            // 
-            // newFormatLabel
-            // 
-            resources.ApplyResources(this.newFormatLabel, "newFormatLabel");
-            this.newFormatLabel.Name = "newFormatLabel";
-            // 
-            // newFormatTextBox
-            // 
-            resources.ApplyResources(this.newFormatTextBox, "newFormatTextBox");
-            this.newFormatTextBox.Name = "newFormatTextBox";
-            // 
-            // ruleGrid
-            // 
-            this.ruleGrid.BackColor = System.Drawing.SystemColors.Window;
-            this.ruleGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ruleGrid.ColumnsCount = 5;
-            resources.ApplyResources(this.ruleGrid, "ruleGrid");
-            this.ruleGrid.EnableSort = true;
-            this.ruleGrid.FixedRows = 1;
-            this.ruleGrid.Name = "ruleGrid";
-            this.ruleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.ruleGrid.RowsCount = 1;
-            this.ruleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.ruleGrid.SpecialKeys = ((SourceGrid.GridSpecialKeys)(((SourceGrid.GridSpecialKeys.PageDownUp | SourceGrid.GridSpecialKeys.Enter)
-                        | SourceGrid.GridSpecialKeys.Escape)));
-            this.ruleGrid.TabStop = true;
-            this.ruleGrid.ToolTipText = " ";
-            // 
-            // fileGrid
-            // 
-            this.fileGrid.AutoStretchColumnsToFitWidth = true;
-            this.fileGrid.BackColor = System.Drawing.SystemColors.Window;
-            this.fileGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.fileGrid.ColumnsCount = 2;
-            resources.ApplyResources(this.fileGrid, "fileGrid");
-            this.fileGrid.EnableSort = false;
-            this.fileGrid.FixedRows = 1;
-            this.fileGrid.Name = "fileGrid";
-            this.fileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.fileGrid.RowsCount = 1;
-            this.fileGrid.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.fileGrid.TabStop = true;
-            this.fileGrid.ToolTipText = " ";
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -327,14 +327,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.RuleMenu.ResumeLayout(false);
             this.RuleMenu.PerformLayout();
             this.TargetMenu.ResumeLayout(false);
             this.TargetMenu.PerformLayout();
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
