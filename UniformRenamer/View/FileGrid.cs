@@ -25,13 +25,15 @@ namespace UniformRenamer.Core
             //SpecialKeys = GridSpecialKeys.None | GridSpecialKeys.Enter | GridSpecialKeys.Escape | GridSpecialKeys.PageDownUp;
             Rows.Insert(0);
 
-            AutoStretchColumnsToFitWidth = true;
+            //AutoStretchColumnsToFitWidth = true;
             BackColor = System.Drawing.SystemColors.Window;
             BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             ColumnsCount = 2;
             Dock = System.Windows.Forms.DockStyle.Fill;
             EnableSort = false;
             FixedRows = 1;
+
+            //Columns[1].AutoSizeMode = SourceGrid.AutoSizeMode.EnableAutoSizeView;
 
             OptimizeMode = CellOptimizeMode.ForRows;
             SelectionMode = GridSelectionMode.Row;
@@ -63,6 +65,13 @@ namespace UniformRenamer.Core
             //this[0, FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
 
             //AutoSizeCells();
+
+            Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
+            Columns[1].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
+            MinimumWidth = 300;
+            AutoSizeCells();
+            AutoStretchColumnsToFitWidth = true;
+            Columns.StretchToFit();
         }
 
         public void Rename()

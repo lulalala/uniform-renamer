@@ -154,7 +154,7 @@
     <value>ruleGrid</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4198.39562, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4198.40731, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -588,7 +588,7 @@
     <value>fileGrid</value>
   </data>
   <data name="&gt;&gt;fileGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4198.39562, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4198.40731, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileGrid.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
