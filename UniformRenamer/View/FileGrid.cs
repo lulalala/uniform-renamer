@@ -75,7 +75,10 @@ namespace UniformRenamer.Core
                     {
                         if (!this[i, FileOldNameCol].ToString().Equals(this[i, FileNewNameCol].ToString()))
                         {
-                            ((FileName)this[i, FileOldNameCol].Value).Rename(this[i, FileNewNameCol].Value.ToString());
+                            ICell newNameCell = this[i, FileNewNameCol];
+                            ((FileName)this[i, FileOldNameCol].Value).Rename(newNameCell.Value.ToString());
+                            newNameCell.Controller.OnValueChanged(new CellContext(this, new Position(i,FileNewNameCol), newNameCell), new EventArgs());
+                            this.Refresh();
                         }
                     }
                 }
@@ -158,9 +161,9 @@ namespace UniformRenamer.Core
 
                 Rows.Insert(r);
                 this[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
-                this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(String.Empty, oneClickEditor);
+                this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
                 this[r, FileNewNameCol].AddController(new ValueChangedEvent());
-                this[r, FileNewNameCol].Value = fs.ToString();
+                this[r, FileNewNameCol].Controller.OnValueChanged(new CellContext(this, new Position(r, FileNewNameCol), this[r, FileNewNameCol]), new EventArgs());
                 r++;
             }
         }
