@@ -55,6 +55,8 @@
         public void Rename(string newName)
         {
             string newPath = Path.Combine(Path.GetDirectoryName(path), newName);
+            if (File.Exists(newPath) || Directory.Exists(newPath))
+                throw new Exception("\"" + newName + "\" " + Textual.ErrorFileExists);
 
             if ((File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory)
                 Directory.Move(path, newPath);

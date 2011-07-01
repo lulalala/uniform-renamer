@@ -88,11 +88,20 @@ namespace UniformRenamer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Two items have the same new name, so renaming is canceled.
+        ///   Looks up a localized string similar to Two items have the same new name, therefore renaming is canceled.
         /// </summary>
         internal static string ErrorDuplicateNewName {
             get {
                 return ResourceManager.GetString("ErrorDuplicateNewName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to already exists, therefore renaming is stopped..
+        /// </summary>
+        internal static string ErrorFileExists {
+            get {
+                return ResourceManager.GetString("ErrorFileExists", resourceCulture);
             }
         }
         

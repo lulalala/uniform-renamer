@@ -129,6 +129,9 @@
   <data name="ErrorDuplicateNewName" xml:space="preserve">
     <value>兩個檔案有同樣的新名字，所以更名取消。</value>
   </data>
+  <data name="ErrorFileExists" xml:space="preserve">
+    <value>這個檔名的檔案已經存在，所以更名中止。</value>
+  </data>
   <data name="ErrorReplaceRule" xml:space="preserve">
     <value>替換步驟 Replace 至少需要三個由 tab 分隔的字串</value>
   </data>
