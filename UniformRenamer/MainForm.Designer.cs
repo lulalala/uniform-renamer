@@ -227,6 +227,7 @@
             resources.ApplyResources(this.fileGrid, "fileGrid");
             this.fileGrid.EnableSort = false;
             this.fileGrid.FixedRows = 1;
+            this.fileGrid.MinimumWidth = 300;
             this.fileGrid.Name = "fileGrid";
             this.fileGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.fileGrid.RowsCount = 1;

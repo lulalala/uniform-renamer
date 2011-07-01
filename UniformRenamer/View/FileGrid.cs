@@ -10,6 +10,7 @@ using System.Text;
 using System.IO;
 using DevAge.Drawing;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace UniformRenamer.Core
 {
@@ -78,17 +79,45 @@ namespace UniformRenamer.Core
         {
             if (MessageBox.Show(Textual.RenameWarning, String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
             {
-                for (int i = 0; i < Rows.Count; i++)
+                //for (int i = 0; i < Rows.Count; i++)
+                //{
+                //    if (Selection.IsSelectedRow(i))
+                //    {
+                //        if (!this[i, FileOldNameCol].ToString().Equals(this[i, FileNewNameCol].ToString()))
+                //        {
+                //            ICell newNameCell = this[i, FileNewNameCol];
+                //            ((FileName)this[i, FileOldNameCol].Value).Rename(newNameCell.Value.ToString());
+                //            newNameCell.Controller.OnValueChanged(new CellContext(this, new Position(i,FileNewNameCol), newNameCell), new EventArgs());
+                //            this.Refresh();
+                //        }
+                //    }
+                //}
+                int[] indexes = Selection.GetSelectionRegion().GetRowsIndex();
+
+                bool hasDuplicate = false;
+                HashSet<String> names = new HashSet<String>();
+                foreach (int i in indexes)
                 {
-                    if (Selection.IsSelectedRow(i))
+                    if (!names.Add(this[i, FileNewNameCol].ToString()))
                     {
-                        if (!this[i, FileOldNameCol].ToString().Equals(this[i, FileNewNameCol].ToString()))
-                        {
-                            ICell newNameCell = this[i, FileNewNameCol];
-                            ((FileName)this[i, FileOldNameCol].Value).Rename(newNameCell.Value.ToString());
-                            newNameCell.Controller.OnValueChanged(new CellContext(this, new Position(i,FileNewNameCol), newNameCell), new EventArgs());
-                            this.Refresh();
-                        }
+                        hasDuplicate = true;
+                        break;
+                    }
+                }
+                if (hasDuplicate)
+                {
+                    MessageBox.Show(Textual.ErrorDuplicateNewName);
+                    throw new Exception(Textual.ErrorDuplicateNewName);
+                }
+
+                foreach (int i in indexes)
+                {
+                    if (!this[i, FileOldNameCol].ToString().Equals(this[i, FileNewNameCol].ToString()))
+                    {
+                        ICell newNameCell = this[i, FileNewNameCol];
+                        ((FileName)this[i, FileOldNameCol].Value).Rename(newNameCell.Value.ToString());
+                        newNameCell.Controller.OnValueChanged(new CellContext(this, new Position(i, FileNewNameCol), newNameCell), new EventArgs());
+                        this.Refresh();
                     }
                 }
             }

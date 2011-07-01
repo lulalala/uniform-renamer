@@ -126,6 +126,9 @@
   <data name="ErrorDeleteRule" xml:space="preserve">
     <value>Delete rule empty</value>
   </data>
+  <data name="ErrorDuplicateNewName" xml:space="preserve">
+    <value>Two items have the same new name, so renaming is canceled</value>
+  </data>
   <data name="ErrorReplaceRule" xml:space="preserve">
     <value>Replace rules need to have at least 3 items delimited by tabs</value>
   </data>

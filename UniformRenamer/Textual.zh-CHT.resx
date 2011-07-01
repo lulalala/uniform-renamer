@@ -126,6 +126,9 @@
   <data name="ErrorDeleteRule" xml:space="preserve">
     <value>刪除步驟 Delete 錯誤</value>
   </data>
+  <data name="ErrorDuplicateNewName" xml:space="preserve">
+    <value>兩個檔案有同樣的新名字，所以更名取消。</value>
+  </data>
   <data name="ErrorReplaceRule" xml:space="preserve">
     <value>替換步驟 Replace 至少需要三個由 tab 分隔的字串</value>
   </data>
