@@ -6,7 +6,7 @@
     using System.Text;
     using System.Text.RegularExpressions;
 
-    class FileName
+    public class FileName
     {
         string name;
         string path;

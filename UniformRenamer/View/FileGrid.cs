@@ -12,11 +12,13 @@ using DevAge.Drawing;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Collections;
 
 namespace UniformRenamer.Core
 {
     public class FileGrid:Grid
     {
+        private IconFetcher fileFetcher;
         private static SourceGrid.Cells.Editors.EditorBase oneClickEditor;
 
         public const int FileIconCol = 0;
@@ -79,6 +81,8 @@ namespace UniformRenamer.Core
             AutoSizeCells();
             AutoStretchColumnsToFitWidth = true;
             Columns.StretchToFit();
+
+            fileFetcher = new IconFetcher();
         }
 
         public void Rename()
@@ -206,7 +210,7 @@ namespace UniformRenamer.Core
                 Rows.Insert(r);
                 this[r, FileIconCol] = new SourceGrid.Cells.Cell();
                 //ORIGINAL: this[r, FileIconCol].Image = System.Drawing.Icon.ExtractAssociatedIcon(fs.GetFilePath()).ToBitmap().GetThumbnailImage(16, 16, null, new IntPtr());
-                this[r, FileIconCol].Image = FileIcon.GetIcon(fs.GetFilePath()).ToBitmap().GetThumbnailImage(24, 24, null, new IntPtr());
+                this[r, FileIconCol].Image = fileFetcher.GetIcon(fs);
                 this[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
                 this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
                 this[r, FileNewNameCol].AddController(new ValueChangedEvent());
@@ -283,8 +287,13 @@ namespace UniformRenamer.Core
         }
     }
 
-    public static class FileIcon
+    public class IconFetcher
     {
+        Dictionary<string, System.Drawing.Image> iconList;
+
+        public IconFetcher (){
+            iconList = new Dictionary<string, System.Drawing.Image>();
+        }
         [StructLayout(LayoutKind.Sequential)]
         public struct SHFILEINFO
         {
@@ -311,16 +320,29 @@ namespace UniformRenamer.Core
                                         uint uFlags);
         }
         //TODO Cache icons
-        public static System.Drawing.Icon GetIcon(string filePath)
+        public System.Drawing.Image GetIcon(FileName filePath)
         {
+            String extension;
+            if (filePath.IsDirectory())
+                extension = "/f"; // Key for folder icon
+            else
+                extension = Path.GetExtension(filePath.GetFilePath());
+
             IntPtr hImgSmall;
             SHFILEINFO shinfo = new SHFILEINFO();
             //Use this to get the small Icon
-            hImgSmall = Win32.SHGetFileInfoW(filePath, 0, ref shinfo,
+            hImgSmall = Win32.SHGetFileInfoW(filePath.GetFilePath(), 0, ref shinfo,
                                            (uint)Marshal.SizeOf(shinfo),
                                             Win32.SHGFI_ICON |
                                             Win32.SHGFI_SMALLICON);
-            return System.Drawing.Icon.FromHandle(shinfo.hIcon);
+            
+            if(iconList.ContainsKey(extension)){
+                return iconList[extension];
+            } else {
+                System.Drawing.Image icon = System.Drawing.Icon.FromHandle(shinfo.hIcon).ToBitmap().GetThumbnailImage(24, 24, null, new IntPtr());
+                iconList.Add(extension, icon);
+                return icon;
+            }
         }
     }
 }
