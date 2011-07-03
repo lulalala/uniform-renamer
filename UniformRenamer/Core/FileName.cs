@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     class FileName
     {
@@ -83,6 +84,13 @@
         public override string ToString()
         {
             return name;
+        }
+
+        public static string MakeValidFileName(string name)
+        {
+            string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+            string invalidReStr = string.Format(@"[{0}]+", invalidChars);
+            return Regex.Replace(name, invalidReStr, " ");
         }
     }
 }

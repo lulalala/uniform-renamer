@@ -242,7 +242,7 @@ namespace UniformRenamer.Core
             {
                 isCalled = true;
 
-                sender.Value = MakeValidFileName(sender.Value.ToString());
+                sender.Value = FileName.MakeValidFileName(sender.Value.ToString());
 
                 base.OnValueChanged(sender, e);
 
@@ -257,13 +257,6 @@ namespace UniformRenamer.Core
 
                 isCalled = false;
             }
-        }
-
-        private static string MakeValidFileName(string name)
-        {
-            string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
-            string invalidReStr = string.Format(@"[{0}]+", invalidChars);
-            return Regex.Replace(name, invalidReStr, " ");
         }
     }
 
