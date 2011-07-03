@@ -11,6 +11,7 @@ using System.IO;
 using DevAge.Drawing;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace UniformRenamer.Core
 {
@@ -18,8 +19,9 @@ namespace UniformRenamer.Core
     {
         private static SourceGrid.Cells.Editors.EditorBase oneClickEditor;
 
-        private const int FileOldNameCol = 0;
-        private const int FileNewNameCol = 1;
+        public const int FileIconCol = 0;
+        public const int FileOldNameCol = 1;
+        public const int FileNewNameCol = 2;
 
         public FileGrid()
         {
@@ -29,7 +31,7 @@ namespace UniformRenamer.Core
             //AutoStretchColumnsToFitWidth = true;
             BackColor = System.Drawing.SystemColors.Window;
             BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            ColumnsCount = 2;
+            ColumnsCount = 3;
             Dock = System.Windows.Forms.DockStyle.Fill;
             EnableSort = false;
             FixedRows = 1;
@@ -62,13 +64,17 @@ namespace UniformRenamer.Core
             };
 
             //Not sure why it does not work here
-            //this[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
-            //this[0, FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
+            this[0, FileIconCol] = new SourceGrid.Cells.ColumnHeader();
+            this[0, FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            this[0, FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
 
             //AutoSizeCells();
 
-            Columns[0].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
-            Columns[1].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
+            Columns[FileIconCol].AutoSizeMode = SourceGrid.AutoSizeMode.None;
+            Columns[FileIconCol].Width = 28;
+            Columns[FileOldNameCol].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
+            Columns[FileNewNameCol].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
+
             MinimumWidth = 300;
             AutoSizeCells();
             AutoStretchColumnsToFitWidth = true;
@@ -178,19 +184,19 @@ namespace UniformRenamer.Core
         {
             if (RowsCount != 1)
             {
-                Redim(1, 2);
+                Redim(1, 3);
             }
             if (path.Equals(String.Empty))
                 return;
 
             //SetRenameButtonsEnabled(true);
-            FillFileGridRows(Directory.GetDirectories(path));
-            FillFileGridRows(Directory.GetFiles(path));
+            FillFileGridRows(Directory.GetDirectories(path), true);
+            FillFileGridRows(Directory.GetFiles(path), false);
 
             AutoSizeCells();
         }
 
-        private void FillFileGridRows(string[] files)
+        private void FillFileGridRows(string[] files, bool isDir)
         {
             int r = Rows.Count;
             foreach (string s in files)
@@ -198,6 +204,9 @@ namespace UniformRenamer.Core
                 FileName fs = new FileName(s);
 
                 Rows.Insert(r);
+                this[r, FileIconCol] = new SourceGrid.Cells.Cell();
+                //ORIGINAL: this[r, FileIconCol].Image = System.Drawing.Icon.ExtractAssociatedIcon(fs.GetFilePath()).ToBitmap().GetThumbnailImage(16, 16, null, new IntPtr());
+                this[r, FileIconCol].Image = FileIcon.GetIcon(fs.GetFilePath()).ToBitmap().GetThumbnailImage(24, 24, null, new IntPtr());
                 this[r, FileOldNameCol] = new SourceGrid.Cells.Cell(fs);
                 this[r, FileNewNameCol] = new SourceGrid.Cells.Cell(fs.ToString(), oneClickEditor);
                 this[r, FileNewNameCol].AddController(new ValueChangedEvent());
@@ -246,7 +255,7 @@ namespace UniformRenamer.Core
 
                 base.OnValueChanged(sender, e);
 
-                if (sender.Value.Equals(sender.Grid.GetCell(sender.Position.Row, 0).ToString()))
+                if (sender.Value.Equals(sender.Grid.GetCell(sender.Position.Row, FileGrid.FileOldNameCol).ToString()))
                 {
                     sender.Cell.View = UnchangedCellStyle.Default;
                 }
@@ -271,6 +280,47 @@ namespace UniformRenamer.Core
         public UnchangedCellStyle()
         {
             ForeColor = System.Drawing.SystemColors.GrayText;
+        }
+    }
+
+    public static class FileIcon
+    {
+        [StructLayout(LayoutKind.Sequential)]
+        public struct SHFILEINFO
+        {
+            public IntPtr hIcon;
+            public IntPtr iIcon;
+            public uint dwAttributes;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
+            public string szDisplayName;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
+            public string szTypeName;
+        };
+
+        class Win32
+        {
+            public const uint SHGFI_ICON = 0x100;
+            public const uint SHGFI_LARGEICON = 0x0;    // 'Large icon
+            public const uint SHGFI_SMALLICON = 0x1;    // 'Small icon
+
+            [DllImport("shell32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
+            public static extern IntPtr SHGetFileInfoW(string pszPath,
+                                        uint dwFileAttributes,
+                                        ref SHFILEINFO psfi,
+                                        uint cbSizeFileInfo,
+                                        uint uFlags);
+        }
+        //TODO Cache icons
+        public static System.Drawing.Icon GetIcon(string filePath)
+        {
+            IntPtr hImgSmall;
+            SHFILEINFO shinfo = new SHFILEINFO();
+            //Use this to get the small Icon
+            hImgSmall = Win32.SHGetFileInfoW(filePath, 0, ref shinfo,
+                                           (uint)Marshal.SizeOf(shinfo),
+                                            Win32.SHGFI_ICON |
+                                            Win32.SHGFI_SMALLICON);
+            return System.Drawing.Icon.FromHandle(shinfo.hIcon);
         }
     }
 }

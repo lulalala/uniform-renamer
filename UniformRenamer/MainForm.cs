@@ -100,8 +100,9 @@
         private void SetupFileGrid()
         {
             fileGrid.Rows.Insert(0);
-            fileGrid[0, 0] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
-            fileGrid[0, 1] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
+            fileGrid[0, FileGrid.FileIconCol] = new SourceGrid.Cells.ColumnHeader();
+            fileGrid[0, FileGrid.FileOldNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.FileName);
+            fileGrid[0, FileGrid.FileNewNameCol] = new SourceGrid.Cells.ColumnHeader(Textual.NewFileName);
 
             fileGrid.AutoSizeCells();
 

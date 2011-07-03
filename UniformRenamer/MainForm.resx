@@ -154,7 +154,7 @@
     <value>ruleGrid</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4199.43144, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4201.36585, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -588,7 +588,7 @@
     <value>fileGrid</value>
   </data>
   <data name="&gt;&gt;fileGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4199.43144, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4201.36585, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileGrid.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
@@ -833,6 +833,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1038, 710</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

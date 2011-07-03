@@ -31,6 +31,11 @@
             return Path.GetFileName(path);
         }
 
+        public string GetFilePath()
+        {
+            return path;
+        }
+
         public string GetFileNameWithoutExtension()
         {
             return Path.GetFileNameWithoutExtension(path);
