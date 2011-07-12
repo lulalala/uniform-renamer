@@ -1,20 +1,13 @@
 ﻿namespace UniformRenamer
 {
     using System;
-    using System.Drawing;
     using System.IO;
     using System.Text;
-    using System.Text.RegularExpressions;
     using System.Windows.Forms;
 
     using UniformRenamer.Core;
 
     using SourceGrid;
-    using SourceGrid.Cells.Editors;
-    using System.Reflection;
-    using System.Threading;
-    using System.ComponentModel;
-    using System.Windows.Threading;
     using SourceGrid.Cells.Controllers;
 
     public partial class MainForm : Form

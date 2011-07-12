@@ -2,9 +2,6 @@
 {
     using System;
     using System.IO;
-    using System.Text;
-    using System.Globalization;
-    using SourceGrid;
 
     static class RuleFactory
     {
