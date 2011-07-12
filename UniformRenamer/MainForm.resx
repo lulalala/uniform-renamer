@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>1, 1</value>
   </data>
   <data name="splitContainer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -144,8 +144,11 @@
   <data name="ruleGrid.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="ruleGrid.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 4, 0</value>
+  </data>
   <data name="ruleGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 290</value>
+    <value>1268, 222</value>
   </data>
   <data name="ruleGrid.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -154,7 +157,7 @@
     <value>ruleGrid</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4201.38315, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4210.41639, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -178,7 +181,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="newFormatTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>930, 29</value>
+    <value>1162, 29</value>
   </data>
   <data name="newFormatTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -241,7 +244,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 38</value>
+    <value>1268, 38</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -271,7 +274,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 38</value>
+    <value>1268, 38</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -301,7 +304,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 225</value>
+    <value>1268, 259</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -537,7 +540,7 @@
     <value>0, 0, 2, 0</value>
   </data>
   <data name="RuleMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 25</value>
+    <value>1268, 25</value>
   </data>
   <data name="RuleMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -579,7 +582,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="fileGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 405</value>
+    <value>1268, 470</value>
   </data>
   <data name="fileGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -588,7 +591,7 @@
     <value>fileGrid</value>
   </data>
   <data name="&gt;&gt;fileGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4201.38315, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4210.41639, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileGrid.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
@@ -718,7 +721,7 @@
     <value>0, 0, 2, 0</value>
   </data>
   <data name="TargetMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 25</value>
+    <value>1268, 25</value>
   </data>
   <data name="TargetMenu.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -739,7 +742,7 @@
     <value>1</value>
   </data>
   <metadata name="StatusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 430</value>
+    <value>0, 495</value>
   </metadata>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 17</value>
@@ -748,13 +751,13 @@
     <value>0, 17</value>
   </data>
   <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 430</value>
+    <value>0, 495</value>
   </data>
   <data name="StatusBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 21, 0</value>
   </data>
   <data name="StatusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 22</value>
+    <value>1268, 22</value>
   </data>
   <data name="StatusBar.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -784,10 +787,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 710</value>
+    <value>1268, 809</value>
   </data>
   <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>250</value>
+    <value>284</value>
   </data>
   <data name="splitContainer.SplitterWidth" type="System.Int32, mscorlib">
     <value>8</value>
@@ -826,16 +829,22 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>41</value>
+    <value>48</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>9, 18</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1038, 710</value>
+    <value>1270, 811</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 600</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Uniform Renamer 0.3</value>

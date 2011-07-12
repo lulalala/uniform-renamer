@@ -120,6 +120,9 @@
   <data name="DestinationTag" xml:space="preserve">
     <value>Destination tag in New Format above</value>
   </data>
+  <data name="DestinationTagTooltip" xml:space="preserve">
+    <value>Give a tag to this rule, and the copied/replaced text will be inserted to where this tag appears in the 'New Format' textbox.</value>
+  </data>
   <data name="Enabled" xml:space="preserve">
     <value>Enabled</value>
   </data>
@@ -154,7 +157,7 @@
     <value>Insert Replace Rule</value>
   </data>
   <data name="NewFileName" xml:space="preserve">
-    <value>New File Name</value>
+    <value>New File Name Preview</value>
   </data>
   <data name="RemoveRule" xml:space="preserve">
     <value>Remove Rule</value>

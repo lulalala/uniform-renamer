@@ -70,6 +70,15 @@ namespace UniformRenamer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Give a tag to this rule, and the copied/replaced text will be inserted to where this tag appears in the &apos;New Format&apos; textbox..
+        /// </summary>
+        internal static string DestinationTagTooltip {
+            get {
+                return ResourceManager.GetString("DestinationTagTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabled.
         /// </summary>
         internal static string Enabled {
@@ -169,7 +178,7 @@ namespace UniformRenamer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New File Name.
+        ///   Looks up a localized string similar to New File Name Preview.
         /// </summary>
         internal static string NewFileName {
             get {

@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DestinationTag" xml:space="preserve">
-    <value>上方對應之目的地標籤</value>
+    <value>標籤</value>
+  </data>
+  <data name="DestinationTagTooltip" xml:space="preserve">
+    <value>給此步驟一個標籤，而此步驟複製/替換的文字會出現在「新檔名格式」中這個標籤的位置。</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>啟用</value>
@@ -154,7 +157,7 @@
     <value>插入「替換步驟」</value>
   </data>
   <data name="NewFileName" xml:space="preserve">
-    <value>新檔名</value>
+    <value>新檔名預覽</value>
   </data>
   <data name="RemoveRule" xml:space="preserve">
     <value>刪除步驟</value>

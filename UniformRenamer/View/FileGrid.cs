@@ -77,7 +77,7 @@ namespace UniformRenamer.Core
             Columns[FileOldNameCol].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
             Columns[FileNewNameCol].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize | SourceGrid.AutoSizeMode.Default;
 
-            MinimumWidth = 300;
+            MinimumWidth = 350;
             AutoSizeCells();
             AutoStretchColumnsToFitWidth = true;
             Columns.StretchToFit();

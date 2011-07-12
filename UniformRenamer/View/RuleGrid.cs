@@ -31,8 +31,8 @@ namespace UniformRenamer.Core
 
         private static SourceGrid.Cells.Editors.EditorBase emptyEditor;
         private static SourceGrid.Cells.Editors.EditorBase readOnlyEditor;
-        private static SourceGrid.Cells.Editors.TextBox oneClickEditor;
-        private static SourceGrid.Cells.Editors.TextBox oneClickTabEditor;
+
+
         //private static SourceGrid.Cells.Editors.ComboBox ruleTypeEditor;
         private static PopupMenu popMenu;
 
@@ -44,6 +44,7 @@ namespace UniformRenamer.Core
             SelectionMode = SourceGrid.GridSelectionMode.Row;
             BackColor = System.Drawing.SystemColors.Window;
             BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            // padding-right = 4 for ellipse text drag-select
            
             ColumnsCount = 5;
             RowsCount = 1;
@@ -51,15 +52,6 @@ namespace UniformRenamer.Core
 
 
             // Initialise custom editors
-            oneClickEditor = new SourceGrid.Cells.Editors.TextBox(typeof(string));
-            oneClickEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.SingleClick;
-
-            oneClickTabEditor = new SourceGrid.Cells.Editors.TextBox(typeof(string));
-            oneClickTabEditor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.SingleClick;
-            oneClickTabEditor.Control.AcceptsReturn = false;
-            oneClickTabEditor.Control.AcceptsTab = true;
-            oneClickTabEditor.Control.Multiline = true;
-
             emptyEditor = new EditorBase(typeof(int));
             emptyEditor.EnableEdit = false;
 
@@ -79,14 +71,28 @@ namespace UniformRenamer.Core
             //Header
             this[0, ColControl] = new SourceGrid.Cells.ColumnHeader(Textual.Enabled);
             this[0, ColType] = new SourceGrid.Cells.ColumnHeader(Textual.RuleType);
-            this[0, ColDestination] = new SourceGrid.Cells.ColumnHeader(Textual.DestinationTag);
+            this[0, ColDestination] = new SourceGrid.Cells.ColumnHeader(Textual.DestinationTag + "(?)");
             this[0, ColReplacement] = new SourceGrid.Cells.ColumnHeader(Textual.ReplacementText);
             this[0, ColPattern] = new SourceGrid.Cells.ColumnHeader(Textual.SearchPatterns);
 
-            this.Columns[ColControl].AutoSizeMode = SourceGrid.AutoSizeMode.MinimumSize;
-            this.Columns[ColPattern].AutoSizeMode = SourceGrid.AutoSizeMode.Default;
+            this.Columns[ColControl].AutoSizeMode = SourceGrid.AutoSizeMode.EnableAutoSize;
             this.Columns[ColType].AutoSizeMode = SourceGrid.AutoSizeMode.EnableAutoSize;
-            //this.Columns[ColPattern].AutoSizeMode = SourceGrid.AutoSizeMode.;
+            this.Columns[ColDestination].AutoSizeMode = SourceGrid.AutoSizeMode.EnableAutoSize;
+            this.Columns[ColReplacement].AutoSizeMode = SourceGrid.AutoSizeMode.EnableAutoSize;
+            this.Columns[ColPattern].AutoSizeMode = SourceGrid.AutoSizeMode.Default | SourceGrid.AutoSizeMode.MinimumSize;
+
+            this.Columns[ColPattern].MinimalWidth = 800;
+
+            //AutoStretchColumnsToFitWidth = true;
+            //Columns.AutoSize(true);
+            //ScrollBar = ScrollBars.Vertical;
+            //this.VScroll = true;
+            //this.SetVScrollBarVisible(true);
+
+            this[0, ColDestination].ToolTipText = Textual.DestinationTagTooltip;
+            SourceGrid.Cells.Controllers.ToolTipText toolTipController = new SourceGrid.Cells.Controllers.ToolTipText();
+            toolTipController.IsBalloon = true;
+            this[0, ColDestination].Controller.AddController(toolTipController);
 
             foreach(int i in new int[]{ColControl, ColType, ColDestination, ColReplacement, ColPattern})
             {
@@ -187,21 +193,12 @@ namespace UniformRenamer.Core
 
         private Cell createOneClickCell()
         {
-            Cell cell = new SourceGrid.Cells.Cell(String.Empty, oneClickEditor);
-            cell.AddController(popMenu);
-
-            return cell;
+            return new OneClickCell(popMenu);
         }
 
         private Cell createOneClickTabCell()
         {
-            Cell cell = new SourceGrid.Cells.Cell(String.Empty, oneClickTabEditor);
-            cell.AddController(popMenu);
-
-            SourceGrid.Cells.Views.Cell view = cell.View as SourceGrid.Cells.Views.Cell;
-            ((TextGDI)view.ElementText).StringFormat.SetTabStops(0.0f, new float[] { 30.0f, 30.0f, 30.0f, 30.0f });
-
-            return cell;
+            return new OneClickTabCell(popMenu);
         }
 
         //bug
@@ -365,4 +362,46 @@ namespace UniformRenamer.Core
 
     }
 
+    public class OneClickCell : SourceGrid.Cells.Cell
+    {
+        private static SourceGrid.Cells.Editors.TextBox editor;
+
+        static OneClickCell()
+        {
+            editor = new SourceGrid.Cells.Editors.TextBox(typeof(string));
+            editor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.SingleClick;
+        }
+        public OneClickCell(PopupMenu popMenu)
+            : base(String.Empty, editor)
+        {
+            base.AddController(popMenu);
+        }
+    }
+
+    /* for editing rules, which can be very long */
+    public class OneClickTabCell : SourceGrid.Cells.Cell
+    {
+        private static SourceGrid.Cells.Views.Cell view;
+        private static SourceGrid.Cells.Editors.TextBox editor;
+        private static float[] tabPosition = { 30.0f, 30.0f, 30.0f, 30.0f };
+
+        static OneClickTabCell()
+        {
+            view = new SourceGrid.Cells.Views.Cell();
+            ((TextGDI)view.ElementText).StringFormat.SetTabStops(0.0f, tabPosition);
+
+            editor = new SourceGrid.Cells.Editors.TextBox(typeof(string));
+            editor.EditableMode = SourceGrid.EditableMode.Focus | SourceGrid.EditableMode.SingleClick;
+            editor.Control.AcceptsReturn = false;
+            editor.Control.AcceptsTab = true;
+            editor.Control.Multiline = true;
+            editor.Control.WordWrap = true;
+        }
+        public OneClickTabCell(PopupMenu popMenu)
+            : base(String.Empty, editor)
+        {
+            base.AddController(popMenu);
+            base.View = view;
+        }
+    }
 }
