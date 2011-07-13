@@ -1,13 +1,13 @@
-﻿using System.Linq;
-using SourceGrid;
-using SourceGrid.Cells.Editors;
-using System.Windows.Forms;
-using System;
+﻿using System;
 using System.Drawing;
-using SourceGrid.Cells;
-using DevAge.Drawing.VisualElements;
-using System.Text;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using DevAge.Drawing.VisualElements;
+using SourceGrid;
+using SourceGrid.Cells;
+using SourceGrid.Cells.Editors;
 
 namespace UniformRenamer.Core
 {

@@ -142,13 +142,10 @@
     <value>0, 38</value>
   </data>
   <data name="ruleGrid.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="ruleGrid.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 4, 0</value>
   </data>
   <data name="ruleGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1268, 222</value>
+    <value>1264, 222</value>
   </data>
   <data name="ruleGrid.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -157,7 +154,7 @@
     <value>ruleGrid</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4210.41639, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.RuleGrid, Uniform Renamer, Version=0.1.4211.38882, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ruleGrid.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -591,7 +588,7 @@
     <value>fileGrid</value>
   </data>
   <data name="&gt;&gt;fileGrid.Type" xml:space="preserve">
-    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4210.41639, Culture=neutral, PublicKeyToken=null</value>
+    <value>UniformRenamer.Core.FileGrid, Uniform Renamer, Version=0.1.4211.38882, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fileGrid.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
@@ -847,7 +844,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Uniform Renamer 0.3</value>
+    <value>Uniform Renamer 0.3.1</value>
   </data>
   <data name="&gt;&gt;RuleNewButton.Name" xml:space="preserve">
     <value>RuleNewButton</value>

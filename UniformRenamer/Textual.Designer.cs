@@ -61,7 +61,7 @@ namespace UniformRenamer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Destination tag in New Format above.
+        ///   Looks up a localized string similar to Destination tag.
         /// </summary>
         internal static string DestinationTag {
             get {

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DestinationTag" xml:space="preserve">
-    <value>Destination tag in New Format above</value>
+    <value>Destination tag</value>
   </data>
   <data name="DestinationTagTooltip" xml:space="preserve">
     <value>Give a tag to this rule, and the copied/replaced text will be inserted to where this tag appears in the 'New Format' textbox.</value>

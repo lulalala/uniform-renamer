@@ -4,11 +4,9 @@
     using System.IO;
     using System.Text;
     using System.Windows.Forms;
-
-    using UniformRenamer.Core;
-
     using SourceGrid;
     using SourceGrid.Cells.Controllers;
+    using UniformRenamer.Core;
 
     public partial class MainForm : Form
     {

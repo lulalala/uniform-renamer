@@ -1,11 +1,11 @@
-﻿using SourceGrid;
-using System.Windows.Forms;
-using System;
-using SourceGrid.Cells;
-using System.IO;
-using System.Text.RegularExpressions;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using SourceGrid;
+using SourceGrid.Cells;
 
 namespace UniformRenamer.Core
 {

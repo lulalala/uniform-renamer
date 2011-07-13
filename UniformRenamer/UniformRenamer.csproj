@@ -206,20 +206,23 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Document\index.html">
+    <Content Include="Document\index.en.html" />
+    <Content Include="Document\index.html" />
+    <Content Include="Document\License\GNU_General_Public_License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Document\GNU_General_Public_License.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Document\License\SourceGrid.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Document\UniformRenamer.License.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Document\License\UniformRenamer.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Document\scr1.png" />
-    <Content Include="Document\SourceGrid.License.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Document\style.css">
-    </Content>
+    <Content Include="Document\style\reset.css" />
+    <Content Include="Document\style\style.css" />
+    <Content Include="Document\style\typography.css" />
+    <Content Include="Document\tut1.png" />
+    <Content Include="Document\tut1.svg" />
     <Content Include="rule.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

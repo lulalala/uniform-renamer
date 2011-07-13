@@ -1,6 +1,5 @@
 ﻿namespace UniformRenamer.Core
 {
-    using System.Text;
 
     interface IRule
     {

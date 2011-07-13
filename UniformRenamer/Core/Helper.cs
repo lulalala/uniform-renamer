@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
 
@@ -32,7 +30,7 @@ namespace UniformRenamer.Core
             string s = null;
             while ((s = sr.ReadLine()) != null)
             {
-                s = s.SubstringBefore("//").Trim();
+                s = SubstringBefore(s,"//").Trim();
                 if (s.Length == 0)
                 {
                     continue;
@@ -42,7 +40,7 @@ namespace UniformRenamer.Core
             return sb.ToString();
         }
 
-        private static string SubstringBefore(this string source, string value)
+        private static string SubstringBefore(string source, string value)
         {
             //CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
             int index = source.IndexOf(value);//compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
@@ -53,7 +51,5 @@ namespace UniformRenamer.Core
             }
             return source.Substring(0, index);
         }
-
-
     }
 }
