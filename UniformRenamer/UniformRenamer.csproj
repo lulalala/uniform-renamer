@@ -79,6 +79,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Textual.zh-CHS.Designer.cs">
+      <DependentUpon>Textual.zh-CHS.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Core\Constant.cs" />
     <Compile Include="Core\Helper.cs" />
     <Compile Include="OptionForm.cs">
@@ -119,6 +124,11 @@
     <Compile Include="Core\RuleList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Textual.zh-CHS.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Textual.zh-CHS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.ja.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +141,7 @@
     <EmbeddedResource Include="Textual.ja.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Textual.ja.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Textual.zh-CHT.resx">
       <Generator>ResXFileCodeGenerator</Generator>
