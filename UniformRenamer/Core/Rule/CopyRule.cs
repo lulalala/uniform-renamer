@@ -28,7 +28,10 @@
                 Match match = s.Match(oldName);
                 if (match.Success == true)
                 {
-                    newFormat = newFormat.Insert(newFormat.IndexOf(destinationTag), match.Groups[1].ToString());
+                    if (newFormat.IndexOf(destinationTag) != -1) // avoid new format not using this copy rule
+                    {
+                        newFormat = newFormat.Insert(newFormat.IndexOf(destinationTag), match.Groups[1].ToString());
+                    }
                     if (match.Length > 0)
                     {
                         oldName = oldName.Replace(match.ToString(), string.Empty);
