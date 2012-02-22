@@ -97,20 +97,21 @@ namespace UniformRenamer.Core
                 //}
                 int[] indexes = Selection.GetSelectionRegion().GetRowsIndex();
 
-                bool hasDuplicate = false;
+                String duplicate_name = null;
                 HashSet<String> names = new HashSet<String>();
                 foreach (int i in indexes)
                 {
-                    if (!names.Add(this[i, FileNewNameCol].ToString()))
+                    String name = this[i, FileNewNameCol].ToString();
+                    if (!names.Add(name))
                     {
-                        hasDuplicate = true;
+                        duplicate_name = name;
                         break;
                     }
                 }
-                if (hasDuplicate)
+                if (duplicate_name != null)
                 {
-                    MessageBox.Show(Textual.ErrorDuplicateNewName);
-                    throw new Exception(Textual.ErrorDuplicateNewName);
+                    MessageBox.Show( Textual.ErrorDuplicateNewName + "\n" + duplicate_name );
+                    throw new Exception( Textual.ErrorDuplicateNewName + " " + duplicate_name );
                 }
 
                 foreach (int i in indexes)
