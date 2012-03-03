@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformRenamer", "UniformRenamer\UniformRenamer.csproj", "{63E47D6E-9892-4019-A237-4EBCEF5196C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniformRenamerTests", "UniformRenamerTest\UniformRenamerTests.csproj", "{720AC5D5-12FA-4E40-9EDB-B5EC706DAA96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{63E47D6E-9892-4019-A237-4EBCEF5196C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63E47D6E-9892-4019-A237-4EBCEF5196C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63E47D6E-9892-4019-A237-4EBCEF5196C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{720AC5D5-12FA-4E40-9EDB-B5EC706DAA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{720AC5D5-12FA-4E40-9EDB-B5EC706DAA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{720AC5D5-12FA-4E40-9EDB-B5EC706DAA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{720AC5D5-12FA-4E40-9EDB-B5EC706DAA96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
