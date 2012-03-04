@@ -21,7 +21,14 @@
 
         public string GetExtension()
         {
-            return Path.GetExtension(path);
+            if (!isDirectory)
+            {
+                return Path.GetExtension(path);
+            }
+            else
+            {
+                return "";
+            }
         }
 
         public string GetFileName()

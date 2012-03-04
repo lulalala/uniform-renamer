@@ -4,7 +4,7 @@ using System.IO;
 
 namespace UniformRenamer.Core
 {
-    static class Helper
+    public static class Helper
     {
         public static int GetNthIndex(string s, char t, int n)
         {
