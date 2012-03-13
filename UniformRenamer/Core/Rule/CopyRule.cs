@@ -3,7 +3,7 @@
     using System.Text.RegularExpressions;
     using System.Collections.Generic;
 
-    class CopyRule : IRule
+    public class CopyRule : IRule
     {
         private List<SearchPattern> searchPatterns = new List<SearchPattern>();
 
@@ -23,18 +23,20 @@
 
         public void Apply(ref string oldName, ref string newFormat)
         {
-            foreach (SearchPattern s in searchPatterns)
+            foreach (SearchPattern pattern in searchPatterns)
             {
-                Match match = s.Match(oldName);
-                if (match.Success == true)
+                Match match = pattern.Match(oldName);
+                if (match.Success)
                 {
                     if (newFormat.IndexOf(destinationTag) != -1) // avoid new format not using this copy rule
                     {
-                        newFormat = newFormat.Insert(newFormat.IndexOf(destinationTag), match.Groups[1].ToString());
+                        // if regex () is not used, match.Groups[1].Value will be empty string
+                        string match_text = match.Groups[1].Value.Length == 0 ? match.Value : match.Groups[1].Value;
+                        newFormat = newFormat.Insert(newFormat.IndexOf(destinationTag), match_text);
                     }
                     if (match.Length > 0)
                     {
-                        oldName = oldName.Replace(match.ToString(), string.Empty);
+                        oldName = oldName.Replace(match.Value, string.Empty);
                     }
                     break;
                 }

@@ -112,10 +112,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileNameSpec.cs">
+    <Compile Include="Core\Rule\CopyRuleSpec.cs" />
+    <Compile Include="Core\FileNameSpec.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HelperSpec.cs" />
+    <Compile Include="Core\HelperSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sandbox\fixtures\folder\" />
