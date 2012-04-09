@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    class ReplaceRule : IRule
+    public class ReplaceRule : IRule
     {
         private string replacement;
         private List<SearchPattern> searchPatterns = new List<SearchPattern>();
