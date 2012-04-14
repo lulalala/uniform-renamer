@@ -115,6 +115,7 @@ namespace UniformRenamer.Core
                     throw new Exception( Textual.ErrorDuplicateNewName + " " + duplicate_name );
                 }
 */
+                FilenameExistsPrompt prompt = null;
                 foreach (int i in indexes)
                 {
                     if (!this[i, FileOldNameCol].ToString().Equals(this[i, FileNewNameCol].ToString()))
@@ -131,9 +132,16 @@ namespace UniformRenamer.Core
                             }
                             catch (FileExistsException)
                             {
-                                FilenameExistsPrompt prompt = new FilenameExistsPrompt(this[i, FileOldNameCol].Value.ToString(), newNameCell.Value.ToString());
+                                if (prompt == null)
+                                {
+                                    prompt = new FilenameExistsPrompt(this[i, FileOldNameCol].Value.ToString(), newNameCell.Value.ToString());
+                                } else {
+                                    prompt.UpdateName(this[i, FileOldNameCol].Value.ToString(), newNameCell.Value.ToString());
+                                }
+
                                 switch (prompt.ShowDialog())
                                 {
+                                    case DialogResult.Cancel:
                                     case DialogResult.Ignore:
                                         is_done = true;
                                         break;
