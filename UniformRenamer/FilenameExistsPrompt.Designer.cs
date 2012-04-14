@@ -108,6 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.skipButton;
             this.ClientSize = new System.Drawing.Size(464, 184);
             this.Controls.Add(this.newNameLabel);
             this.Controls.Add(this.skipButton);
@@ -116,8 +117,11 @@
             this.Controls.Add(this.renameButton);
             this.Controls.Add(this.newNameTextBox);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FilenameExistsPrompt";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Filename already exists";
             this.ResumeLayout(false);
             this.PerformLayout();

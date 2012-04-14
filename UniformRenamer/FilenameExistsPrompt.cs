@@ -14,6 +14,11 @@ namespace UniformRenamer
         public FilenameExistsPrompt(String oldName, String newName)
         {
             InitializeComponent();
+            UpdateName(oldName, newName);
+        }
+
+        public void UpdateName(String oldName, String newName)
+        {
             oldNameLabel.Text = oldName + " ➡";
             newNameLabel.Text = newName;
             newNameTextBox.Text = newName;
