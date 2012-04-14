@@ -96,7 +96,7 @@ namespace UniformRenamer.Core
                 //    }
                 //}
                 int[] indexes = Selection.GetSelectionRegion().GetRowsIndex();
-
+/*
                 String duplicate_name = null;
                 HashSet<String> names = new HashSet<String>();
                 foreach (int i in indexes)
@@ -108,18 +108,41 @@ namespace UniformRenamer.Core
                         break;
                     }
                 }
+
                 if (duplicate_name != null)
                 {
                     MessageBox.Show( Textual.ErrorDuplicateNewName + "\n" + duplicate_name );
                     throw new Exception( Textual.ErrorDuplicateNewName + " " + duplicate_name );
                 }
-
+*/
                 foreach (int i in indexes)
                 {
                     if (!this[i, FileOldNameCol].ToString().Equals(this[i, FileNewNameCol].ToString()))
                     {
                         ICell newNameCell = this[i, FileNewNameCol];
-                        ((FileName)this[i, FileOldNameCol].Value).Rename(newNameCell.Value.ToString());
+
+                        Boolean is_done = false;
+                        while (!is_done)
+                        {
+                            try
+                            {
+                                ((FileName)this[i, FileOldNameCol].Value).Rename(newNameCell.Value.ToString());
+                                is_done = true;
+                            }
+                            catch (FileExistsException)
+                            {
+                                FilenameExistsPrompt prompt = new FilenameExistsPrompt(this[i, FileOldNameCol].Value.ToString(), newNameCell.Value.ToString());
+                                switch (prompt.ShowDialog())
+                                {
+                                    case DialogResult.Ignore:
+                                        is_done = true;
+                                        break;
+                                    case DialogResult.Retry:
+                                        newNameCell.Value = prompt.GetNewName();
+                                        break;
+                                }
+                            }
+                        }
                         newNameCell.Controller.OnValueChanged(new CellContext(this, new Position(i, FileNewNameCol), newNameCell), new EventArgs());
                         this.Refresh();
                     }

@@ -67,7 +67,7 @@
         {
             string newPath = Path.Combine(Path.GetDirectoryName(path), newName);
             if (File.Exists(newPath) || Directory.Exists(newPath))
-                throw new Exception("\"" + newName + "\" " + Textual.ErrorFileExists);
+                throw new FileExistsException("\"" + newName + "\" " + Textual.ErrorFileExists);
 
             if ((File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory)
                 Directory.Move(path, newPath);
@@ -101,6 +101,18 @@
             string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
             string invalidReStr = string.Format(@"[{0}]+", invalidChars);
             return Regex.Replace(name, invalidReStr, " ");
+        }
+    }
+
+    public class FileExistsException : ApplicationException
+    {
+        public FileExistsException()
+        {
+        }
+
+        public FileExistsException(string message)
+            : base(message)
+        {
         }
     }
 }
