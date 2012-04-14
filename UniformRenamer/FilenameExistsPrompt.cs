@@ -20,7 +20,7 @@ namespace UniformRenamer
         public void UpdateName(String oldName, String newName)
         {
             oldNameLabel.Text = oldName + " ➡";
-            newNameLabel.Text = newName;
+            newNameLabel.Text = newName + " (already exist)";
             newNameTextBox.Text = newName;
         }
 
@@ -32,6 +32,11 @@ namespace UniformRenamer
         public string GetNewName()
         {
             return newNameTextBox.Text;
+        }
+
+        private void skipButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

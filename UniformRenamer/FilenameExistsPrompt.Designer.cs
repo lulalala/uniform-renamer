@@ -94,6 +94,7 @@
             this.skipButton.TabIndex = 5;
             this.skipButton.Text = "Skip";
             this.skipButton.UseVisualStyleBackColor = true;
+            this.skipButton.Click += new System.EventHandler(this.skipButton_Click);
             // 
             // newNameLabel
             // 
