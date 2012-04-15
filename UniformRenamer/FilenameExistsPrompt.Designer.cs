@@ -50,8 +50,8 @@
             // 
             // renameButton
             // 
-            this.renameButton.DialogResult = System.Windows.Forms.DialogResult.Retry;
             resources.ApplyResources(this.renameButton, "renameButton");
+            this.renameButton.DialogResult = System.Windows.Forms.DialogResult.Retry;
             this.renameButton.Name = "renameButton";
             this.renameButton.UseVisualStyleBackColor = true;
             this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
@@ -68,8 +68,8 @@
             // 
             // skipButton
             // 
-            this.skipButton.DialogResult = System.Windows.Forms.DialogResult.Ignore;
             resources.ApplyResources(this.skipButton, "skipButton");
+            this.skipButton.DialogResult = System.Windows.Forms.DialogResult.Ignore;
             this.skipButton.Name = "skipButton";
             this.skipButton.UseVisualStyleBackColor = true;
             this.skipButton.Click += new System.EventHandler(this.skipButton_Click);
@@ -91,6 +91,7 @@
             this.Controls.Add(this.renameButton);
             this.Controls.Add(this.newNameTextBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FilenameExistsPrompt";
