@@ -20,7 +20,7 @@ namespace UniformRenamer
         public void UpdateName(String oldName, String newName)
         {
             oldNameLabel.Text = oldName + " ➡";
-            newNameLabel.Text = newName + " (already exist)";
+            newNameLabel.Text = newName + " " + Textual.AlreadyExists;
             newNameTextBox.Text = newName;
         }
 

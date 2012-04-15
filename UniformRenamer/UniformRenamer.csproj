@@ -138,6 +138,9 @@
     <EmbeddedResource Include="FilenameExistsPrompt.resx">
       <DependentUpon>FilenameExistsPrompt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FilenameExistsPrompt.zh-TW.resx">
+      <DependentUpon>FilenameExistsPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Textual.zh-CHS.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Textual.zh-CHS.Designer.cs</LastGenOutput>

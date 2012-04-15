@@ -61,6 +61,15 @@ namespace UniformRenamer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Already exists).
+        /// </summary>
+        internal static string AlreadyExists {
+            get {
+                return ResourceManager.GetString("AlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Destination tag.
         /// </summary>
         internal static string DestinationTag {
