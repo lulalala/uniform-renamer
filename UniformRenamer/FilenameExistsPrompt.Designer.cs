@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilenameExistsPrompt));
             this.label1 = new System.Windows.Forms.Label();
             this.newNameTextBox = new System.Windows.Forms.TextBox();
             this.renameButton = new System.Windows.Forms.Button();
@@ -39,78 +40,50 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Cannot rename";
             // 
             // newNameTextBox
             // 
-            this.newNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.newNameTextBox.Location = new System.Drawing.Point(12, 149);
+            resources.ApplyResources(this.newNameTextBox, "newNameTextBox");
             this.newNameTextBox.Name = "newNameTextBox";
-            this.newNameTextBox.Size = new System.Drawing.Size(359, 22);
-            this.newNameTextBox.TabIndex = 1;
             // 
             // renameButton
             // 
             this.renameButton.DialogResult = System.Windows.Forms.DialogResult.Retry;
-            this.renameButton.Location = new System.Drawing.Point(377, 149);
+            resources.ApplyResources(this.renameButton, "renameButton");
             this.renameButton.Name = "renameButton";
-            this.renameButton.Size = new System.Drawing.Size(75, 23);
-            this.renameButton.TabIndex = 2;
-            this.renameButton.Text = "Rename";
             this.renameButton.UseVisualStyleBackColor = true;
             this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
             // 
             // oldNameLabel
             // 
-            this.oldNameLabel.AutoSize = true;
-            this.oldNameLabel.Location = new System.Drawing.Point(24, 33);
+            resources.ApplyResources(this.oldNameLabel, "oldNameLabel");
             this.oldNameLabel.Name = "oldNameLabel";
-            this.oldNameLabel.Size = new System.Drawing.Size(48, 12);
-            this.oldNameLabel.TabIndex = 3;
-            this.oldNameLabel.Text = "old name";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 78);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(420, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "because there is already a file with the same name. You can skip or change the ne" +
-                "w name.";
             // 
             // skipButton
             // 
             this.skipButton.DialogResult = System.Windows.Forms.DialogResult.Ignore;
-            this.skipButton.Location = new System.Drawing.Point(377, 110);
+            resources.ApplyResources(this.skipButton, "skipButton");
             this.skipButton.Name = "skipButton";
-            this.skipButton.Size = new System.Drawing.Size(75, 23);
-            this.skipButton.TabIndex = 5;
-            this.skipButton.Text = "Skip";
             this.skipButton.UseVisualStyleBackColor = true;
             this.skipButton.Click += new System.EventHandler(this.skipButton_Click);
             // 
             // newNameLabel
             // 
-            this.newNameLabel.AutoSize = true;
-            this.newNameLabel.Location = new System.Drawing.Point(24, 55);
+            resources.ApplyResources(this.newNameLabel, "newNameLabel");
             this.newNameLabel.Name = "newNameLabel";
-            this.newNameLabel.Size = new System.Drawing.Size(52, 12);
-            this.newNameLabel.TabIndex = 6;
-            this.newNameLabel.Text = "new name";
             // 
             // FilenameExistsPrompt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.skipButton;
-            this.ClientSize = new System.Drawing.Size(464, 184);
             this.Controls.Add(this.newNameLabel);
             this.Controls.Add(this.skipButton);
             this.Controls.Add(this.label2);
@@ -122,8 +95,6 @@
             this.MinimizeBox = false;
             this.Name = "FilenameExistsPrompt";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Filename already exists";
             this.ResumeLayout(false);
             this.PerformLayout();
 
