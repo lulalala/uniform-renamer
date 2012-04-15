@@ -126,6 +126,9 @@
   <data name="renameButton.Text" xml:space="preserve">
     <value>Rename</value>
   </data>
+  <data name="&gt;&gt;newNameTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="newNameLabel.Text" xml:space="preserve">
     <value>new name</value>
   </data>
@@ -158,8 +161,8 @@
   <data name="newNameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;newNameLabel.Name" xml:space="preserve">
-    <value>newNameLabel</value>
+  <data name="renameButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 149</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
@@ -167,11 +170,11 @@
   <data name="oldNameLabel.Text" xml:space="preserve">
     <value>old name</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>because there is already a file with the same name. You can skip or change the new name.</value>
-  </data>
   <data name="oldNameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;newNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="newNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 149</value>
@@ -228,9 +231,6 @@
   <data name="&gt;&gt;renameButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="renameButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 149</value>
-  </data>
   <data name="&gt;&gt;renameButton.Name" xml:space="preserve">
     <value>renameButton</value>
   </data>
@@ -249,11 +249,11 @@
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;newNameLabel.Name" xml:space="preserve">
+    <value>newNameLabel</value>
+  </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 184</value>
   </data>
   <data name="&gt;&gt;oldNameLabel.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -285,8 +285,8 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Filename already exists</value>
   </data>
-  <data name="&gt;&gt;newNameTextBox.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>because there is already a file with the same name. You can skip or change the new name.</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -309,8 +309,8 @@
   <data name="&gt;&gt;oldNameLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;newNameTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>464, 184</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -323,8 +323,5 @@
   </metadata>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>zh-TW</value>
   </metadata>
 </root>
