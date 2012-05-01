@@ -147,7 +147,7 @@
 
                 try
                 {
-                    rules = RuleFactory.ParseRule(newFormatTextBox.Text, ruleGrid);
+                    rules = UI.RuleListFactory.ParseRule(newFormatTextBox.Text, ruleGrid);
                 }
                 catch(Exception e)
                 {

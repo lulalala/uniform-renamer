@@ -135,6 +135,7 @@
     <Compile Include="Core\RuleList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\RuleListFactory.cs" />
     <EmbeddedResource Include="UI\FilenameExistsPrompt.resx">
       <DependentUpon>FilenameExistsPrompt.cs</DependentUpon>
     </EmbeddedResource>
