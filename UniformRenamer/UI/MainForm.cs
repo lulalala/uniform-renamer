@@ -171,12 +171,14 @@
 
         private void RuleNewButton_Click(object sender, EventArgs e)
         {
-            ResetRules();
+            if (MessageBox.Show(Textual.NewRulesWarning, String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
+            {
+                ResetRules();
+            }
         }
 
         private void ResetRules()
         {
-            //TODO confirmation
             ruleGrid.ClearValues();
             rules = null;
             Properties.Settings.Default.LastRulePath = null;

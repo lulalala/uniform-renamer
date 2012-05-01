@@ -162,6 +162,9 @@
   <data name="NewFileName" xml:space="preserve">
     <value>New File Name Preview</value>
   </data>
+  <data name="NewRulesWarning" xml:space="preserve">
+    <value>Do you want to open a new rule list? (Remember to save if you want to keep existing rules)</value>
+  </data>
   <data name="RemoveRule" xml:space="preserve">
     <value>Remove Rule</value>
   </data>

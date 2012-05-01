@@ -162,6 +162,9 @@
   <data name="NewFileName" xml:space="preserve">
     <value>新檔名預覽</value>
   </data>
+  <data name="NewRulesWarning" xml:space="preserve">
+    <value>要開啟新的規則檔編輯嗎？（如要保留目前的規則請記得存檔）</value>
+  </data>
   <data name="RemoveRule" xml:space="preserve">
     <value>刪除步驟</value>
   </data>

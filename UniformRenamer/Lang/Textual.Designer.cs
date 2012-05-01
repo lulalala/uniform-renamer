@@ -196,6 +196,15 @@ namespace UniformRenamer.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to open a new rule list? (Remember to save if you want to keep existing rules).
+        /// </summary>
+        internal static string NewRulesWarning {
+            get {
+                return ResourceManager.GetString("NewRulesWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Rule.
         /// </summary>
         internal static string RemoveRule {
