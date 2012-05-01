@@ -7,6 +7,7 @@
     using SourceGrid;
     using SourceGrid.Cells.Controllers;
     using UniformRenamer.Core;
+    using UniformRenamer.Lang;
 
     public partial class MainForm : Form
     {

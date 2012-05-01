@@ -3,6 +3,7 @@
     using System;
     using System.IO;
     using System.Text.RegularExpressions;
+    using UniformRenamer.Lang;
 
     public class FileName
     {

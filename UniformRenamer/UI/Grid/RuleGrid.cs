@@ -8,6 +8,7 @@ using DevAge.Drawing.VisualElements;
 using SourceGrid;
 using SourceGrid.Cells;
 using SourceGrid.Cells.Editors;
+using UniformRenamer.Lang;
 
 namespace UniformRenamer.Core
 {

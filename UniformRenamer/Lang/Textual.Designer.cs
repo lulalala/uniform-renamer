@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UniformRenamer {
+namespace UniformRenamer.Lang {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace UniformRenamer {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniformRenamer.Textual", typeof(Textual).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniformRenamer.Lang.Textual", typeof(Textual).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

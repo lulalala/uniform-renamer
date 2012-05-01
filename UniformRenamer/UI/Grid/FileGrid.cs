@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using SourceGrid;
 using SourceGrid.Cells;
+using UniformRenamer.Lang;
 
 namespace UniformRenamer.Core
 {

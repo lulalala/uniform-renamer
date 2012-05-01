@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using UniformRenamer.Lang;
 
     static class RuleFactory
     {
