@@ -83,7 +83,7 @@ namespace UniformRenamer.Core
 
             this.Columns[ColPattern].MinimalWidth = 800;
 
-            //AutoStretchColumnsToFitWidth = true;
+            this.AutoStretchColumnsToFitWidth = true;
             //Columns.AutoSize(true);
             //ScrollBar = ScrollBars.Vertical;
             //this.VScroll = true;

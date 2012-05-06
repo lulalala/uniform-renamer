@@ -64,8 +64,6 @@
                     ruleGrid.AutoSizeCells();
                 }
             };
-            ruleGrid.AutoStretchColumnsToFitWidth = true;
-            ruleGrid.SelectionMode = GridSelectionMode.Row;
 
             RuleOpenDialog.FileName = Properties.Settings.Default.LastRulePath;
             if (!RuleOpenDialog.FileName.Equals(String.Empty))
