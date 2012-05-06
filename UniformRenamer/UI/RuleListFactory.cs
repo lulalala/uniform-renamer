@@ -2,17 +2,18 @@
 using System.IO;
 using UniformRenamer.Core;
 using UniformRenamer.Lang;
+using SourceGrid;
+using SourceGrid.Cells;
 
 namespace UniformRenamer.UI
 {
     class RuleListFactory
     {
-        public static RuleList ParseRule(string newFormat, RuleGrid grid)
+        public static RuleList ParseRules(string newFormat, RuleGrid grid)
         {
             // format string
             RuleList rules = new RuleList(newFormat);
 
-            string[] searchPatterns;
             for (int r = grid.FixedRows; r < grid.RowsCount; r++)
             {
                 if (!(bool)grid[r, RuleGrid.ColControl].Value)
@@ -20,28 +21,36 @@ namespace UniformRenamer.UI
                 if (!grid.CheckRow(r))
                     continue;
 
-                searchPatterns = ((string)grid[r, RuleGrid.ColPattern].Value).Split('\t');
-
-                if (grid[r, RuleGrid.ColType].Value.Equals("copy"))
-                //Copy Rule
-                {
-                    //if (grid.CheckRow(r))
-                    rules.Add(new CopyRule((String)grid[r, RuleGrid.ColDestination].Value, searchPatterns));
-                }
-                else if (grid[r, RuleGrid.ColType].Value.Equals("delete"))
-                //Delete Rule
-                {
-                    rules.Add(new DeleteRule(searchPatterns));
-                }
-                else if (grid[r, RuleGrid.ColType].Value.Equals("replace"))
-                //Replace Rule
-                {
-                    //if (fieldsNotEmpty(grid, r, new int[]{ RuleGrid.ColDestination, RuleGrid.ColReplacement}))
-                    rules.Add(new ReplaceRule((String)grid[r, RuleGrid.ColDestination].Value, (String)grid[r, RuleGrid.ColReplacement].Value, searchPatterns));
-                }
+                rules.Add(ParseRule(grid.GetCellsAtRow(r)));
             }
 
             return rules;
+        }
+
+        public static IRule ParseRule(ICellVirtual[] iCellVirtualRow)
+        {
+            Cell[] row = Array.ConvertAll(iCellVirtualRow, item => (Cell)item);
+
+            string[] searchPatterns = ((string)row[RuleGrid.ColPattern].Value).Split('\t');
+
+            if (row[RuleGrid.ColType].Value.Equals("copy"))
+            //Copy Rule
+            {
+                //if (grid.CheckRow(r))
+                return new CopyRule((String)row[RuleGrid.ColDestination].Value, searchPatterns);
+            }
+            else if (row[RuleGrid.ColType].Value.Equals("delete"))
+            //Delete Rule
+            {
+                return new DeleteRule(searchPatterns);
+            }
+            else if (row[RuleGrid.ColType].Value.Equals("replace"))
+            //Replace Rule
+            {
+                //if (fieldsNotEmpty(grid, r, new int[]{ RuleGrid.ColDestination, RuleGrid.ColReplacement}))
+                return new ReplaceRule((String)row[RuleGrid.ColDestination].Value, (String)row[RuleGrid.ColReplacement].Value, searchPatterns);
+            }
+            return null;
         }
     }
 }
